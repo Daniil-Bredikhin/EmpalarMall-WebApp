@@ -169,13 +169,19 @@ const SearchIcon = () => (
   </svg>
 );
 
+// Интерфейс для пропсов Home
+interface HomeProps {
+  onMenuClick: (menu: string) => void;
+}
+
 // Компонент Home
-const Home: React.FC = () => {
+const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
   const [searchValue, setSearchValue] = useState('');
   const [activeMenu, setActiveMenu] = useState('home');
 
   const handleMenuClick = (menu: string) => {
     setActiveMenu(menu);
+    onMenuClick(menu);
   };
 
   return (
