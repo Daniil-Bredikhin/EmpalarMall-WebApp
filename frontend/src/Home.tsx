@@ -180,35 +180,6 @@ const SearchIcon = () => (
   </svg>
 );
 
-// Временные компоненты для страниц
-const CatalogPage = () => (
-  <div style={{ textAlign: 'center', padding: '20px' }}>
-    <h2>Каталог</h2>
-    <p>Страница в разработке</p>
-  </div>
-);
-
-const ShortsPage = () => (
-  <div style={{ textAlign: 'center', padding: '20px' }}>
-    <h2>Шортсы</h2>
-    <p>Страница в разработке</p>
-  </div>
-);
-
-const CartPage = () => (
-  <div style={{ textAlign: 'center', padding: '20px' }}>
-    <h2>Корзина</h2>
-    <p>Страница в разработке</p>
-  </div>
-);
-
-const ProfilePage = () => (
-  <div style={{ textAlign: 'center', padding: '20px' }}>
-    <h2>Профиль</h2>
-    <p>Страница в разработке</p>
-  </div>
-);
-
 // Интерфейс для пропсов Home
 interface HomeProps {
   onMenuClick: (menu: string) => void;
@@ -258,7 +229,7 @@ const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
       case 'cart':
         return <div>Корзина</div>;
       case 'profile':
-        return <Profile onMenuClick={handleMenuClick} />;
+        return <Profile />;
       default:
         return <div>Главная страница</div>;
     }

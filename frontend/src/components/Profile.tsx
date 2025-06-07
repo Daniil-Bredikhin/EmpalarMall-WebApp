@@ -7,11 +7,7 @@ interface TelegramUser {
   photo_url?: string;
 }
 
-interface ProfileProps {
-  onMenuClick: (menu: string) => void;
-}
-
-const Profile: React.FC<ProfileProps> = ({ onMenuClick }) => {
+const Profile: React.FC = () => {
   const [user, setUser] = useState<TelegramUser | null>(null);
 
   useEffect(() => {
@@ -115,12 +111,6 @@ const Profile: React.FC<ProfileProps> = ({ onMenuClick }) => {
     border: 'none',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
-  };
-
-  const actionIconStyle: React.CSSProperties = {
-    width: '24px',
-    height: '24px',
-    color: '#111',
   };
 
   const actionLabelStyle: React.CSSProperties = {
