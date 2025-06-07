@@ -7,19 +7,17 @@ const menuStyle: React.CSSProperties = {
   position: 'fixed',
   left: 0,
   right: 0,
-  bottom: 16,
-  height: 76,
+  bottom: 16, // меню чуть ниже
+  height: 76, // меню выше
   background: '#fff',
   borderTop: '1px solid #eee',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  zIndex: 1000,
-  padding: '0 0',
-  width: '100vw',
+  zIndex: 100,
+  padding: '0 0', // убираем боковые отступы
+  width: '100vw', // фон до краёв экрана
   boxSizing: 'border-box',
-  transform: 'translateZ(0)',
-  willChange: 'transform',
 };
 
 const iconStyle: React.CSSProperties = {
@@ -48,18 +46,16 @@ const labelStyle: React.CSSProperties = {
 };
 
 const logoStyle: React.CSSProperties = {
-  fontFamily: 'Geraldton Light, Arial, sans-serif',
+  fontFamily: 'Geraldton, Arial, sans-serif',
   color: '#111',
-  fontWeight: 300, // Light weight
-  fontSize: 20,
-  letterSpacing: 2, // увеличиваем отступ между буквами
+  fontWeight: 700,
+  fontSize: 20, // немного увеличен
+  letterSpacing: 1,
   textAlign: 'center',
-  margin: '64px auto 20px auto', // увеличиваем отступ сверху
+  margin: '32px 0 20px 80px', // поднят выше и смещён правее
   padding: '0',
   width: 'fit-content',
   display: 'block',
-  marginLeft: 64, // увеличиваем отступ слева
-  transform: 'translateX(24px)', // увеличиваем смещение вправо
 };
 
 // SVG-иконки (минимализм, черно-белые)
@@ -79,138 +75,45 @@ const ProfileIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-7 8-7s8 3 8 7"/></svg>
 );
 
-// Стили для поиска
-const searchContainerStyle: React.CSSProperties = {
-  width: '90%',
-  maxWidth: '600px',
-  margin: '0 auto 24px auto',
-  position: 'sticky',
-  top: 0,
-  zIndex: 100,
-  padding: '8px 0',
-  backgroundColor: 'inherit',
-  display: 'flex',
-  alignItems: 'center',
-};
-
-const searchInputStyle: React.CSSProperties = {
-  width: '100%',
-  padding: '12px 16px 12px 48px',
-  fontSize: 16,
-  border: '1px solid #eee',
-  borderRadius: '24px',
-  backgroundColor: '#fff',
-  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-  transition: 'all 0.2s ease',
-  outline: 'none',
-  position: 'relative',
-  zIndex: 1,
-};
-
-const searchIconStyle: React.CSSProperties = {
-  position: 'absolute',
-  left: 16,
-  top: '50%',
-  transform: 'translateY(-50%)',
-  width: 20,
-  height: 20,
-  color: '#666',
-  cursor: 'pointer',
-  zIndex: 2,
-};
-
-// Компонент иконки поиска
-const SearchIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="11" cy="11" r="8"/>
-    <path d="M21 21l-4.35-4.35"/>
-  </svg>
-);
-
 const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick }) => {
-  const [searchQuery, setSearchQuery] = React.useState('');
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Searching for:', searchQuery);
-  };
-
   React.useEffect(() => {
     // Telegram WebApp UX: расширяем окно, настраиваем цвет фона
     if (WebApp && typeof WebApp.expand === 'function') {
       WebApp.expand();
     }
     if (WebApp && WebApp.themeParams) {
+      // Устанавливаем светлый фон по умолчанию
       document.body.style.background = WebApp.themeParams.bg_color || '#ffffff';
+      // Если темная тема, устанавливаем соответствующие цвета
+      if (WebApp.themeParams.bg_color === '#000000') {
+        document.body.style.background = '#ffffff';
+        document.body.style.color = '#000000';
+      }
     }
-    // Удаляем MainButton
+    // Удаляем MainButton (добавить в корзину)
     if (WebApp && WebApp.MainButton) {
       WebApp.MainButton.hide();
     }
-
-    // Настройки для предотвращения поднятия меню при открытии клавиатуры
+    // Убираем прокрутку
     document.body.style.overflow = 'hidden';
-    document.body.style.touchAction = 'none';
-    document.body.style.position = 'fixed';
-    document.body.style.width = '100%';
-    document.body.style.height = '100%';
-
-    // Запрещаем масштабирование
-    const meta = document.createElement('meta');
-    meta.name = 'viewport';
-    meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover';
-    document.head.appendChild(meta);
-
-    // Обработчик изменения размера окна
-    const handleResize = () => {
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-    };
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
     return () => {
       if (WebApp && WebApp.MainButton) {
         WebApp.MainButton.hide();
       }
       document.body.style.overflow = '';
-      document.body.style.touchAction = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
-      document.body.style.height = '';
-      window.removeEventListener('resize', handleResize);
-      const metaTag = document.querySelector('meta[name="viewport"]');
-      if (metaTag) {
-        metaTag.remove();
-      }
     };
   }, [onMenuClick]);
 
   return (
-    <div style={{ 
-      padding: '0 0 110px 0', 
-      minHeight: 'calc(var(--vh, 1vh) * 100)',
-      boxSizing: 'border-box', 
-      overflow: 'hidden',
-      position: 'relative'
-    }}>
+    <div style={{ padding: '0 0 110px 0', minHeight: '100vh', boxSizing: 'border-box', overflow: 'hidden' }}>
       {/* Логотип в самом верху */}
-      <div style={logoStyle}>EMPALAR MALL</div>
-
-      {/* Поиск */}
-      <form onSubmit={handleSearch} style={searchContainerStyle}>
-        <div style={searchIconStyle}>
-          <SearchIcon />
-        </div>
-        <input
-          type="text"
-          placeholder="Поиск товаров..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          style={searchInputStyle}
-        />
-      </form>
-
+      <div style={{ display: 'block', width: '100%' }}>
+        <div style={logoStyle}>EMPALAR MALL</div>
+      </div>
+      {/* Поиск поднят выше */}
+      <div style={{ margin: '0 auto 16px auto', maxWidth: 400, position: 'relative', top: -12 }}>
+        {/* Здесь должен быть компонент поиска, если он есть */}
+      </div>
       <p style={{ fontSize: 18, marginBottom: 24, textAlign: 'center' }}>
         Добро пожаловать в EMPALAR MALL — интернет-магазин с интеграцией Telegram WebApp!
       </p>
