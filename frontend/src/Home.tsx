@@ -77,7 +77,54 @@ const ProfileIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-7 8-7s8 3 8 7"/></svg>
 );
 
+// Стили для поиска
+const searchContainerStyle: React.CSSProperties = {
+  width: '90%',
+  maxWidth: '600px',
+  margin: '0 auto 24px auto',
+  position: 'relative',
+};
+
+const searchInputStyle: React.CSSProperties = {
+  width: '100%',
+  padding: '12px 48px 12px 16px',
+  fontSize: 16,
+  border: '1px solid #eee',
+  borderRadius: '12px',
+  backgroundColor: '#fff',
+  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
+  transition: 'all 0.2s ease',
+  outline: 'none',
+};
+
+const searchIconStyle: React.CSSProperties = {
+  position: 'absolute',
+  right: 16,
+  top: '50%',
+  transform: 'translateY(-50%)',
+  width: 20,
+  height: 20,
+  color: '#666',
+  cursor: 'pointer',
+};
+
+// Компонент иконки поиска
+const SearchIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="11" cy="11" r="8"/>
+    <path d="M21 21l-4.35-4.35"/>
+  </svg>
+);
+
 const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick }) => {
+  const [searchQuery, setSearchQuery] = React.useState('');
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    // TODO: Реализовать поиск
+    console.log('Searching for:', searchQuery);
+  };
+
   React.useEffect(() => {
     // Telegram WebApp UX: расширяем окно, настраиваем цвет фона
     if (WebApp && typeof WebApp.expand === 'function') {
@@ -112,6 +159,21 @@ const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick 
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', paddingLeft: 32 }}>
         <div style={logoStyle}>EMPALAR MALL</div>
       </div>
+
+      {/* Поиск */}
+      <form onSubmit={handleSearch} style={searchContainerStyle}>
+        <input
+          type="text"
+          placeholder="Поиск товаров..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          style={searchInputStyle}
+        />
+        <div style={searchIconStyle}>
+          <SearchIcon />
+        </div>
+      </form>
+
       <p style={{ fontSize: 18, marginBottom: 24, textAlign: 'center' }}>
         Добро пожаловать в EMPALAR MALL — интернет-магазин с интеграцией Telegram WebApp!
       </p>
