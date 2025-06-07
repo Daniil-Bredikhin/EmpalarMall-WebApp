@@ -61,15 +61,15 @@ const ReviewsIcon: React.FC<IconProps> = ({ style }) => (
   </svg>
 );
 
+const iconStyle: React.CSSProperties = {
+  width: '24px',
+  height: '24px',
+  marginRight: '12px',
+  color: '#000',
+};
+
 const Profile: React.FC = () => {
   const user = WebApp.initDataUnsafe.user;
-
-  const iconStyle: React.CSSProperties = {
-    width: '24px',
-    height: '24px',
-    marginRight: '12px',
-    color: '#000',
-  };
 
   const handleBack = () => {
     WebApp.showPopup({
