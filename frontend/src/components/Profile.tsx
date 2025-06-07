@@ -12,12 +12,10 @@ const Profile: React.FC = () => {
         { id: 'cancel', type: 'cancel' },
         { id: 'confirm', type: 'destructive', text: 'Выйти' }
       ]
-    }).then((buttonId: string) => {
+    }, (buttonId?: string) => {
       if (buttonId === 'confirm') {
         window.location.replace('/');
       }
-    }).catch(() => {
-      // Игнорируем ошибки при закрытии попапа
     });
   };
 
