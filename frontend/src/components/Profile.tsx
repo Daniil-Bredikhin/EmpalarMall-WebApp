@@ -68,6 +68,18 @@ const iconStyle: React.CSSProperties = {
   color: '#000',
 };
 
+const actionIconStyle: React.CSSProperties = {
+  width: '24px',
+  height: '24px',
+  color: '#000',
+};
+
+const infoTextStyle: React.CSSProperties = {
+  fontSize: '14px',
+  color: '#000',
+  textAlign: 'center',
+};
+
 const Profile: React.FC = () => {
   const user = WebApp.initDataUnsafe.user;
 
@@ -116,6 +128,27 @@ const Profile: React.FC = () => {
     justifyContent: 'flex-start',
   };
 
+  const menuIconStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '6px',
+    padding: 0,
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    color: '#111',
+    transition: 'all 0.2s ease',
+    width: '100%',
+    opacity: 0.7,
+  };
+
+  const activeMenuIconStyle: React.CSSProperties = {
+    ...menuIconStyle,
+    color: '#000000',
+    opacity: 1,
+  };
+
   return (
     <div style={containerStyle}>
       <div style={headerStyle}>
@@ -138,52 +171,51 @@ const Profile: React.FC = () => {
 
       <div style={actionsGridStyle}>
         <button style={actionButtonStyle} onClick={() => window.location.replace('/favorites')}>
-          <FavoriteIcon style={iconStyle} />
+          <div style={iconWrapperStyle}>
+            <FavoriteIcon style={actionIconStyle} />
+          </div>
           <span style={buttonTextStyle}>Избранное</span>
         </button>
         <button style={actionButtonStyle} onClick={() => window.location.replace('/deliveries')}>
-          <DeliveryIcon style={iconStyle} />
+          <div style={iconWrapperStyle}>
+            <DeliveryIcon style={actionIconStyle} />
+          </div>
           <span style={buttonTextStyle}>Доставки</span>
         </button>
         <button style={actionButtonStyle} onClick={() => window.location.replace('/purchases')}>
-          <PurchaseIcon style={iconStyle} />
+          <div style={iconWrapperStyle}>
+            <PurchaseIcon style={actionIconStyle} />
+          </div>
           <span style={buttonTextStyle}>Покупки</span>
         </button>
         <button style={actionButtonStyle} onClick={() => window.location.replace('/support')}>
-          <SupportIcon style={iconStyle} />
+          <div style={iconWrapperStyle}>
+            <SupportIcon style={actionIconStyle} />
+          </div>
           <span style={buttonTextStyle}>Поддержка</span>
         </button>
       </div>
 
-      <div style={infoSectionStyle}>
+      <div style={infoGridStyle}>
         <button style={infoButtonStyle} onClick={() => window.location.replace('/points')}>
-          <PointsIcon style={iconStyle} />
+          <PointsIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Баллы</span>
         </button>
-      </div>
-
-      <div style={infoSectionStyle}>
         <button style={infoButtonStyle} onClick={() => window.location.replace('/favorite-brands')}>
-          <FavoriteBrandsIcon style={iconStyle} />
+          <FavoriteBrandsIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Любимые бренды</span>
         </button>
-      </div>
-
-      <div style={infoSectionStyle}>
         <button style={infoButtonStyle} onClick={() => window.location.replace('/viewed')}>
-          <ViewedIcon style={iconStyle} />
+          <ViewedIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Просмотренные</span>
         </button>
-      </div>
-
-      <div style={infoSectionStyle}>
         <button style={infoButtonStyle} onClick={() => window.location.replace('/reviews')}>
-          <ReviewsIcon style={iconStyle} />
+          <ReviewsIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Отзывы</span>
         </button>
       </div>
 
-      <div style={actionsSectionStyle}>
+      <div style={bottomActionsStyle}>
         <button style={fullWidthButtonStyle}>
           <div style={iconWithTextStyle}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
@@ -193,9 +225,6 @@ const Profile: React.FC = () => {
             <span style={actionLabelStyle}>Данные доставки</span>
           </div>
         </button>
-      </div>
-
-      <div style={actionsSectionStyle}>
         <button style={fullWidthButtonStyle}>
           <div style={iconWithTextStyle}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
@@ -208,6 +237,44 @@ const Profile: React.FC = () => {
           </div>
         </button>
       </div>
+
+      <nav style={menuStyle}>
+        <button style={menuIconStyle} onClick={() => window.location.replace('/')}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          <span style={labelStyle}>Главная</span>
+        </button>
+        <button style={menuIconStyle} onClick={() => window.location.replace('/catalog')}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="2" ry="2"/>
+            <rect x="14" y="3" width="7" height="7" rx="2" ry="2"/>
+            <rect x="14" y="14" width="7" height="7" rx="2" ry="2"/>
+            <rect x="3" y="14" width="7" height="7" rx="2" ry="2"/>
+          </svg>
+          <span style={labelStyle}>Каталог</span>
+        </button>
+        <button style={menuIconStyle} onClick={() => window.location.replace('/shorts')}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2v20M2 12h20M12 2l10 10M12 2L2 12M12 22l10-10M12 22L2 12"/>
+          </svg>
+          <span style={labelStyle}>Шортсы</span>
+        </button>
+        <button style={menuIconStyle} onClick={() => window.location.replace('/cart')}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          <span style={labelStyle}>Корзина</span>
+        </button>
+        <button style={activeMenuIconStyle} onClick={() => WebApp.showAlert('Профиль')}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span style={labelStyle}>Профиль</span>
+        </button>
+      </nav>
     </div>
   );
 };
@@ -319,38 +386,72 @@ const actionButtonStyle: React.CSSProperties = {
   transition: 'all 0.2s ease',
 };
 
-const infoSectionStyle: React.CSSProperties = {
-  backgroundColor: '#fff',
-  borderRadius: '16px',
+const iconWrapperStyle: React.CSSProperties = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginBottom: '8px',
+};
+
+const infoGridStyle: React.CSSProperties = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(2, 1fr)',
+  gap: '12px',
   padding: '16px',
+  backgroundColor: '#fff',
   margin: '10px 16px',
+  borderRadius: '16px',
   boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
 };
 
 const infoButtonStyle: React.CSSProperties = {
   display: 'flex',
+  flexDirection: 'column',
   alignItems: 'center',
+  justifyContent: 'center',
   backgroundColor: '#fff',
   border: 'none',
   borderRadius: '12px',
   padding: '12px',
-  width: '100%',
   cursor: 'pointer',
   transition: 'all 0.2s ease',
 };
 
-const infoTextStyle: React.CSSProperties = {
-  fontSize: '14px',
+const smallIconStyle: React.CSSProperties = {
+  width: '20px',
+  height: '20px',
+  marginBottom: '8px',
   color: '#000',
-  textAlign: 'left',
 };
 
-const actionsSectionStyle: React.CSSProperties = {
+const bottomActionsStyle: React.CSSProperties = {
   backgroundColor: '#fff',
   borderRadius: '16px',
   padding: '16px',
   margin: '10px 16px',
   boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+};
+
+const menuStyle: React.CSSProperties = {
+  position: 'fixed',
+  bottom: 0,
+  left: 0,
+  right: 0,
+  backgroundColor: 'rgba(255, 255, 255, 0.95)',
+  display: 'flex',
+  justifyContent: 'space-around',
+  padding: '8px 24px 24px 24px',
+  boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
+  backdropFilter: 'blur(12px)',
+  zIndex: 1000,
+  transition: 'transform 0.3s ease',
+};
+
+const labelStyle: React.CSSProperties = {
+  fontSize: '12px',
+  color: '#111',
+  fontFamily: 'Geraldton, Arial, sans-serif',
+  fontWeight: 500,
 };
 
 const iconWithTextStyle: React.CSSProperties = {
