@@ -74,6 +74,12 @@ const Profile: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
+    // Инициализация данных пользователя
+    const userData = WebApp.initDataUnsafe.user;
+    if (userData) {
+      setUser(userData as User);
+    }
+
     WebApp.BackButton.show();
     WebApp.BackButton.onClick(handleBack);
     return () => {
