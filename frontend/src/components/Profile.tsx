@@ -1,40 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import WebApp from '@twa-dev/sdk';
 
-interface TelegramUser {
-  id: number;
-  first_name: string;
-  username?: string;
-  photo_url?: string;
-}
-
 const Profile: React.FC = () => {
-  const [user, setUser] = useState<TelegramUser | null>(null);
-
-  useEffect(() => {
-    // Получаем данные пользователя из Telegram WebApp
-    const webApp = (window as any).Telegram?.WebApp;
-    if (webApp) {
-      const userData = webApp.initDataUnsafe?.user;
-      if (userData) {
-        setUser(userData);
-      }
-    }
-  }, []);
+  const user = WebApp.initDataUnsafe.user;
 
   const handleBack = () => {
     WebApp.BackButton.hide();
-    WebApp.showPopup({
-      title: 'Выход',
-      message: 'Вы уверены, что хотите выйти?',
-      buttons: [
-        { id: 'cancel', type: 'cancel' },
-        { id: 'confirm', type: 'destructive', text: 'Выйти' }
-      ]
-    });
+    window.location.href = '/'; // Возвращаемся на главную страницу
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     WebApp.BackButton.show();
     WebApp.BackButton.onClick(handleBack);
     return () => {
@@ -52,10 +27,16 @@ const Profile: React.FC = () => {
   };
 
   const headerStyle: React.CSSProperties = {
+    position: 'fixed',
+    top: '48px',
+    left: 0,
+    right: 0,
     padding: '16px',
     textAlign: 'center',
-    backgroundColor: '#fff',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+    backgroundColor: 'rgba(255, 255, 255, 0.98)',
+    backdropFilter: 'blur(10px)',
+    zIndex: 1000,
+    boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
   };
 
   const logoStyle: React.CSSProperties = {
@@ -71,7 +52,7 @@ const Profile: React.FC = () => {
     alignItems: 'center',
     padding: '20px',
     backgroundColor: '#fff',
-    marginTop: '10px',
+    marginTop: '120px',
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   };
 
@@ -106,26 +87,36 @@ const Profile: React.FC = () => {
     color: '#666',
   };
 
-  const actionsStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '12px',
-    padding: '20px',
+  const actionsSectionStyle: React.CSSProperties = {
     backgroundColor: '#fff',
-    marginTop: '10px',
+    borderRadius: '16px',
+    padding: '16px',
+    margin: '10px 16px',
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   };
 
+  const actionsGridStyle: React.CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gap: '16px',
+  };
+
   const actionButtonStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '8px',
     padding: '16px',
     backgroundColor: '#fff',
-    border: '1px solid #ddd',
     borderRadius: '12px',
-    fontSize: '16px',
-    color: '#333',
-    textAlign: 'left',
+    border: 'none',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
+  };
+
+  const actionLabelStyle: React.CSSProperties = {
+    fontSize: '14px',
+    color: '#111',
   };
 
   const menuStyle: React.CSSProperties = {
@@ -178,20 +169,44 @@ const Profile: React.FC = () => {
         </div>
       </div>
 
-      <div style={actionsStyle}>
-        <button style={actionButtonStyle}>
-          Мои заказы
-        </button>
-        <button style={actionButtonStyle}>
-          Избранное
-        </button>
-        <button style={actionButtonStyle}>
-          Настройки
-        </button>
+      <div style={actionsSectionStyle}>
+        <div style={actionsGridStyle}>
+          <button style={actionButtonStyle}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            <span style={actionLabelStyle}>Избранное</span>
+          </button>
+          <button style={actionButtonStyle}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <rect x="1" y="3" width="15" height="13"/>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+            <span style={actionLabelStyle}>Доставки</span>
+          </button>
+          <button style={actionButtonStyle}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+            <span style={actionLabelStyle}>Покупки</span>
+          </button>
+          <button style={actionButtonStyle}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            <span style={actionLabelStyle}>Поддержка</span>
+          </button>
+        </div>
       </div>
 
       <div style={menuStyle}>
-        <div style={menuItemStyle} onClick={() => WebApp.showAlert('Главная')}>
+        <div style={menuItemStyle} onClick={() => window.location.href = '/'}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
             <polyline points="9 22 9 12 15 12 15 22" />
