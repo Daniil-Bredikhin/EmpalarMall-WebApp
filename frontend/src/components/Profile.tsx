@@ -230,8 +230,8 @@ const Profile: React.FC = () => {
   const infoGridContainerStyle: React.CSSProperties = {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '12px',
-    padding: '12px',
+    gap: '8px',
+    padding: '8px',
     margin: '0 16px 8px 16px',
     borderRadius: '16px',
   };
@@ -250,6 +250,7 @@ const Profile: React.FC = () => {
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
     width: '100%',
     boxSizing: 'border-box',
+    margin: 0,
   };
 
   const smallIconStyle: React.CSSProperties = {
