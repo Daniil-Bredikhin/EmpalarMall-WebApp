@@ -62,14 +62,15 @@ const ReviewsIcon: React.FC<IconProps> = ({ style }) => (
 );
 
 const buttonTextStyle: React.CSSProperties = {
-  fontSize: '14px',
+  fontSize: '12px',
   color: '#000',
   textAlign: 'center',
+  marginTop: '4px',
 };
 
 const actionIconStyle: React.CSSProperties = {
-  width: '24px',
-  height: '24px',
+  width: '20px',
+  height: '20px',
   color: '#000',
 };
 
@@ -188,26 +189,35 @@ const Profile: React.FC = () => {
         </button>
       </div>
 
-      <div style={infoGridStyle}>
+      <div style={infoSectionStyle}>
         <button style={infoButtonStyle} onClick={() => window.location.replace('/points')}>
           <PointsIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Баллы</span>
         </button>
+      </div>
+
+      <div style={infoSectionStyle}>
         <button style={infoButtonStyle} onClick={() => window.location.replace('/favorite-brands')}>
           <FavoriteBrandsIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Любимые бренды</span>
         </button>
+      </div>
+
+      <div style={infoSectionStyle}>
         <button style={infoButtonStyle} onClick={() => window.location.replace('/viewed')}>
           <ViewedIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Просмотренные</span>
         </button>
+      </div>
+
+      <div style={infoSectionStyle}>
         <button style={infoButtonStyle} onClick={() => window.location.replace('/reviews')}>
           <ReviewsIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Отзывы</span>
         </button>
       </div>
 
-      <div style={bottomActionsStyle}>
+      <div style={infoSectionStyle}>
         <button style={fullWidthButtonStyle}>
           <div style={iconWithTextStyle}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
@@ -217,6 +227,9 @@ const Profile: React.FC = () => {
             <span style={actionLabelStyle}>Данные доставки</span>
           </div>
         </button>
+      </div>
+
+      <div style={infoSectionStyle}>
         <button style={fullWidthButtonStyle}>
           <div style={iconWithTextStyle}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
@@ -373,7 +386,7 @@ const actionButtonStyle: React.CSSProperties = {
   backgroundColor: '#fff',
   border: 'none',
   borderRadius: '12px',
-  padding: '12px',
+  padding: '8px',
   cursor: 'pointer',
   transition: 'all 0.2s ease',
 };
@@ -385,10 +398,7 @@ const iconWrapperStyle: React.CSSProperties = {
   marginBottom: '8px',
 };
 
-const infoGridStyle: React.CSSProperties = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(2, 1fr)',
-  gap: '12px',
+const infoSectionStyle: React.CSSProperties = {
   padding: '16px',
   backgroundColor: '#fff',
   margin: '10px 16px',
@@ -414,14 +424,6 @@ const smallIconStyle: React.CSSProperties = {
   height: '20px',
   marginBottom: '8px',
   color: '#000',
-};
-
-const bottomActionsStyle: React.CSSProperties = {
-  backgroundColor: '#fff',
-  borderRadius: '16px',
-  padding: '16px',
-  margin: '10px 16px',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
 };
 
 const menuStyle: React.CSSProperties = {
