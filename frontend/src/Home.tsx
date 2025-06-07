@@ -46,7 +46,7 @@ const labelStyle: React.CSSProperties = {
 
 const headerStyle: React.CSSProperties = {
   position: 'fixed',
-  top: '20px',
+  top: '48px',
   backgroundColor: 'rgba(255, 255, 255, 0.98)',
   backdropFilter: 'blur(10px)',
   zIndex: 1000,
@@ -64,9 +64,9 @@ const headerStyle: React.CSSProperties = {
 };
 
 const logoStyle: React.CSSProperties = {
-  fontFamily: 'Geraldton Medium',
+  fontFamily: 'axios pro regular',
   color: '#111',
-  fontWeight: 500,
+  fontWeight: 400,
   fontSize: '20px',
   letterSpacing: '0.5px',
   margin: '0',
@@ -82,6 +82,7 @@ const searchBarStyle: React.CSSProperties = {
   width: '100%',
   position: 'relative',
   margin: '0 auto',
+  boxSizing: 'border-box',
 };
 
 const searchInputStyle: React.CSSProperties = {
@@ -95,6 +96,7 @@ const searchInputStyle: React.CSSProperties = {
   outline: 'none',
   transition: 'all 0.2s ease',
   fontFamily: 'Geraldton, Arial, sans-serif',
+  boxSizing: 'border-box',
 };
 
 const searchIconStyle: React.CSSProperties = {
@@ -106,7 +108,7 @@ const searchIconStyle: React.CSSProperties = {
 };
 
 const contentStyle: React.CSSProperties = {
-  padding: '140px 16px 80px',
+  padding: '180px 16px 80px',
   maxWidth: '360px',
   margin: '0 auto',
   width: '100%',
@@ -159,9 +161,7 @@ const ShortsIcon: React.FC = () => (
 
 const CartIcon: React.FC = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-    <line x1="3" y1="6" x2="21" y2="6"/>
-    <path d="M16 10a4 4 0 0 1-8 0"/>
+    <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
   </svg>
 );
 
