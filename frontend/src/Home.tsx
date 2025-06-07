@@ -7,15 +7,17 @@ const menuStyle: React.CSSProperties = {
   position: 'fixed',
   left: 0,
   right: 0,
-  bottom: 24, // поднято выше
-  height: 64,
+  bottom: 8, // меню чуть ниже
+  height: 76, // меню выше
   background: '#fff',
   borderTop: '1px solid #eee',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
   zIndex: 100,
-  padding: '0 2px',
+  padding: '0 0', // убираем боковые отступы
+  width: '100vw', // фон до краёв экрана
+  boxSizing: 'border-box',
 };
 
 const iconStyle: React.CSSProperties = {
@@ -47,11 +49,11 @@ const logoStyle: React.CSSProperties = {
   fontFamily: 'Geraldton, Arial, sans-serif',
   color: '#111',
   fontWeight: 700,
-  fontSize: 16, // уменьшен размер
+  fontSize: 20, // немного увеличен
   letterSpacing: 1,
   textAlign: 'center',
-  margin: '0 auto 16px auto', // автоцентрирование
-  padding: '16px 0 0 0',
+  margin: '32px auto 20px auto', // чуть ниже
+  padding: '0',
   width: 'fit-content',
   display: 'block',
 };
@@ -97,7 +99,7 @@ const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick 
   }, [onMenuClick]);
 
   return (
-    <div style={{ padding: '0 0 96px 0', minHeight: '100vh', boxSizing: 'border-box', overflow: 'hidden' }}>
+    <div style={{ padding: '0 0 110px 0', minHeight: '100vh', boxSizing: 'border-box', overflow: 'hidden' }}>
       {/* Логотип в самом верху */}
       <div style={logoStyle}>EMPALAR MALL</div>
       <p style={{ fontSize: 18, marginBottom: 24, textAlign: 'center' }}>
