@@ -47,12 +47,13 @@ const logoStyle: React.CSSProperties = {
   fontFamily: 'Geraldton, Arial, sans-serif',
   color: '#111',
   fontWeight: 700,
-  fontSize: 22, // уменьшен размер
+  fontSize: 16, // уменьшен размер
   letterSpacing: 1,
   textAlign: 'center',
-  margin: '0 0 24px 0',
-  padding: '24px 0 0 0',
-  width: '100%',
+  margin: '0 auto 16px auto', // автоцентрирование
+  padding: '16px 0 0 0',
+  width: 'fit-content',
+  display: 'block',
 };
 
 // SVG-иконки (минимализм, черно-белые)
@@ -74,36 +75,29 @@ const ProfileIcon = () => (
 
 const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick }) => {
   React.useEffect(() => {
-    // Telegram WebApp UX: расширяем окно, настраиваем цвет фона и кнопки
+    // Telegram WebApp UX: расширяем окно, настраиваем цвет фона
     if (WebApp && typeof WebApp.expand === 'function') {
       WebApp.expand();
     }
     if (WebApp && WebApp.themeParams) {
       document.body.style.background = WebApp.themeParams.bg_color || '#f7f7f7';
     }
+    // Удаляем MainButton (добавить в корзину)
     if (WebApp && WebApp.MainButton) {
-      WebApp.MainButton.setParams({
-        text: 'Перейти в корзину',
-        color: '#111',
-        text_color: '#fff',
-        is_visible: true,
-      });
-      WebApp.MainButton.onClick(() => {
-        onMenuClick?.('cart');
-      });
+      WebApp.MainButton.hide();
     }
+    // Убираем прокрутку
+    document.body.style.overflow = 'hidden';
     return () => {
       if (WebApp && WebApp.MainButton) {
-        WebApp.MainButton.offClick(() => {
-          onMenuClick?.('cart');
-        });
         WebApp.MainButton.hide();
       }
+      document.body.style.overflow = '';
     };
   }, [onMenuClick]);
 
   return (
-    <div style={{ padding: '0 0 96px 0', minHeight: '100vh', boxSizing: 'border-box' }}>
+    <div style={{ padding: '0 0 96px 0', minHeight: '100vh', boxSizing: 'border-box', overflow: 'hidden' }}>
       {/* Логотип в самом верху */}
       <div style={logoStyle}>EMPALAR MALL</div>
       <p style={{ fontSize: 18, marginBottom: 24, textAlign: 'center' }}>
