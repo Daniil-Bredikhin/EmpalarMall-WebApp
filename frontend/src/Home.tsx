@@ -46,18 +46,18 @@ const labelStyle: React.CSSProperties = {
 };
 
 const logoStyle: React.CSSProperties = {
-  fontFamily: 'Geraldton, Arial, sans-serif',
+  fontFamily: 'Geraldton Light, Arial, sans-serif',
   color: '#111',
-  fontWeight: 700,
+  fontWeight: 300, // Light weight
   fontSize: 20,
-  letterSpacing: 1,
+  letterSpacing: 2, // увеличиваем отступ между буквами
   textAlign: 'center',
-  margin: '48px auto 20px auto', // увеличиваем отступ сверху
+  margin: '64px auto 20px auto', // увеличиваем отступ сверху
   padding: '0',
   width: 'fit-content',
   display: 'block',
-  marginLeft: 48, // сдвигаем правее
-  transform: 'translateX(16px)', // дополнительное смещение вправо
+  marginLeft: 64, // увеличиваем отступ слева
+  transform: 'translateX(24px)', // увеличиваем смещение вправо
 };
 
 // SVG-иконки (минимализм, черно-белые)
