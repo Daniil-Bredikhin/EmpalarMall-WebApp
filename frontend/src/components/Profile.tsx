@@ -50,6 +50,20 @@ const Profile: React.FC = () => {
     textAlign: 'center',
   };
 
+  const fullWidthButtonStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    border: 'none',
+    borderRadius: '12px',
+    padding: '12px',
+    width: '100%',
+    cursor: 'pointer',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+    transition: 'all 0.2s ease',
+    justifyContent: 'flex-start',
+  };
+
   return (
     <div style={containerStyle}>
       <div style={headerStyle}>
@@ -311,12 +325,6 @@ const actionsSectionStyle: React.CSSProperties = {
   padding: '16px',
   margin: '10px 16px',
   boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-};
-
-const fullWidthButtonStyle: React.CSSProperties = {
-  ...buttonStyle,
-  width: '100%',
-  justifyContent: 'flex-start',
 };
 
 const iconWithTextStyle: React.CSSProperties = {
