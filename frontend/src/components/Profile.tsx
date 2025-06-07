@@ -179,6 +179,34 @@ const Profile: React.FC = () => {
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   };
 
+  const iconWithTextStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+  };
+
+  const actionLabelStyle: React.CSSProperties = {
+    fontSize: '16px',
+    color: '#000',
+    fontFamily: 'Geraldton, Arial, sans-serif',
+    fontWeight: 500,
+  };
+
+  const menuStyle: React.CSSProperties = {
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    display: 'flex',
+    justifyContent: 'space-around',
+    padding: '8px 24px 24px 24px',
+    boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
+    backdropFilter: 'blur(12px)',
+    zIndex: 1000,
+    transition: 'transform 0.3s ease',
+  };
+
   return (
     <div style={containerStyle}>
       <div style={headerStyle}>
@@ -457,23 +485,6 @@ const labelStyle: React.CSSProperties = {
   color: '#111',
   fontFamily: 'Geraldton, Arial, sans-serif',
   fontWeight: 500,
-};
-
-const iconWithTextStyle: React.CSSProperties = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: '12px',
-  width: '100%',
-};
-
-const actionLabelStyle: React.CSSProperties = {
-  fontSize: '14px',
-  color: '#000',
-  textAlign: 'left',
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-  maxWidth: '100%',
 };
 
 export default Profile; 
