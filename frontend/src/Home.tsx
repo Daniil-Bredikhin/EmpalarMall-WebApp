@@ -56,30 +56,30 @@ const headerStyle: React.CSSProperties = {
   flexDirection: 'column',
   alignItems: 'center',
   gap: '16px',
-  width: '100%',
-  maxWidth: '400px',
+  width: 'calc(100% - 32px)',
+  maxWidth: '360px',
   margin: '0 auto',
   left: '50%',
   transform: 'translateX(-50%)',
 };
 
 const logoStyle: React.CSSProperties = {
-  fontFamily: 'Geraldton Medium, Arial, sans-serif',
+  fontFamily: 'Geraldton Medium',
   color: '#111',
   fontWeight: 500,
   fontSize: '20px',
   letterSpacing: '0.5px',
   margin: '0',
   padding: '0',
-  textAlign: 'left',
+  textAlign: 'center',
   lineHeight: '1.2',
   width: '100%',
-  paddingLeft: '16px',
+  paddingLeft: '24px',
+  paddingRight: '24px',
 };
 
 const searchBarStyle: React.CSSProperties = {
-  width: '90%',
-  maxWidth: '360px',
+  width: '100%',
   position: 'relative',
   margin: '0 auto',
 };
@@ -106,10 +106,11 @@ const searchIconStyle: React.CSSProperties = {
 };
 
 const contentStyle: React.CSSProperties = {
-  padding: '20px',
-  marginTop: '140px',
-  marginBottom: '100px',
-  minHeight: 'calc(100vh - 240px)',
+  padding: '140px 16px 80px',
+  maxWidth: '360px',
+  margin: '0 auto',
+  width: '100%',
+  boxSizing: 'border-box',
 };
 
 // Обновляем интерфейс MenuIconProps
@@ -150,17 +151,17 @@ const CatalogIcon = () => (
   </svg>
 );
 
-const ShortsIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+const ShortsIcon: React.FC = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2v20M2 12h20M12 2l10 10M12 2L2 12M12 22l10-10M12 22L2 12"/>
   </svg>
 );
 
-const CartIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="9" cy="21" r="1"/>
-    <circle cx="20" cy="21" r="1"/>
-    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+const CartIcon: React.FC = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+    <line x1="3" y1="6" x2="21" y2="6"/>
+    <path d="M16 10a4 4 0 0 1-8 0"/>
   </svg>
 );
 
