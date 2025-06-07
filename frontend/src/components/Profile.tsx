@@ -235,7 +235,7 @@ const Profile: React.FC = () => {
     backgroundColor: '#fff',
     border: 'none',
     borderRadius: '12px',
-    padding: '16px 20px',
+    padding: '20px 24px',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
@@ -257,8 +257,8 @@ const Profile: React.FC = () => {
   const infoGridContainerStyle: React.CSSProperties = {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '16px',
-    padding: '16px',
+    gap: '20px',
+    padding: '20px',
     margin: '10px 16px',
     borderRadius: '16px',
   };
@@ -364,13 +364,13 @@ const Profile: React.FC = () => {
       </div>
 
       <div style={infoGridContainerStyle}>
-        <button style={infoButtonStyle} onClick={() => window.location.replace('/points')}>
-          <PointsIcon style={smallIconStyle} />
-          <span style={infoTextStyle}>Баллы</span>
-        </button>
         <button style={infoButtonStyle} onClick={() => window.location.replace('/favorite-brands')}>
           <FavoriteBrandsIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Любимые бренды</span>
+        </button>
+        <button style={infoButtonStyle} onClick={() => window.location.replace('/points')}>
+          <PointsIcon style={smallIconStyle} />
+          <span style={infoTextStyle}>Баллы</span>
         </button>
         <button style={infoButtonStyle} onClick={() => window.location.replace('/viewed')}>
           <ViewedIcon style={smallIconStyle} />
