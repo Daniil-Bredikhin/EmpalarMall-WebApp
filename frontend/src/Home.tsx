@@ -110,17 +110,16 @@ const contentStyle: React.CSSProperties = {
   minHeight: 'calc(100vh - 240px)',
 };
 
-// Интерфейс для MenuIcon
+// Обновляем интерфейс MenuIconProps
 interface MenuIconProps {
   icon: React.ReactNode;
   label: string;
-  isActive: boolean;
   onClick: () => void;
   style: React.CSSProperties;
 }
 
-// Компонент MenuIcon
-const MenuIcon: React.FC<MenuIconProps> = ({ icon, label, isActive, onClick, style }) => {
+// Обновляем компонент MenuIcon
+const MenuIcon: React.FC<MenuIconProps> = ({ icon, label, onClick, style }) => {
   return (
     <button
       style={style}
@@ -281,35 +280,30 @@ const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
         <MenuIcon
           icon={<HomeIcon />}
           label="Главная"
-          isActive={activeMenu === 'home'}
           onClick={() => handleMenuClick('home')}
           style={activeMenu === 'home' ? activeIconStyle : iconStyle}
         />
         <MenuIcon
           icon={<CatalogIcon />}
           label="Каталог"
-          isActive={activeMenu === 'catalog'}
           onClick={() => handleMenuClick('catalog')}
           style={activeMenu === 'catalog' ? activeIconStyle : iconStyle}
         />
         <MenuIcon
           icon={<ShortsIcon />}
           label="Шортсы"
-          isActive={activeMenu === 'shorts'}
           onClick={() => handleMenuClick('shorts')}
           style={activeMenu === 'shorts' ? activeIconStyle : iconStyle}
         />
         <MenuIcon
           icon={<CartIcon />}
           label="Корзина"
-          isActive={activeMenu === 'cart'}
           onClick={() => handleMenuClick('cart')}
           style={activeMenu === 'cart' ? activeIconStyle : iconStyle}
         />
         <MenuIcon
           icon={<ProfileIcon />}
           label="Профиль"
-          isActive={activeMenu === 'profile'}
           onClick={() => handleMenuClick('profile')}
           style={activeMenu === 'profile' ? activeIconStyle : iconStyle}
         />
