@@ -49,19 +49,20 @@ const logoStyle: React.CSSProperties = {
   fontFamily: 'Geraldton, Arial, sans-serif',
   color: '#111',
   fontWeight: 700,
-  fontSize: 20, // немного увеличен
-  letterSpacing: 1,
-  textAlign: 'center',
-  margin: '32px 0 20px 80px', // поднят выше и смещён правее
+  fontSize: '20px',
+  letterSpacing: '1px',
+  textAlign: 'right',
+  margin: '0 24px 16px 0',
   padding: '0',
   width: 'fit-content',
   display: 'block',
+  marginLeft: 'auto',
 };
 
 const searchBarStyle: React.CSSProperties = {
   width: '100%',
   maxWidth: 400,
-  margin: '16px auto',
+  margin: '0 auto',
   position: 'relative',
 };
 
@@ -69,13 +70,13 @@ const searchInputStyle: React.CSSProperties = {
   width: '100%',
   padding: '12px 16px',
   paddingLeft: '40px',
-  borderRadius: '8px',
+  borderRadius: '24px',
   border: '1px solid #eee',
   fontSize: '16px',
   backgroundColor: '#fff',
   boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
   outline: 'none',
-  transition: 'border-color 0.2s',
+  transition: 'all 0.2s ease',
   fontFamily: 'Geraldton, Arial, sans-serif',
 };
 
@@ -111,6 +112,81 @@ const SearchIcon = () => (
   </svg>
 );
 
+const headerStyle: React.CSSProperties = {
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  backgroundColor: '#fff',
+  zIndex: 1000,
+  padding: '16px 0',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+};
+
+const storiesContainerStyle: React.CSSProperties = {
+  display: 'flex',
+  gap: '12px',
+  padding: '16px',
+  overflowX: 'auto',
+  marginTop: '80px',
+  scrollbarWidth: 'none',
+  msOverflowStyle: 'none',
+};
+
+const storyStyle: React.CSSProperties = {
+  width: '80px',
+  height: '80px',
+  borderRadius: '50%',
+  backgroundColor: '#f5f5f5',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexShrink: 0,
+  border: '2px solid #646cff',
+  cursor: 'pointer',
+  transition: 'transform 0.2s ease',
+};
+
+const productsContainerStyle: React.CSSProperties = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(2, 1fr)',
+  gap: '16px',
+  padding: '16px',
+  marginTop: '16px',
+};
+
+const productCardStyle: React.CSSProperties = {
+  backgroundColor: '#fff',
+  borderRadius: '12px',
+  padding: '12px',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '8px',
+};
+
+const productImageStyle: React.CSSProperties = {
+  width: '100%',
+  height: '150px',
+  borderRadius: '8px',
+  backgroundColor: '#f5f5f5',
+  objectFit: 'cover',
+};
+
+const productTitleStyle: React.CSSProperties = {
+  fontSize: '14px',
+  fontWeight: 500,
+  color: '#111',
+  margin: 0,
+};
+
+const productPriceStyle: React.CSSProperties = {
+  fontSize: '16px',
+  fontWeight: 700,
+  color: '#646cff',
+  margin: 0,
+};
+
 const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick }) => {
   React.useEffect(() => {
     // Telegram WebApp UX: расширяем окно, настраиваем цвет фона
@@ -142,39 +218,52 @@ const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick 
 
   return (
     <div style={{ padding: '0 0 110px 0', minHeight: '100vh', boxSizing: 'border-box', overflow: 'hidden' }}>
-      {/* Поисковая строка */}
-      <div style={searchBarStyle}>
-        <div style={searchIconStyle}>
-          <SearchIcon />
-        </div>
-        <input
-          type="text"
-          placeholder="Найти товар..."
-          style={searchInputStyle}
-          onFocus={(e) => e.target.style.borderColor = '#646cff'}
-          onBlur={(e) => e.target.style.borderColor = '#eee'}
-        />
-      </div>
-      {/* Логотип в самом верху */}
-      <div style={{ display: 'block', width: '100%' }}>
+      {/* Фиксированный хедер */}
+      <div style={headerStyle}>
+        {/* Логотип */}
         <div style={logoStyle}>EMPALAR MALL</div>
+        {/* Поисковая строка */}
+        <div style={searchBarStyle}>
+          <div style={searchIconStyle}>
+            <SearchIcon />
+          </div>
+          <input
+            type="text"
+            placeholder="Найти товар..."
+            style={searchInputStyle}
+            onFocus={(e) => e.target.style.borderColor = '#646cff'}
+            onBlur={(e) => e.target.style.borderColor = '#eee'}
+          />
+        </div>
       </div>
-      {/* Поиск поднят выше */}
-      <div style={{ margin: '0 auto 16px auto', maxWidth: 400, position: 'relative', top: -12 }}>
-        {/* Здесь должен быть компонент поиска, если он есть */}
+
+      {/* Сторисы */}
+      <div style={storiesContainerStyle}>
+        {[1, 2, 3, 4, 5].map((story) => (
+          <div key={story} style={storyStyle}>
+            <span style={{ fontSize: '24px' }}>📱</span>
+          </div>
+        ))}
       </div>
-      <p style={{ fontSize: 18, marginBottom: 24, textAlign: 'center' }}>
-        Добро пожаловать в EMPALAR MALL — интернет-магазин с интеграцией Telegram WebApp!
-      </p>
-      <ul style={{ fontSize: 16, marginBottom: 24, textAlign: 'center', padding: 0, listStyle: 'none' }}>
-        <li>• Современный каталог товаров</li>
-        <li>• Личный кабинет с историей заказов</li>
-        <li>• Админ-панель для управления магазином</li>
-        <li>• Удобная интеграция с Telegram</li>
-      </ul>
-      <p style={{ color: '#888', textAlign: 'center' }}>
-        Для покупок используйте меню навигации снизу.
-      </p>
+
+      {/* Тестовые товары */}
+      <div style={productsContainerStyle}>
+        {[
+          { title: 'Смартфон X', price: '29 999 ₽', image: '📱' },
+          { title: 'Ноутбук Pro', price: '89 999 ₽', image: '💻' },
+          { title: 'Наушники Air', price: '12 999 ₽', image: '🎧' },
+          { title: 'Умные часы', price: '15 999 ₽', image: '⌚' },
+        ].map((product, index) => (
+          <div key={index} style={productCardStyle}>
+            <div style={productImageStyle}>
+              <span style={{ fontSize: '48px' }}>{product.image}</span>
+            </div>
+            <h3 style={productTitleStyle}>{product.title}</h3>
+            <p style={productPriceStyle}>{product.price}</p>
+          </div>
+        ))}
+      </div>
+
       {/* Мобильное меню */}
       <nav style={menuStyle}>
         <button style={iconStyle} onClick={() => onMenuClick?.('home')}>
