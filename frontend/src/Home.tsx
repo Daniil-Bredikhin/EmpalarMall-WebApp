@@ -50,27 +50,28 @@ const logoStyle: React.CSSProperties = {
   fontFamily: 'Geraldton, Arial, sans-serif',
   color: '#111',
   fontWeight: 700,
-  fontSize: '18px',
+  fontSize: '24px',
   letterSpacing: '0.5px',
-  margin: 0,
-  padding: 0,
+  margin: '0',
+  padding: '0',
+  textAlign: 'center',
 };
 
 const searchBarStyle: React.CSSProperties = {
-  flex: 1,
+  width: '100%',
+  maxWidth: '400px',
   position: 'relative',
-  maxWidth: 'none',
-  margin: 0,
+  margin: '0 auto',
 };
 
 const searchInputStyle: React.CSSProperties = {
   width: '100%',
-  padding: '10px 16px 10px 36px',
-  borderRadius: '12px',
+  padding: '12px 16px 12px 40px',
+  borderRadius: '16px',
   border: '1px solid #f0f0f0',
   fontSize: '15px',
   backgroundColor: '#f8f8f8',
-  boxShadow: 'none',
+  boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
   outline: 'none',
   transition: 'all 0.2s ease',
   fontFamily: 'Geraldton, Arial, sans-serif',
@@ -78,7 +79,7 @@ const searchInputStyle: React.CSSProperties = {
 
 const searchIconStyle: React.CSSProperties = {
   position: 'absolute',
-  left: '12px',
+  left: '14px',
   top: '50%',
   transform: 'translateY(-50%)',
   color: '#999',
@@ -119,8 +120,9 @@ const headerStyle: React.CSSProperties = {
   padding: '12px 16px',
   boxShadow: '0 1px 2px rgba(0,0,0,0.03)',
   display: 'flex',
+  flexDirection: 'column',
   alignItems: 'center',
-  gap: '12px',
+  gap: '16px',
 };
 
 const storiesContainerStyle: React.CSSProperties = {
@@ -227,61 +229,27 @@ const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick 
     <div style={{ padding: '0 0 88px 0', minHeight: '100vh', boxSizing: 'border-box', backgroundColor: '#fff' }}>
       {/* Фиксированный хедер */}
       <div style={headerStyle}>
-        <div style={logoStyle}>EMPALAR</div>
+        <div style={logoStyle}>EMPALAR MALL</div>
         <div style={searchBarStyle}>
           <div style={searchIconStyle}>
             <SearchIcon />
           </div>
           <input
             type="text"
-            placeholder="Поиск..."
+            placeholder="Поиск товаров..."
             style={searchInputStyle}
             onFocus={(e) => {
               e.target.style.backgroundColor = '#fff';
               e.target.style.borderColor = '#646cff';
+              e.target.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)';
             }}
             onBlur={(e) => {
               e.target.style.backgroundColor = '#f8f8f8';
               e.target.style.borderColor = '#f0f0f0';
+              e.target.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)';
             }}
           />
         </div>
-      </div>
-
-      {/* Сторисы */}
-      <div style={storiesContainerStyle}>
-        {[
-          { emoji: '🔥', label: 'Новинки' },
-          { emoji: '⭐', label: 'Популярное' },
-          { emoji: '🎁', label: 'Акции' },
-          { emoji: '📱', label: 'Техника' },
-          { emoji: '👕', label: 'Одежда' },
-        ].map((story, index) => (
-          <div key={index} style={storyStyle}>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
-              <span style={{ fontSize: '24px' }}>{story.emoji}</span>
-              <span style={{ fontSize: '10px', color: '#666' }}>{story.label}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Тестовые товары */}
-      <div style={productsContainerStyle}>
-        {[
-          { title: 'iPhone 14 Pro', price: '89 999 ₽', image: '📱' },
-          { title: 'MacBook Air M2', price: '129 999 ₽', image: '💻' },
-          { title: 'AirPods Pro', price: '24 999 ₽', image: '🎧' },
-          { title: 'Apple Watch', price: '32 999 ₽', image: '⌚' },
-        ].map((product, index) => (
-          <div key={index} style={productCardStyle}>
-            <div style={productImageStyle}>
-              <span style={{ fontSize: '32px' }}>{product.image}</span>
-            </div>
-            <h3 style={productTitleStyle}>{product.title}</h3>
-            <p style={productPriceStyle}>{product.price}</p>
-          </div>
-        ))}
       </div>
 
       {/* Мобильное меню */}
