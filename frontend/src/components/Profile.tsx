@@ -230,10 +230,12 @@ const Profile: React.FC = () => {
   const infoGridContainerStyle: React.CSSProperties = {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '8px',
-    padding: '8px',
+    gap: '4px',
+    padding: '4px',
     margin: '0 16px 8px 16px',
     borderRadius: '16px',
+    backgroundColor: '#fff',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   };
 
   const infoButtonStyle: React.CSSProperties = {
@@ -247,7 +249,6 @@ const Profile: React.FC = () => {
     padding: '16px 20px',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
     width: '100%',
     boxSizing: 'border-box',
     margin: 0,
