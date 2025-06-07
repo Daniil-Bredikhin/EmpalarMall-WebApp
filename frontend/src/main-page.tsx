@@ -19,6 +19,8 @@ const Navigation: React.FC<NavigationProps> = ({ setPage }) => (
 );
 
 const MainPage: React.FC = () => {
+  const [page, setPage] = React.useState<Page>('home');
+
   useEffect(() => {
     // Используем WebApp для инициализации Telegram WebApp SDK
     if (WebApp && typeof WebApp.expand === 'function') {
@@ -26,12 +28,28 @@ const MainPage: React.FC = () => {
     }
   }, []);
 
-  const [page, setPage] = React.useState<Page>('home');
+  // Обработка нажатий на мобильное меню
+  const handleMenuClick = (menu: string) => {
+    switch (menu) {
+      case 'home':
+        setPage('home');
+        break;
+      case 'profile':
+        setPage('profile');
+        break;
+      case 'admin':
+        setPage('admin');
+        break;
+      // Каталог, Избранное, Корзина — пока не реализованы, можно добавить позже
+      default:
+        break;
+    }
+  };
 
   return (
     <div>
       <Navigation setPage={setPage} />
-      {page === 'home' && <Home />}
+      {page === 'home' && <Home onMenuClick={handleMenuClick} />}
       {page === 'profile' && <Profile />}
       {page === 'admin' && <AdminPanel />}
     </div>
