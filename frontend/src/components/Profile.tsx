@@ -28,145 +28,6 @@ const Profile: React.FC = () => {
     };
   }, []);
 
-  const containerStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '100vh',
-    backgroundColor: '#f5f5f5',
-    paddingBottom: '80px',
-  };
-
-  const headerStyle: React.CSSProperties = {
-    position: 'fixed',
-    top: '48px',
-    left: 0,
-    right: 0,
-    padding: '16px',
-    textAlign: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.98)',
-    backdropFilter: 'blur(10px)',
-    zIndex: 1000,
-    boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
-  };
-
-  const logoStyle: React.CSSProperties = {
-    fontSize: '20px',
-    fontWeight: 700,
-    color: '#111',
-    fontFamily: 'Montserrat, Arial, sans-serif',
-    letterSpacing: '1.2px',
-    lineHeight: '1.2',
-    width: '100%',
-    paddingLeft: '44px',
-    paddingRight: '24px',
-  };
-
-  const profileSectionStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: '20px',
-    backgroundColor: '#fff',
-    marginTop: '120px',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-  };
-
-  const avatarContainerStyle: React.CSSProperties = {
-    width: '100px',
-    height: '100px',
-    borderRadius: '50%',
-    overflow: 'hidden',
-    marginBottom: '16px',
-    border: '3px solid #007AFF',
-  };
-
-  const avatarStyle: React.CSSProperties = {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-  };
-
-  const userInfoStyle: React.CSSProperties = {
-    textAlign: 'center',
-  };
-
-  const nameStyle: React.CSSProperties = {
-    fontSize: '20px',
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: '4px',
-  };
-
-  const usernameStyle: React.CSSProperties = {
-    fontSize: '16px',
-    color: '#666',
-  };
-
-  const actionsSectionStyle: React.CSSProperties = {
-    backgroundColor: '#fff',
-    borderRadius: '16px',
-    padding: '16px',
-    margin: '10px 16px',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-  };
-
-  const actionsRowStyle: React.CSSProperties = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    gap: '8px',
-  };
-
-  const actionButtonStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '8px',
-    padding: '12px',
-    backgroundColor: '#fff',
-    borderRadius: '12px',
-    border: 'none',
-    cursor: 'pointer',
-    transition: 'all 0.2s ease',
-    flex: 1,
-  };
-
-  const actionLabelStyle: React.CSSProperties = {
-    fontSize: '12px',
-    color: '#000',
-    textAlign: 'center',
-  };
-
-  const menuStyle: React.CSSProperties = {
-    position: 'fixed',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    display: 'flex',
-    justifyContent: 'space-around',
-    padding: '12px 0',
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-    backdropFilter: 'blur(10px)',
-    borderTop: '1px solid #eee',
-    zIndex: 1000,
-  };
-
-  const menuItemStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '4px',
-    cursor: 'pointer',
-    padding: '8px',
-    borderRadius: '8px',
-    transition: 'all 0.2s ease',
-  };
-
-  const menuLabelStyle: React.CSSProperties = {
-    fontSize: '12px',
-    color: '#666',
-  };
-
   return (
     <div style={containerStyle}>
       <div style={headerStyle}>
@@ -223,48 +84,206 @@ const Profile: React.FC = () => {
         </div>
       </div>
 
-      <div style={menuStyle}>
-        <div style={menuItemStyle} onClick={() => window.location.replace('/')}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-            <polyline points="9 22 9 12 15 12 15 22" />
+      <nav style={menuStyle}>
+        <button style={iconStyle} onClick={() => window.location.replace('/')}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
-          <span style={menuLabelStyle}>Главная</span>
-        </div>
-        <div style={menuItemStyle} onClick={() => WebApp.showAlert('Каталог')}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <rect x="3" y="3" width="7" height="7" />
-            <rect x="14" y="3" width="7" height="7" />
-            <rect x="14" y="14" width="7" height="7" />
-            <rect x="3" y="14" width="7" height="7" />
+          <span style={labelStyle}>Главная</span>
+        </button>
+        <button style={iconStyle} onClick={() => WebApp.showAlert('Каталог')}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="2" ry="2"/>
+            <rect x="14" y="3" width="7" height="7" rx="2" ry="2"/>
+            <rect x="14" y="14" width="7" height="7" rx="2" ry="2"/>
+            <rect x="3" y="14" width="7" height="7" rx="2" ry="2"/>
           </svg>
-          <span style={menuLabelStyle}>Каталог</span>
-        </div>
-        <div style={menuItemStyle} onClick={() => WebApp.showAlert('Шортсы')}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <path d="M23 7l-7 5 7 5V7z" />
-            <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+          <span style={labelStyle}>Каталог</span>
+        </button>
+        <button style={iconStyle} onClick={() => WebApp.showAlert('Шортсы')}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2v20M2 12h20M12 2l10 10M12 2L2 12M12 22l10-10M12 22L2 12"/>
           </svg>
-          <span style={menuLabelStyle}>Шортсы</span>
-        </div>
-        <div style={menuItemStyle} onClick={() => WebApp.showAlert('Корзина')}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <circle cx="9" cy="21" r="1" />
-            <circle cx="20" cy="21" r="1" />
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+          <span style={labelStyle}>Шортсы</span>
+        </button>
+        <button style={iconStyle} onClick={() => WebApp.showAlert('Корзина')}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
           </svg>
-          <span style={menuLabelStyle}>Корзина</span>
-        </div>
-        <div style={menuItemStyle} onClick={() => WebApp.showAlert('Профиль')}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
+          <span style={labelStyle}>Корзина</span>
+        </button>
+        <button style={activeIconStyle} onClick={() => WebApp.showAlert('Профиль')}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
           </svg>
-          <span style={menuLabelStyle}>Профиль</span>
-        </div>
-      </div>
+          <span style={labelStyle}>Профиль</span>
+        </button>
+      </nav>
     </div>
   );
+};
+
+const containerStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  minHeight: '100vh',
+  backgroundColor: '#f8f8f8',
+  paddingBottom: '80px',
+};
+
+const headerStyle: React.CSSProperties = {
+  position: 'fixed',
+  top: '48px',
+  backgroundColor: 'rgba(255, 255, 255, 0.98)',
+  backdropFilter: 'blur(10px)',
+  zIndex: 1000,
+  padding: '16px',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '16px',
+  width: 'calc(100% - 32px)',
+  maxWidth: '360px',
+  margin: '0 auto',
+  left: '50%',
+  transform: 'translateX(-50%)',
+};
+
+const logoStyle: React.CSSProperties = {
+  fontFamily: 'Montserrat, Arial, sans-serif',
+  color: '#111',
+  fontWeight: 700,
+  fontSize: '20px',
+  letterSpacing: '1.2px',
+  margin: '0',
+  padding: '0',
+  textAlign: 'center',
+  lineHeight: '1.2',
+  width: '100%',
+  paddingLeft: '44px',
+  paddingRight: '24px',
+};
+
+const profileSectionStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  padding: '20px',
+  backgroundColor: '#fff',
+  marginTop: '120px',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+};
+
+const avatarContainerStyle: React.CSSProperties = {
+  width: '100px',
+  height: '100px',
+  borderRadius: '50%',
+  overflow: 'hidden',
+  marginBottom: '16px',
+  border: '3px solid #007AFF',
+};
+
+const avatarStyle: React.CSSProperties = {
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+};
+
+const userInfoStyle: React.CSSProperties = {
+  textAlign: 'center',
+};
+
+const nameStyle: React.CSSProperties = {
+  fontSize: '20px',
+  fontWeight: 'bold',
+  color: '#333',
+  marginBottom: '4px',
+};
+
+const usernameStyle: React.CSSProperties = {
+  fontSize: '16px',
+  color: '#666',
+};
+
+const actionsSectionStyle: React.CSSProperties = {
+  backgroundColor: '#fff',
+  borderRadius: '16px',
+  padding: '16px',
+  margin: '10px 16px',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+};
+
+const actionsRowStyle: React.CSSProperties = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  gap: '8px',
+};
+
+const actionButtonStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '8px',
+  padding: '12px',
+  backgroundColor: '#fff',
+  borderRadius: '12px',
+  border: 'none',
+  cursor: 'pointer',
+  transition: 'all 0.2s ease',
+  flex: 1,
+};
+
+const actionLabelStyle: React.CSSProperties = {
+  fontSize: '12px',
+  color: '#000',
+  textAlign: 'center',
+};
+
+const menuStyle: React.CSSProperties = {
+  position: 'fixed',
+  bottom: 0,
+  left: 0,
+  right: 0,
+  backgroundColor: 'rgba(255, 255, 255, 0.95)',
+  display: 'flex',
+  justifyContent: 'space-around',
+  padding: '8px 24px 24px 24px',
+  boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
+  backdropFilter: 'blur(12px)',
+  zIndex: 1000,
+  transition: 'transform 0.3s ease',
+};
+
+const iconStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '6px',
+  padding: 0,
+  background: 'none',
+  border: 'none',
+  cursor: 'pointer',
+  color: '#111',
+  transition: 'all 0.2s ease',
+  width: '100%',
+  opacity: 0.7,
+};
+
+const activeIconStyle: React.CSSProperties = {
+  ...iconStyle,
+  color: '#000000',
+  opacity: 1,
+};
+
+const labelStyle: React.CSSProperties = {
+  fontSize: '12px',
+  color: '#111',
+  fontFamily: 'Geraldton, Arial, sans-serif',
+  fontWeight: 500,
 };
 
 export default Profile; 
