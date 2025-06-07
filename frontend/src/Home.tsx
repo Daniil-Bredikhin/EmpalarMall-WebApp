@@ -64,17 +64,17 @@ const headerStyle: React.CSSProperties = {
 };
 
 const logoStyle: React.CSSProperties = {
-  fontFamily: 'sans-serif',
+  fontFamily: 'Montserrat, Arial, sans-serif',
   color: '#111',
-  fontWeight: 400,
+  fontWeight: 700,
   fontSize: '20px',
-  letterSpacing: '0.5px',
+  letterSpacing: '1.2px',
   margin: '0',
   padding: '0',
   textAlign: 'center',
   lineHeight: '1.2',
   width: '100%',
-  paddingLeft: '32px',
+  paddingLeft: '44px',
   paddingRight: '24px',
 };
 
