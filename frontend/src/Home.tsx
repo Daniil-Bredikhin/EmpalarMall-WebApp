@@ -58,6 +58,35 @@ const logoStyle: React.CSSProperties = {
   display: 'block',
 };
 
+const searchBarStyle: React.CSSProperties = {
+  width: '100%',
+  maxWidth: 400,
+  margin: '16px auto',
+  position: 'relative',
+};
+
+const searchInputStyle: React.CSSProperties = {
+  width: '100%',
+  padding: '12px 16px',
+  paddingLeft: '40px',
+  borderRadius: '8px',
+  border: '1px solid #eee',
+  fontSize: '16px',
+  backgroundColor: '#fff',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+  outline: 'none',
+  transition: 'border-color 0.2s',
+  fontFamily: 'Geraldton, Arial, sans-serif',
+};
+
+const searchIconStyle: React.CSSProperties = {
+  position: 'absolute',
+  left: '12px',
+  top: '50%',
+  transform: 'translateY(-50%)',
+  color: '#666',
+};
+
 // SVG-иконки (минимализм, черно-белые)
 const HomeIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 11L12 4l9 7"/><path d="M9 22V12h6v10"/></svg>
@@ -73,6 +102,13 @@ const CartIcon = () => (
 );
 const ProfileIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-7 8-7s8 3 8 7"/></svg>
+);
+
+const SearchIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="11" cy="11" r="8"/>
+    <path d="M21 21l-4.35-4.35"/>
+  </svg>
 );
 
 const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick }) => {
@@ -106,6 +142,19 @@ const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick 
 
   return (
     <div style={{ padding: '0 0 110px 0', minHeight: '100vh', boxSizing: 'border-box', overflow: 'hidden' }}>
+      {/* Поисковая строка */}
+      <div style={searchBarStyle}>
+        <div style={searchIconStyle}>
+          <SearchIcon />
+        </div>
+        <input
+          type="text"
+          placeholder="Найти товар..."
+          style={searchInputStyle}
+          onFocus={(e) => e.target.style.borderColor = '#646cff'}
+          onBlur={(e) => e.target.style.borderColor = '#eee'}
+        />
+      </div>
       {/* Логотип в самом верху */}
       <div style={{ display: 'block', width: '100%' }}>
         <div style={logoStyle}>EMPALAR MALL</div>
