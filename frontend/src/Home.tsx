@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Стили
 const menuStyle: React.CSSProperties = {
@@ -33,7 +33,7 @@ const iconStyle: React.CSSProperties = {
 
 const activeIconStyle: React.CSSProperties = {
   ...iconStyle,
-  color: '#646cff',
+  color: '#000000',
   opacity: 1,
 };
 
@@ -46,7 +46,7 @@ const labelStyle: React.CSSProperties = {
 
 const headerStyle: React.CSSProperties = {
   position: 'fixed',
-  top: 0,
+  top: '20px',
   backgroundColor: 'rgba(255, 255, 255, 0.98)',
   backdropFilter: 'blur(10px)',
   zIndex: 1000,
@@ -67,17 +67,19 @@ const logoStyle: React.CSSProperties = {
   fontFamily: 'Geraldton Medium, Arial, sans-serif',
   color: '#111',
   fontWeight: 500,
-  fontSize: '24px',
+  fontSize: '20px',
   letterSpacing: '0.5px',
   margin: '0',
   padding: '0',
-  textAlign: 'center',
+  textAlign: 'left',
   lineHeight: '1.2',
+  width: '100%',
+  paddingLeft: '16px',
 };
 
 const searchBarStyle: React.CSSProperties = {
-  width: '100%',
-  maxWidth: '400px',
+  width: '90%',
+  maxWidth: '360px',
   position: 'relative',
   margin: '0 auto',
 };
@@ -85,7 +87,7 @@ const searchBarStyle: React.CSSProperties = {
 const searchInputStyle: React.CSSProperties = {
   width: '100%',
   padding: '14px 20px 14px 48px',
-  borderRadius: '20px',
+  borderRadius: '24px',
   border: '1px solid #e0e0e0',
   fontSize: '16px',
   backgroundColor: '#ffffff',
@@ -217,6 +219,18 @@ const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
   const [currentPage, setCurrentPage] = useState('home');
   const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
 
+  useEffect(() => {
+    // Запрещаем масштабирование
+    const meta = document.createElement('meta');
+    meta.name = 'viewport';
+    meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+    document.head.appendChild(meta);
+
+    return () => {
+      document.head.removeChild(meta);
+    };
+  }, []);
+
   const handleMenuClick = (menu: string) => {
     setActiveMenu(menu);
     setCurrentPage(menu);
@@ -273,41 +287,40 @@ const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
       </main>
 
       {/* Мобильное меню */}
-      <nav style={{
-        ...menuStyle,
-        transform: isKeyboardVisible ? 'translateY(-100%)' : 'none'
-      }}>
-        <MenuIcon
-          icon={<HomeIcon />}
-          label="Главная"
-          onClick={() => handleMenuClick('home')}
-          style={activeMenu === 'home' ? activeIconStyle : iconStyle}
-        />
-        <MenuIcon
-          icon={<CatalogIcon />}
-          label="Каталог"
-          onClick={() => handleMenuClick('catalog')}
-          style={activeMenu === 'catalog' ? activeIconStyle : iconStyle}
-        />
-        <MenuIcon
-          icon={<ShortsIcon />}
-          label="Шортсы"
-          onClick={() => handleMenuClick('shorts')}
-          style={activeMenu === 'shorts' ? activeIconStyle : iconStyle}
-        />
-        <MenuIcon
-          icon={<CartIcon />}
-          label="Корзина"
-          onClick={() => handleMenuClick('cart')}
-          style={activeMenu === 'cart' ? activeIconStyle : iconStyle}
-        />
-        <MenuIcon
-          icon={<ProfileIcon />}
-          label="Профиль"
-          onClick={() => handleMenuClick('profile')}
-          style={activeMenu === 'profile' ? activeIconStyle : iconStyle}
-        />
-      </nav>
+      {!isKeyboardVisible && (
+        <nav style={menuStyle}>
+          <MenuIcon
+            icon={<HomeIcon />}
+            label="Главная"
+            onClick={() => handleMenuClick('home')}
+            style={activeMenu === 'home' ? activeIconStyle : iconStyle}
+          />
+          <MenuIcon
+            icon={<CatalogIcon />}
+            label="Каталог"
+            onClick={() => handleMenuClick('catalog')}
+            style={activeMenu === 'catalog' ? activeIconStyle : iconStyle}
+          />
+          <MenuIcon
+            icon={<ShortsIcon />}
+            label="Шортсы"
+            onClick={() => handleMenuClick('shorts')}
+            style={activeMenu === 'shorts' ? activeIconStyle : iconStyle}
+          />
+          <MenuIcon
+            icon={<CartIcon />}
+            label="Корзина"
+            onClick={() => handleMenuClick('cart')}
+            style={activeMenu === 'cart' ? activeIconStyle : iconStyle}
+          />
+          <MenuIcon
+            icon={<ProfileIcon />}
+            label="Профиль"
+            onClick={() => handleMenuClick('profile')}
+            style={activeMenu === 'profile' ? activeIconStyle : iconStyle}
+          />
+        </nav>
+      )}
     </div>
   );
 };
