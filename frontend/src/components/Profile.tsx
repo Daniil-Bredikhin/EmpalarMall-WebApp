@@ -227,23 +227,12 @@ const Profile: React.FC = () => {
     marginTop: '4px',
   };
 
-  const infoGridContainerStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '16px',
-    padding: '16px',
-    backgroundColor: '#fff',
-    margin: '10px 16px',
-    borderRadius: '16px',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-  };
-
   const infoButtonStyle: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#f8f8f8',
+    backgroundColor: '#fff',
     border: 'none',
     borderRadius: '12px',
     padding: '16px',
@@ -256,13 +245,24 @@ const Profile: React.FC = () => {
     width: '20px',
     height: '20px',
     marginBottom: '8px',
-    color: '#000',
+    color: '#333',
   };
 
   const infoTextStyle: React.CSSProperties = {
     fontSize: '14px',
-    color: '#000',
+    color: '#333',
     textAlign: 'center',
+  };
+
+  const infoGridContainerStyle: React.CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gap: '16px',
+    padding: '16px',
+    backgroundColor: '#f8f8f8',
+    margin: '10px 16px',
+    borderRadius: '16px',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   };
 
   const bottomButtonStyle: React.CSSProperties = {
