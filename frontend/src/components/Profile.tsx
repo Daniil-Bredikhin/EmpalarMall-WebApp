@@ -28,6 +28,28 @@ const Profile: React.FC = () => {
     };
   }, []);
 
+  const buttonStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    border: 'none',
+    borderRadius: '12px',
+    padding: '12px',
+    width: '22%',
+    cursor: 'pointer',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+    transition: 'all 0.2s ease',
+  };
+
+  const buttonTextStyle: React.CSSProperties = {
+    marginTop: '8px',
+    fontSize: '12px',
+    color: '#000',
+    textAlign: 'center',
+  };
+
   return (
     <div style={containerStyle}>
       <div style={headerStyle}>
@@ -48,83 +70,58 @@ const Profile: React.FC = () => {
         </div>
       </div>
 
-      <div style={actionsSectionStyle}>
-        <div style={actionsRowStyle}>
-          <button style={actionButtonStyle}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            </svg>
-            <span style={actionLabelStyle}>Избранное</span>
+      <div style={sectionStyle}>
+        <div style={sectionTitleStyle}>Действия</div>
+        <div style={buttonLayoutStyle}>
+          <button style={buttonStyle} onClick={() => window.location.replace('/favorites')}>
+            <img src="/icons/favorite.svg" alt="Избранное" style={iconStyle} />
+            <span style={buttonTextStyle}>Избранное</span>
           </button>
-          <button style={actionButtonStyle}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
-              <rect x="1" y="3" width="15" height="13"/>
-              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
-              <circle cx="5.5" cy="18.5" r="2.5"/>
-              <circle cx="18.5" cy="18.5" r="2.5"/>
-            </svg>
-            <span style={actionLabelStyle}>Доставки</span>
+          <button style={buttonStyle} onClick={() => window.location.replace('/deliveries')}>
+            <img src="/icons/delivery.svg" alt="Доставки" style={iconStyle} />
+            <span style={buttonTextStyle}>Доставки</span>
           </button>
-          <button style={actionButtonStyle}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
-              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <path d="M16 10a4 4 0 0 1-8 0"/>
-            </svg>
-            <span style={actionLabelStyle}>Покупки</span>
+          <button style={buttonStyle} onClick={() => window.location.replace('/purchases')}>
+            <img src="/icons/purchase.svg" alt="Покупки" style={iconStyle} />
+            <span style={buttonTextStyle}>Покупки</span>
           </button>
-          <button style={actionButtonStyle}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-            </svg>
-            <span style={actionLabelStyle}>Поддержка</span>
+          <button style={buttonStyle} onClick={() => window.location.replace('/support')}>
+            <img src="/icons/support.svg" alt="Поддержка" style={iconStyle} />
+            <span style={buttonTextStyle}>Поддержка</span>
           </button>
         </div>
       </div>
 
-      <div style={actionsSectionStyle}>
-        <div style={separatedButtonsContainerStyle}>
-          <div style={separatedButtonsRowStyle}>
-            <button style={separatedButtonStyle}>
-              <div style={iconWithTextStyle}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M12 6v6l4 2"/>
-                </svg>
-                <span style={actionLabelStyle}>Баллы</span>
-              </div>
-            </button>
-            <button style={separatedButtonStyle}>
-              <div style={iconWithTextStyle}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
-                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
-                  <line x1="7" y1="7" x2="7.01" y2="7"/>
-                </svg>
-                <span style={actionLabelStyle}>Любимые бренды</span>
-              </div>
-            </button>
+      <div style={sectionStyle}>
+        <div style={sectionTitleStyle}>Информация</div>
+        <div style={tableLayoutStyle}>
+          <div style={tableRowStyle}>
+            <div style={tableCellStyle}>
+              <button style={tableButtonStyle} onClick={() => window.location.replace('/points')}>
+                <img src="/icons/points.svg" alt="Баллы" style={tableIconStyle} />
+                <span style={tableTextStyle}>Баллы</span>
+              </button>
+            </div>
+            <div style={tableCellStyle}>
+              <button style={tableButtonStyle} onClick={() => window.location.replace('/favorite-brands')}>
+                <img src="/icons/favorite-brands.svg" alt="Любимые бренды" style={tableIconStyle} />
+                <span style={tableTextStyle}>Любимые бренды</span>
+              </button>
+            </div>
           </div>
-          <div style={separatedButtonsRowStyle}>
-            <button style={separatedButtonStyle}>
-              <div style={iconWithTextStyle}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                  <circle cx="12" cy="12" r="3"/>
-                </svg>
-                <span style={actionLabelStyle}>Просмотренные</span>
-              </div>
-            </button>
-            <button style={separatedButtonStyle}>
-              <div style={iconWithTextStyle}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  <path d="M8 10h.01"/>
-                  <path d="M12 10h.01"/>
-                  <path d="M16 10h.01"/>
-                </svg>
-                <span style={actionLabelStyle}>Отзывы</span>
-              </div>
-            </button>
+          <div style={tableRowStyle}>
+            <div style={tableCellStyle}>
+              <button style={tableButtonStyle} onClick={() => window.location.replace('/viewed')}>
+                <img src="/icons/viewed.svg" alt="Просмотренные" style={tableIconStyle} />
+                <span style={tableTextStyle}>Просмотренные</span>
+              </button>
+            </div>
+            <div style={tableCellStyle}>
+              <button style={tableButtonStyle} onClick={() => window.location.replace('/reviews')}>
+                <img src="/icons/reviews.svg" alt="Отзывы" style={tableIconStyle} />
+                <span style={tableTextStyle}>Отзывы</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -279,6 +276,35 @@ const usernameStyle: React.CSSProperties = {
   color: '#666',
 };
 
+const sectionStyle: React.CSSProperties = {
+  backgroundColor: '#fff',
+  borderRadius: '16px',
+  padding: '16px',
+  margin: '10px 16px',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+};
+
+const sectionTitleStyle: React.CSSProperties = {
+  fontSize: '18px',
+  fontWeight: 'bold',
+  color: '#333',
+  marginBottom: '16px',
+};
+
+const buttonLayoutStyle: React.CSSProperties = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  gap: '8px',
+  marginBottom: '8px',
+};
+
+const iconStyle: React.CSSProperties = {
+  width: '24px',
+  height: '24px',
+  marginRight: '12px',
+};
+
 const actionsSectionStyle: React.CSSProperties = {
   backgroundColor: '#fff',
   borderRadius: '16px',
@@ -287,57 +313,10 @@ const actionsSectionStyle: React.CSSProperties = {
   boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
 };
 
-const actionsRowStyle: React.CSSProperties = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  gap: '8px',
-  marginBottom: '8px',
-};
-
-const actionButtonStyle: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  gap: '8px',
-  padding: '12px',
-  backgroundColor: '#fff',
-  borderRadius: '12px',
-  border: 'none',
-  cursor: 'pointer',
-  transition: 'all 0.2s ease',
-  flex: 1,
-};
-
 const fullWidthButtonStyle: React.CSSProperties = {
-  ...actionButtonStyle,
+  ...buttonStyle,
   width: '100%',
   justifyContent: 'flex-start',
-};
-
-const separatedButtonsContainerStyle: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '8px',
-};
-
-const separatedButtonsRowStyle: React.CSSProperties = {
-  display: 'flex',
-  gap: '8px',
-};
-
-const separatedButtonStyle: React.CSSProperties = {
-  display: 'flex',
-  alignItems: 'center',
-  padding: '12px 16px',
-  backgroundColor: '#fff',
-  borderRadius: '12px',
-  border: 'none',
-  cursor: 'pointer',
-  transition: 'all 0.2s ease',
-  flex: 1,
-  justifyContent: 'flex-start',
-  boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
 };
 
 const iconWithTextStyle: React.CSSProperties = {
@@ -372,21 +351,6 @@ const menuStyle: React.CSSProperties = {
   transition: 'transform 0.3s ease',
 };
 
-const iconStyle: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  gap: '6px',
-  padding: 0,
-  background: 'none',
-  border: 'none',
-  cursor: 'pointer',
-  color: '#111',
-  transition: 'all 0.2s ease',
-  width: '100%',
-  opacity: 0.7,
-};
-
 const activeIconStyle: React.CSSProperties = {
   ...iconStyle,
   color: '#000000',
@@ -398,6 +362,46 @@ const labelStyle: React.CSSProperties = {
   color: '#111',
   fontFamily: 'Geraldton, Arial, sans-serif',
   fontWeight: 500,
+};
+
+const tableLayoutStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '12px',
+};
+
+const tableRowStyle: React.CSSProperties = {
+  display: 'flex',
+  gap: '12px',
+};
+
+const tableCellStyle: React.CSSProperties = {
+  flex: 1,
+};
+
+const tableButtonStyle: React.CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  backgroundColor: '#fff',
+  border: 'none',
+  borderRadius: '12px',
+  padding: '12px',
+  width: '100%',
+  cursor: 'pointer',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+  transition: 'all 0.2s ease',
+};
+
+const tableIconStyle: React.CSSProperties = {
+  width: '24px',
+  height: '24px',
+  marginRight: '12px',
+};
+
+const tableTextStyle: React.CSSProperties = {
+  fontSize: '14px',
+  color: '#000',
+  textAlign: 'left',
 };
 
 export default Profile; 
