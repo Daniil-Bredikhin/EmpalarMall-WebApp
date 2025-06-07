@@ -82,6 +82,43 @@ const Profile: React.FC = () => {
         </div>
       </div>
 
+      <div style={actionsSectionStyle}>
+        <div style={actionsRowStyle}>
+          <button style={actionButtonStyle}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+            <span style={actionLabelStyle}>Баллы</span>
+          </button>
+          <button style={actionButtonStyle}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+              <line x1="7" y1="7" x2="7.01" y2="7"/>
+            </svg>
+            <span style={actionLabelStyle}>Любимые бренды</span>
+          </button>
+        </div>
+        <div style={actionsRowStyle}>
+          <button style={actionButtonStyle}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <span style={actionLabelStyle}>Просмотренные</span>
+          </button>
+          <button style={actionButtonStyle}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              <path d="M8 10h.01"/>
+              <path d="M12 10h.01"/>
+              <path d="M16 10h.01"/>
+            </svg>
+            <span style={actionLabelStyle}>Отзывы</span>
+          </button>
+        </div>
+      </div>
+
       <nav style={menuStyle}>
         <button style={iconStyle} onClick={() => window.location.replace('/')}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -219,6 +256,7 @@ const actionsRowStyle: React.CSSProperties = {
   justifyContent: 'space-between',
   alignItems: 'center',
   gap: '8px',
+  marginBottom: '8px',
 };
 
 const actionButtonStyle: React.CSSProperties = {
@@ -239,6 +277,10 @@ const actionLabelStyle: React.CSSProperties = {
   fontSize: '12px',
   color: '#000',
   textAlign: 'center',
+  whiteSpace: 'nowrap',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  maxWidth: '100%',
 };
 
 const menuStyle: React.CSSProperties = {
