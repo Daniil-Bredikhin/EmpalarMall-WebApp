@@ -38,7 +38,7 @@ const labelStyle: React.CSSProperties = {
   fontSize: 10,
   color: '#111',
   marginTop: 2,
-  fontFamily: 'Dubai, Arial, sans-serif',
+  fontFamily: 'Geraldton, Arial, sans-serif',
   fontWeight: 500,
 };
 
