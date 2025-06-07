@@ -196,6 +196,29 @@ const productPriceStyle: React.CSSProperties = {
   margin: 0,
 };
 
+// Используем стили в компонентах
+const StoriesSection = () => (
+  <div style={storiesContainerStyle}>
+    {/* Пример использования storyStyle */}
+    <div style={storyStyle}>
+      <img src="/assets/story-placeholder.png" alt="Story" style={{ width: '48px', height: '48px' }} />
+    </div>
+  </div>
+);
+
+const ProductsSection = () => (
+  <div style={productsContainerStyle}>
+    {/* Пример использования productCardStyle */}
+    <div style={productCardStyle}>
+      <div style={productImageStyle}>
+        <img src="/assets/product-placeholder.png" alt="Product" />
+      </div>
+      <h3 style={productTitleStyle}>Название продукта</h3>
+      <p style={productPriceStyle}>1000 ₽</p>
+    </div>
+  </div>
+);
+
 const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick }) => {
   React.useEffect(() => {
     // Telegram WebApp UX: расширяем окно, настраиваем цвет фона
