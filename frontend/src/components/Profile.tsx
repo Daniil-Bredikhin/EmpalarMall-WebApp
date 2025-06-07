@@ -227,6 +227,15 @@ const Profile: React.FC = () => {
     marginTop: '4px',
   };
 
+  const infoGridContainerStyle: React.CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gap: '12px',
+    padding: '12px',
+    margin: '10px 16px',
+    borderRadius: '16px',
+  };
+
   const infoButtonStyle: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'row',
@@ -235,32 +244,29 @@ const Profile: React.FC = () => {
     backgroundColor: '#fff',
     border: 'none',
     borderRadius: '12px',
-    padding: '20px 32px',
+    padding: '16px 20px',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+    width: '100%',
+    boxSizing: 'border-box',
   };
 
   const smallIconStyle: React.CSSProperties = {
-    width: '20px',
-    height: '20px',
-    marginRight: '12px',
+    width: '18px',
+    height: '18px',
+    marginRight: '10px',
     color: '#333',
+    flexShrink: 0,
   };
 
   const infoTextStyle: React.CSSProperties = {
     fontSize: '14px',
     color: '#333',
     textAlign: 'left',
-  };
-
-  const infoGridContainerStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '20px',
-    padding: '20px',
-    margin: '10px 16px',
-    borderRadius: '16px',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   };
 
   const bottomButtonStyle: React.CSSProperties = {
