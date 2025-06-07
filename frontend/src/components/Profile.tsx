@@ -75,9 +75,7 @@ const Profile: React.FC = () => {
           </button>
           <button style={actionButtonStyle}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-              <line x1="12" y1="17" x2="12.01" y2="17"/>
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
             </svg>
             <span style={actionLabelStyle}>Поддержка</span>
           </button>
@@ -92,7 +90,7 @@ const Profile: React.FC = () => {
           </svg>
           <span style={labelStyle}>Главная</span>
         </button>
-        <button style={iconStyle} onClick={() => WebApp.showAlert('Каталог')}>
+        <button style={iconStyle} onClick={() => window.location.replace('/catalog')}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <rect x="3" y="3" width="7" height="7" rx="2" ry="2"/>
             <rect x="14" y="3" width="7" height="7" rx="2" ry="2"/>
@@ -101,13 +99,13 @@ const Profile: React.FC = () => {
           </svg>
           <span style={labelStyle}>Каталог</span>
         </button>
-        <button style={iconStyle} onClick={() => WebApp.showAlert('Шортсы')}>
+        <button style={iconStyle} onClick={() => window.location.replace('/shorts')}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 2v20M2 12h20M12 2l10 10M12 2L2 12M12 22l10-10M12 22L2 12"/>
           </svg>
           <span style={labelStyle}>Шортсы</span>
         </button>
-        <button style={iconStyle} onClick={() => WebApp.showAlert('Корзина')}>
+        <button style={iconStyle} onClick={() => window.location.replace('/cart')}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
           </svg>
