@@ -7,7 +7,7 @@ const menuStyle: React.CSSProperties = {
   position: 'fixed',
   left: 0,
   right: 0,
-  bottom: 8, // меню чуть ниже
+  bottom: 16, // меню чуть ниже
   height: 76, // меню выше
   background: '#fff',
   borderTop: '1px solid #eee',
@@ -56,6 +56,7 @@ const logoStyle: React.CSSProperties = {
   padding: '0',
   width: 'fit-content',
   display: 'block',
+  marginLeft: 64, // увеличиваем отступ слева
 };
 
 // SVG-иконки (минимализм, черно-белые)
