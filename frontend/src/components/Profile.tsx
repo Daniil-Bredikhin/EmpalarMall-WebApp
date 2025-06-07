@@ -1,6 +1,62 @@
 import React from 'react';
 import WebApp from '@twa-dev/sdk';
 
+const FavoriteIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+  </svg>
+);
+
+const DeliveryIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="1" y="3" width="15" height="13"/>
+    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+    <circle cx="5.5" cy="18.5" r="2.5"/>
+    <circle cx="18.5" cy="18.5" r="2.5"/>
+  </svg>
+);
+
+const PurchaseIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+    <line x1="3" y1="6" x2="21" y2="6"/>
+    <path d="M16 10a4 4 0 0 1-8 0"/>
+  </svg>
+);
+
+const SupportIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+  </svg>
+);
+
+const PointsIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M12 6v6l4 2"/>
+  </svg>
+);
+
+const FavoriteBrandsIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+    <line x1="7" y1="7" x2="7.01" y2="7"/>
+  </svg>
+);
+
+const ViewedIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+    <circle cx="12" cy="12" r="3"/>
+  </svg>
+);
+
+const ReviewsIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+);
+
 const Profile: React.FC = () => {
   const user = WebApp.initDataUnsafe.user;
 
@@ -88,19 +144,19 @@ const Profile: React.FC = () => {
         <div style={sectionTitleStyle}>Действия</div>
         <div style={buttonLayoutStyle}>
           <button style={buttonStyle} onClick={() => window.location.replace('/favorites')}>
-            <img src="/icons/favorite.svg" alt="Избранное" style={iconStyle} />
+            <FavoriteIcon />
             <span style={buttonTextStyle}>Избранное</span>
           </button>
           <button style={buttonStyle} onClick={() => window.location.replace('/deliveries')}>
-            <img src="/icons/delivery.svg" alt="Доставки" style={iconStyle} />
+            <DeliveryIcon />
             <span style={buttonTextStyle}>Доставки</span>
           </button>
           <button style={buttonStyle} onClick={() => window.location.replace('/purchases')}>
-            <img src="/icons/purchase.svg" alt="Покупки" style={iconStyle} />
+            <PurchaseIcon />
             <span style={buttonTextStyle}>Покупки</span>
           </button>
           <button style={buttonStyle} onClick={() => window.location.replace('/support')}>
-            <img src="/icons/support.svg" alt="Поддержка" style={iconStyle} />
+            <SupportIcon />
             <span style={buttonTextStyle}>Поддержка</span>
           </button>
         </div>
@@ -112,13 +168,13 @@ const Profile: React.FC = () => {
           <div style={tableRowStyle}>
             <div style={tableCellStyle}>
               <button style={tableButtonStyle} onClick={() => window.location.replace('/points')}>
-                <img src="/icons/points.svg" alt="Баллы" style={tableIconStyle} />
+                <PointsIcon />
                 <span style={tableTextStyle}>Баллы</span>
               </button>
             </div>
             <div style={tableCellStyle}>
               <button style={tableButtonStyle} onClick={() => window.location.replace('/favorite-brands')}>
-                <img src="/icons/favorite-brands.svg" alt="Любимые бренды" style={tableIconStyle} />
+                <FavoriteBrandsIcon />
                 <span style={tableTextStyle}>Любимые бренды</span>
               </button>
             </div>
@@ -126,13 +182,13 @@ const Profile: React.FC = () => {
           <div style={tableRowStyle}>
             <div style={tableCellStyle}>
               <button style={tableButtonStyle} onClick={() => window.location.replace('/viewed')}>
-                <img src="/icons/viewed.svg" alt="Просмотренные" style={tableIconStyle} />
+                <ViewedIcon />
                 <span style={tableTextStyle}>Просмотренные</span>
               </button>
             </div>
             <div style={tableCellStyle}>
               <button style={tableButtonStyle} onClick={() => window.location.replace('/reviews')}>
-                <img src="/icons/reviews.svg" alt="Отзывы" style={tableIconStyle} />
+                <ReviewsIcon />
                 <span style={tableTextStyle}>Отзывы</span>
               </button>
             </div>
