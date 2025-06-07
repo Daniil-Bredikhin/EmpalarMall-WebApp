@@ -1,47 +1,42 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // Импортируем шрифт Dubai через Google Fonts
 import './assets/fonts.css';
 import WebApp from '@twa-dev/sdk';
 
+declare namespace JSX {
+  interface IntrinsicElements {
+    [elemName: string]: any;
+  }
+}
+
 const menuStyle: React.CSSProperties = {
-  position: 'fixed',
+  position: 'fixed' as const,
+  bottom: 0,
   left: 0,
   right: 0,
-  bottom: 0,
-  height: '72px',
-  background: 'rgba(255, 255, 255, 0.98)',
-  backdropFilter: 'blur(10px)',
+  backgroundColor: '#fff',
   borderTop: '1px solid #f0f0f0',
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  zIndex: 100,
-  padding: '0 16px',
-  width: '100%',
-  boxSizing: 'border-box',
+  display: 'flex' as const,
+  justifyContent: 'space-around' as const,
+  padding: '12px 0',
+  boxShadow: '0 -2px 10px rgba(0,0,0,0.05)',
 };
 
 const iconStyle: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  fontSize: 20,
-  color: '#111',
-  textDecoration: 'none',
-  flex: 1,
+  display: 'flex' as const,
+  flexDirection: 'column' as const,
+  alignItems: 'center' as const,
+  gap: '4px',
+  padding: 0,
   background: 'none',
   border: 'none',
-  outline: 'none',
   cursor: 'pointer',
-  filter: 'none',
-  minWidth: 0,
-  padding: 0,
+  color: '#111',
 };
 
 const labelStyle: React.CSSProperties = {
-  fontSize: 10,
+  fontSize: '12px',
   color: '#111',
-  marginTop: 2,
   fontFamily: 'Geraldton, Arial, sans-serif',
   fontWeight: 500,
 };
@@ -125,6 +120,7 @@ const SearchIcon = () => (
   </svg>
 );
 
+// Стили для историй
 const storiesContainerStyle: React.CSSProperties = {
   display: 'flex',
   gap: '16px',
@@ -150,6 +146,7 @@ const storyStyle: React.CSSProperties = {
   boxShadow: '0 2px 4px rgba(0,0,0,0.03)',
 };
 
+// Стили для товаров
 const productsContainerStyle: React.CSSProperties = {
   display: 'grid',
   gridTemplateColumns: 'repeat(2, 1fr)',
@@ -197,30 +194,8 @@ const productPriceStyle: React.CSSProperties = {
 };
 
 // Используем стили в компонентах
-const StoriesSection = () => (
-  <div style={storiesContainerStyle}>
-    {/* Пример использования storyStyle */}
-    <div style={storyStyle}>
-      <img src="/assets/story-placeholder.png" alt="Story" style={{ width: '48px', height: '48px' }} />
-    </div>
-  </div>
-);
-
-const ProductsSection = () => (
-  <div style={productsContainerStyle}>
-    {/* Пример использования productCardStyle */}
-    <div style={productCardStyle}>
-      <div style={productImageStyle}>
-        <img src="/assets/product-placeholder.png" alt="Product" />
-      </div>
-      <h3 style={productTitleStyle}>Название продукта</h3>
-      <p style={productPriceStyle}>1000 ₽</p>
-    </div>
-  </div>
-);
-
 const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick }) => {
-  React.useEffect(() => {
+  useEffect(() => {
     // Telegram WebApp UX: расширяем окно, настраиваем цвет фона
     if (WebApp && typeof WebApp.expand === 'function') {
       WebApp.expand();
@@ -272,6 +247,24 @@ const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick 
               e.target.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)';
             }}
           />
+        </div>
+      </div>
+
+      {/* Истории */}
+      <div style={storiesContainerStyle}>
+        <div style={storyStyle}>
+          <img src="/assets/story-placeholder.png" alt="Story" style={{ width: '48px', height: '48px' }} />
+        </div>
+      </div>
+
+      {/* Секция товаров */}
+      <div style={productsContainerStyle}>
+        <div style={productCardStyle}>
+          <div style={productImageStyle}>
+            <img src="/assets/product-placeholder.png" alt="Product" />
+          </div>
+          <h3 style={productTitleStyle}>Название продукта</h3>
+          <p style={productPriceStyle}>1000 ₽</p>
         </div>
       </div>
 
