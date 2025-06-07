@@ -145,7 +145,7 @@ const Profile: React.FC = () => {
   const infoGridContainerStyle: React.CSSProperties = {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '10px',
+    gap: '16px',
     padding: '16px',
     backgroundColor: '#fff',
     margin: '10px 16px',
@@ -158,12 +158,25 @@ const Profile: React.FC = () => {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#f8f8f8',
     border: 'none',
     borderRadius: '12px',
-    padding: '12px',
+    padding: '16px',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
+    boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+  };
+
+  const bottomButtonStyle: React.CSSProperties = {
+    width: '100%',
+    backgroundColor: '#fff',
+    border: 'none',
+    borderRadius: '16px',
+    padding: '16px',
+    margin: '10px 16px',
+    cursor: 'pointer',
+    transition: 'all 0.2s ease',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   };
 
   return (
@@ -232,31 +245,27 @@ const Profile: React.FC = () => {
         </button>
       </div>
 
-      <div style={infoSectionStyle}>
-        <button style={fullWidthButtonStyle}>
-          <div style={iconWithTextStyle}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
-            <span style={actionLabelStyle}>Данные доставки</span>
-          </div>
-        </button>
-      </div>
+      <button style={bottomButtonStyle}>
+        <div style={iconWithTextStyle}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span style={actionLabelStyle}>Данные доставки</span>
+        </div>
+      </button>
 
-      <div style={infoSectionStyle}>
-        <button style={fullWidthButtonStyle}>
-          <div style={iconWithTextStyle}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-            <span style={actionLabelStyle}>Сообщество EMPALAR MALL</span>
-          </div>
-        </button>
-      </div>
+      <button style={bottomButtonStyle}>
+        <div style={iconWithTextStyle}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <span style={actionLabelStyle}>Сообщество EMPALAR MALL</span>
+        </div>
+      </button>
 
       <nav style={menuStyle}>
         <button style={menuIconStyle} onClick={() => window.location.replace('/')}>
