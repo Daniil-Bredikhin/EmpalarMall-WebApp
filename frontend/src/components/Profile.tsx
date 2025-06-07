@@ -45,8 +45,7 @@ const SupportIcon: React.FC<IconProps> = ({ style }) => (
 
 const PointsIcon: React.FC<IconProps> = ({ style }) => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={style}>
-    <circle cx="12" cy="12" r="10"/>
-    <path d="M12 6v6l4 2"/>
+    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
   </svg>
 );
 
@@ -151,6 +150,7 @@ const Profile: React.FC = () => {
     flexDirection: 'column',
     alignItems: 'center',
     gap: '16px',
+    marginBottom: '8px',
   };
 
   const avatarContainerStyle: React.CSSProperties = {
@@ -189,7 +189,7 @@ const Profile: React.FC = () => {
     gap: '8px',
     padding: '16px',
     backgroundColor: '#fff',
-    margin: '10px 16px',
+    margin: '0 16px 8px 16px',
     borderRadius: '16px',
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   };
@@ -232,7 +232,7 @@ const Profile: React.FC = () => {
     gridTemplateColumns: 'repeat(2, 1fr)',
     gap: '12px',
     padding: '12px',
-    margin: '10px 16px',
+    margin: '0 16px 8px 16px',
     borderRadius: '16px',
   };
 
@@ -275,7 +275,7 @@ const Profile: React.FC = () => {
     border: 'none',
     borderRadius: '16px',
     padding: '16px',
-    margin: '10px 16px',
+    margin: '0 16px 8px 16px',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
