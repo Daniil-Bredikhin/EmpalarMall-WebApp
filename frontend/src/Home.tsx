@@ -7,17 +7,19 @@ const menuStyle: React.CSSProperties = {
   position: 'fixed',
   left: 0,
   right: 0,
-  bottom: 16, // меню чуть ниже
-  height: 76, // меню выше
+  bottom: 16,
+  height: 76,
   background: '#fff',
   borderTop: '1px solid #eee',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  zIndex: 100,
-  padding: '0 0', // убираем боковые отступы
-  width: '100vw', // фон до краёв экрана
+  zIndex: 1000,
+  padding: '0 0',
+  width: '100vw',
   boxSizing: 'border-box',
+  transform: 'translateZ(0)',
+  willChange: 'transform',
 };
 
 const iconStyle: React.CSSProperties = {
@@ -82,7 +84,11 @@ const searchContainerStyle: React.CSSProperties = {
   width: '90%',
   maxWidth: '600px',
   margin: '0 auto 24px auto',
-  position: 'relative',
+  position: 'sticky',
+  top: 0,
+  zIndex: 100,
+  padding: '8px 0',
+  backgroundColor: 'inherit',
   display: 'flex',
   alignItems: 'center',
 };
@@ -126,7 +132,6 @@ const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick 
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Реализовать поиск
     console.log('Searching for:', searchQuery);
   };
 
@@ -138,18 +143,31 @@ const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick 
     if (WebApp && WebApp.themeParams) {
       document.body.style.background = WebApp.themeParams.bg_color || '#ffffff';
     }
-    // Удаляем MainButton (добавить в корзину)
+    // Удаляем MainButton
     if (WebApp && WebApp.MainButton) {
       WebApp.MainButton.hide();
     }
-    // Убираем прокрутку и запрещаем масштабирование
+
+    // Настройки для предотвращения поднятия меню при открытии клавиатуры
     document.body.style.overflow = 'hidden';
     document.body.style.touchAction = 'none';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.height = '100%';
+
     // Запрещаем масштабирование
     const meta = document.createElement('meta');
     meta.name = 'viewport';
-    meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+    meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover';
     document.head.appendChild(meta);
+
+    // Обработчик изменения размера окна
+    const handleResize = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize();
 
     return () => {
       if (WebApp && WebApp.MainButton) {
@@ -157,7 +175,10 @@ const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick 
       }
       document.body.style.overflow = '';
       document.body.style.touchAction = '';
-      // Удаляем мета-тег при размонтировании
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.height = '';
+      window.removeEventListener('resize', handleResize);
       const metaTag = document.querySelector('meta[name="viewport"]');
       if (metaTag) {
         metaTag.remove();
@@ -166,11 +187,15 @@ const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick 
   }, [onMenuClick]);
 
   return (
-    <div style={{ padding: '0 0 110px 0', minHeight: '100vh', boxSizing: 'border-box', overflow: 'hidden' }}>
+    <div style={{ 
+      padding: '0 0 110px 0', 
+      minHeight: 'calc(var(--vh, 1vh) * 100)',
+      boxSizing: 'border-box', 
+      overflow: 'hidden',
+      position: 'relative'
+    }}>
       {/* Логотип в самом верху */}
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', paddingLeft: 32 }}>
-        <div style={logoStyle}>EMPALAR MALL</div>
-      </div>
+      <div style={logoStyle}>EMPALAR MALL</div>
 
       {/* Поиск */}
       <form onSubmit={handleSearch} style={searchContainerStyle}>
