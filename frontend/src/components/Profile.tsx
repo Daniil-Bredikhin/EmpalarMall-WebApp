@@ -1,5 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import WebApp from '@twa-dev/sdk';
+
+interface User {
+  id: number;
+  first_name: string;
+  last_name?: string;
+  username?: string;
+  language_code?: string;
+  photo_url?: string;
+}
 
 interface IconProps {
   style?: React.CSSProperties;
@@ -61,27 +70,17 @@ const ReviewsIcon: React.FC<IconProps> = ({ style }) => (
   </svg>
 );
 
-const buttonTextStyle: React.CSSProperties = {
-  fontSize: '12px',
-  color: '#000',
-  textAlign: 'center',
-  marginTop: '4px',
-};
-
-const actionIconStyle: React.CSSProperties = {
-  width: '20px',
-  height: '20px',
-  color: '#000',
-};
-
-const infoTextStyle: React.CSSProperties = {
-  fontSize: '14px',
-  color: '#000',
-  textAlign: 'center',
-};
-
 const Profile: React.FC = () => {
-  const user = WebApp.initDataUnsafe.user;
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    WebApp.BackButton.show();
+    WebApp.BackButton.onClick(handleBack);
+    return () => {
+      WebApp.BackButton.hide();
+      WebApp.BackButton.offClick(handleBack);
+    };
+  }, []);
 
   const handleBack = () => {
     WebApp.showPopup({
@@ -98,48 +97,128 @@ const Profile: React.FC = () => {
     });
   };
 
-  React.useEffect(() => {
-    WebApp.BackButton.show();
-    WebApp.BackButton.onClick(handleBack);
-    return () => {
-      WebApp.BackButton.hide();
-      WebApp.BackButton.offClick(handleBack);
-    };
-  }, []);
-
-  const fullWidthButtonStyle: React.CSSProperties = {
-    display: 'flex',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    border: 'none',
-    borderRadius: '12px',
-    padding: '12px',
-    width: '100%',
-    cursor: 'pointer',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-    transition: 'all 0.2s ease',
-    justifyContent: 'flex-start',
+  const containerStyle: React.CSSProperties = {
+    minHeight: '100vh',
+    backgroundColor: '#f8f8f8',
+    paddingBottom: '80px',
   };
 
-  const menuIconStyle: React.CSSProperties = {
+  const headerStyle: React.CSSProperties = {
+    position: 'fixed',
+    top: '48px',
+    backgroundColor: 'rgba(255, 255, 255, 0.98)',
+    backdropFilter: 'blur(10px)',
+    zIndex: 1000,
+    padding: '16px',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '6px',
-    padding: 0,
-    background: 'none',
-    border: 'none',
-    cursor: 'pointer',
-    color: '#111',
-    transition: 'all 0.2s ease',
-    width: '100%',
-    opacity: 0.7,
+    gap: '16px',
+    width: 'calc(100% - 32px)',
+    maxWidth: '360px',
+    margin: '0 auto',
+    left: '50%',
+    transform: 'translateX(-50%)',
   };
 
-  const activeMenuIconStyle: React.CSSProperties = {
-    ...menuIconStyle,
-    color: '#000000',
-    opacity: 1,
+  const logoStyle: React.CSSProperties = {
+    fontFamily: 'Montserrat, Arial, sans-serif',
+    color: '#111',
+    fontWeight: 700,
+    fontSize: '20px',
+    letterSpacing: '1.2px',
+    margin: '0',
+    padding: '0',
+    textAlign: 'center',
+    lineHeight: '1.2',
+    width: '100%',
+    paddingLeft: '25px',
+    paddingRight: '24px',
+  };
+
+  const profileSectionStyle: React.CSSProperties = {
+    backgroundColor: '#fff',
+    padding: '24px 16px',
+    marginTop: '120px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '16px',
+  };
+
+  const avatarContainerStyle: React.CSSProperties = {
+    width: '100px',
+    height: '100px',
+    borderRadius: '50%',
+    overflow: 'hidden',
+    border: '2px solid #f0f0f0',
+  };
+
+  const avatarStyle: React.CSSProperties = {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+  };
+
+  const userInfoStyle: React.CSSProperties = {
+    textAlign: 'center',
+  };
+
+  const nameStyle: React.CSSProperties = {
+    fontSize: '20px',
+    fontWeight: 600,
+    color: '#000',
+    marginBottom: '4px',
+  };
+
+  const usernameStyle: React.CSSProperties = {
+    fontSize: '14px',
+    color: '#666',
+  };
+
+  const actionsGridStyle: React.CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '8px',
+    padding: '16px',
+    backgroundColor: '#fff',
+    margin: '10px 16px',
+    borderRadius: '16px',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+  };
+
+  const actionButtonStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    border: 'none',
+    borderRadius: '12px',
+    padding: '8px',
+    cursor: 'pointer',
+    transition: 'all 0.2s ease',
+  };
+
+  const iconWrapperStyle: React.CSSProperties = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: '8px',
+  };
+
+  const actionIconStyle: React.CSSProperties = {
+    width: '20px',
+    height: '20px',
+    color: '#000',
+  };
+
+  const buttonTextStyle: React.CSSProperties = {
+    fontSize: '12px',
+    color: '#000',
+    textAlign: 'center',
+    marginTop: '4px',
   };
 
   const infoGridContainerStyle: React.CSSProperties = {
@@ -167,6 +246,19 @@ const Profile: React.FC = () => {
     boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
   };
 
+  const smallIconStyle: React.CSSProperties = {
+    width: '20px',
+    height: '20px',
+    marginBottom: '8px',
+    color: '#000',
+  };
+
+  const infoTextStyle: React.CSSProperties = {
+    fontSize: '14px',
+    color: '#000',
+    textAlign: 'center',
+  };
+
   const bottomButtonStyle: React.CSSProperties = {
     width: '100%',
     backgroundColor: '#fff',
@@ -192,19 +284,32 @@ const Profile: React.FC = () => {
     fontWeight: 500,
   };
 
-  const menuStyle: React.CSSProperties = {
-    position: 'fixed',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+  const menuIconStyle: React.CSSProperties = {
     display: 'flex',
-    justifyContent: 'space-around',
-    padding: '8px 24px 24px 24px',
-    boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
-    backdropFilter: 'blur(12px)',
-    zIndex: 1000,
-    transition: 'transform 0.3s ease',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '6px',
+    padding: 0,
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    color: '#111',
+    transition: 'all 0.2s ease',
+    width: '100%',
+    opacity: 0.7,
+  };
+
+  const activeMenuIconStyle: React.CSSProperties = {
+    ...menuIconStyle,
+    color: '#000000',
+    opacity: 1,
+  };
+
+  const labelStyle: React.CSSProperties = {
+    fontSize: '12px',
+    color: '#111',
+    fontFamily: 'Geraldton, Arial, sans-serif',
+    fontWeight: 500,
   };
 
   return (
@@ -295,7 +400,20 @@ const Profile: React.FC = () => {
         </div>
       </button>
 
-      <nav style={menuStyle}>
+      <nav style={{
+        position: 'fixed',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+        display: 'flex',
+        justifyContent: 'space-around',
+        padding: '8px 24px 24px 24px',
+        boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
+        backdropFilter: 'blur(12px)',
+        zIndex: 1000,
+        transition: 'transform 0.3s ease',
+      }}>
         <button style={menuIconStyle} onClick={() => window.location.replace('/')}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
@@ -334,157 +452,6 @@ const Profile: React.FC = () => {
       </nav>
     </div>
   );
-};
-
-const containerStyle: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  minHeight: '100vh',
-  backgroundColor: '#f8f8f8',
-  paddingBottom: '80px',
-};
-
-const headerStyle: React.CSSProperties = {
-  position: 'fixed',
-  top: '48px',
-  backgroundColor: 'rgba(255, 255, 255, 0.98)',
-  backdropFilter: 'blur(10px)',
-  zIndex: 1000,
-  padding: '16px',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  gap: '16px',
-  width: 'calc(100% - 32px)',
-  maxWidth: '360px',
-  margin: '0 auto',
-  left: '50%',
-  transform: 'translateX(-50%)',
-};
-
-const logoStyle: React.CSSProperties = {
-  fontFamily: 'Montserrat, Arial, sans-serif',
-  color: '#111',
-  fontWeight: 700,
-  fontSize: '20px',
-  letterSpacing: '1.2px',
-  margin: '0',
-  padding: '0',
-  textAlign: 'center',
-  lineHeight: '1.2',
-  width: '100%',
-  paddingLeft: '25px',
-  paddingRight: '24px',
-};
-
-const profileSectionStyle: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  padding: '20px',
-  backgroundColor: '#fff',
-  marginTop: '120px',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-};
-
-const avatarContainerStyle: React.CSSProperties = {
-  width: '100px',
-  height: '100px',
-  borderRadius: '50%',
-  overflow: 'hidden',
-  marginBottom: '16px',
-  border: '3px solid #007AFF',
-};
-
-const avatarStyle: React.CSSProperties = {
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
-};
-
-const userInfoStyle: React.CSSProperties = {
-  textAlign: 'center',
-};
-
-const nameStyle: React.CSSProperties = {
-  fontSize: '20px',
-  fontWeight: 'bold',
-  color: '#333',
-  marginBottom: '4px',
-};
-
-const usernameStyle: React.CSSProperties = {
-  fontSize: '16px',
-  color: '#666',
-};
-
-const actionsGridStyle: React.CSSProperties = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(4, 1fr)',
-  gap: '8px',
-  padding: '16px',
-  backgroundColor: '#fff',
-  margin: '10px 16px',
-  borderRadius: '16px',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-};
-
-const actionButtonStyle: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: '#fff',
-  border: 'none',
-  borderRadius: '12px',
-  padding: '8px',
-  cursor: 'pointer',
-  transition: 'all 0.2s ease',
-};
-
-const iconWrapperStyle: React.CSSProperties = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginBottom: '8px',
-};
-
-const infoSectionStyle: React.CSSProperties = {
-  padding: '16px',
-  backgroundColor: '#fff',
-  margin: '10px 16px',
-  borderRadius: '16px',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-};
-
-const smallIconStyle: React.CSSProperties = {
-  width: '20px',
-  height: '20px',
-  marginBottom: '8px',
-  color: '#000',
-};
-
-const menuStyle: React.CSSProperties = {
-  position: 'fixed',
-  bottom: 0,
-  left: 0,
-  right: 0,
-  backgroundColor: 'rgba(255, 255, 255, 0.95)',
-  display: 'flex',
-  justifyContent: 'space-around',
-  padding: '8px 24px 24px 24px',
-  boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
-  backdropFilter: 'blur(12px)',
-  zIndex: 1000,
-  transition: 'transform 0.3s ease',
-};
-
-const labelStyle: React.CSSProperties = {
-  fontSize: '12px',
-  color: '#111',
-  fontFamily: 'Geraldton, Arial, sans-serif',
-  fontWeight: 500,
 };
 
 export default Profile; 
