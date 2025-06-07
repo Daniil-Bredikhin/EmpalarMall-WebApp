@@ -13,6 +13,7 @@ const menuStyle: React.CSSProperties = {
   boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
   backdropFilter: 'blur(12px)',
   zIndex: 1000,
+  transition: 'transform 0.3s ease',
 };
 
 const iconStyle: React.CSSProperties = {
@@ -27,6 +28,13 @@ const iconStyle: React.CSSProperties = {
   color: '#111',
   transition: 'all 0.2s ease',
   width: '100%',
+  opacity: 0.7,
+};
+
+const activeIconStyle: React.CSSProperties = {
+  ...iconStyle,
+  color: '#646cff',
+  opacity: 1,
 };
 
 const labelStyle: React.CSSProperties = {
@@ -76,12 +84,12 @@ const searchBarStyle: React.CSSProperties = {
 
 const searchInputStyle: React.CSSProperties = {
   width: '100%',
-  padding: '12px 16px 12px 40px',
-  borderRadius: '16px',
-  border: '1px solid #f0f0f0',
-  fontSize: '15px',
-  backgroundColor: '#f8f8f8',
-  boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+  padding: '14px 20px 14px 48px',
+  borderRadius: '20px',
+  border: '1px solid #e0e0e0',
+  fontSize: '16px',
+  backgroundColor: '#ffffff',
+  boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
   outline: 'none',
   transition: 'all 0.2s ease',
   fontFamily: 'Geraldton, Arial, sans-serif',
@@ -108,24 +116,15 @@ interface MenuIconProps {
   label: string;
   isActive: boolean;
   onClick: () => void;
+  style: React.CSSProperties;
 }
 
 // Компонент MenuIcon
-const MenuIcon: React.FC<MenuIconProps> = ({ icon, label, isActive, onClick }) => {
-  const handleHover = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.currentTarget.style.color = '#646cff';
-  };
-
-  const handleLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.currentTarget.style.color = isActive ? '#646cff' : '#111';
-  };
-
+const MenuIcon: React.FC<MenuIconProps> = ({ icon, label, isActive, onClick, style }) => {
   return (
     <button
-      style={iconStyle}
+      style={style}
       onClick={onClick}
-      onMouseEnter={handleHover}
-      onMouseLeave={handleLeave}
     >
       {icon}
       <span style={labelStyle}>{label}</span>
@@ -135,14 +134,14 @@ const MenuIcon: React.FC<MenuIconProps> = ({ icon, label, isActive, onClick }) =
 
 // SVG-иконки
 const HomeIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
     <polyline points="9 22 9 12 15 12 15 22"/>
   </svg>
 );
 
 const CatalogIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <rect x="3" y="3" width="7" height="7" rx="2" ry="2"/>
     <rect x="14" y="3" width="7" height="7" rx="2" ry="2"/>
     <rect x="14" y="14" width="7" height="7" rx="2" ry="2"/>
@@ -151,14 +150,13 @@ const CatalogIcon = () => (
 );
 
 const ShortsIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
   </svg>
 );
 
 const CartIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="9" cy="21" r="1"/>
     <circle cx="20" cy="21" r="1"/>
     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
@@ -166,7 +164,7 @@ const CartIcon = () => (
 );
 
 const ProfileIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
     <circle cx="12" cy="7" r="4"/>
   </svg>
@@ -218,11 +216,20 @@ const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
   const [searchValue, setSearchValue] = useState('');
   const [activeMenu, setActiveMenu] = useState('home');
   const [currentPage, setCurrentPage] = useState('home');
+  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
 
   const handleMenuClick = (menu: string) => {
     setActiveMenu(menu);
     setCurrentPage(menu);
     onMenuClick(menu);
+  };
+
+  const handleSearchFocus = () => {
+    setIsKeyboardVisible(true);
+  };
+
+  const handleSearchBlur = () => {
+    setIsKeyboardVisible(false);
   };
 
   const renderPage = () => {
@@ -244,11 +251,14 @@ const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
     <div style={{ minHeight: '100vh', backgroundColor: '#f8f8f8' }}>
       {/* Шапка */}
       <header style={headerStyle}>
+        <h1 style={logoStyle}>EMPALAR MALL</h1>
         <div style={searchBarStyle}>
           <input
             type="text"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
+            onFocus={handleSearchFocus}
+            onBlur={handleSearchBlur}
             placeholder="Поиск..."
             style={searchInputStyle}
           />
@@ -256,7 +266,6 @@ const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
             <SearchIcon />
           </div>
         </div>
-        <h1 style={logoStyle}>EMPALAR MALL</h1>
       </header>
 
       {/* Основной контент */}
@@ -265,36 +274,44 @@ const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
       </main>
 
       {/* Мобильное меню */}
-      <nav style={menuStyle}>
+      <nav style={{
+        ...menuStyle,
+        transform: isKeyboardVisible ? 'translateY(-100%)' : 'none'
+      }}>
         <MenuIcon
           icon={<HomeIcon />}
           label="Главная"
           isActive={activeMenu === 'home'}
           onClick={() => handleMenuClick('home')}
+          style={activeMenu === 'home' ? activeIconStyle : iconStyle}
         />
         <MenuIcon
           icon={<CatalogIcon />}
           label="Каталог"
           isActive={activeMenu === 'catalog'}
           onClick={() => handleMenuClick('catalog')}
+          style={activeMenu === 'catalog' ? activeIconStyle : iconStyle}
         />
         <MenuIcon
           icon={<ShortsIcon />}
           label="Шортсы"
           isActive={activeMenu === 'shorts'}
           onClick={() => handleMenuClick('shorts')}
+          style={activeMenu === 'shorts' ? activeIconStyle : iconStyle}
         />
         <MenuIcon
           icon={<CartIcon />}
           label="Корзина"
           isActive={activeMenu === 'cart'}
           onClick={() => handleMenuClick('cart')}
+          style={activeMenu === 'cart' ? activeIconStyle : iconStyle}
         />
         <MenuIcon
           icon={<ProfileIcon />}
           label="Профиль"
           isActive={activeMenu === 'profile'}
           onClick={() => handleMenuClick('profile')}
+          style={activeMenu === 'profile' ? activeIconStyle : iconStyle}
         />
       </nav>
     </div>
