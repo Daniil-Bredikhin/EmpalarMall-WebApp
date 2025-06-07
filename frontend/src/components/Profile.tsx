@@ -95,21 +95,6 @@ const Profile: React.FC = () => {
     };
   }, []);
 
-  const buttonStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff',
-    border: 'none',
-    borderRadius: '12px',
-    padding: '12px',
-    width: '22%',
-    cursor: 'pointer',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-    transition: 'all 0.2s ease',
-  };
-
   const buttonTextStyle: React.CSSProperties = {
     marginTop: '8px',
     fontSize: '12px',
