@@ -235,7 +235,7 @@ const Profile: React.FC = () => {
     backgroundColor: '#fff',
     border: 'none',
     borderRadius: '12px',
-    padding: '16px',
+    padding: '16px 20px',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
@@ -257,7 +257,7 @@ const Profile: React.FC = () => {
   const infoGridContainerStyle: React.CSSProperties = {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '12px',
+    gap: '16px',
     padding: '16px',
     margin: '10px 16px',
     borderRadius: '16px',
