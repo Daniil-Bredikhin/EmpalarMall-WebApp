@@ -235,7 +235,7 @@ const Profile: React.FC = () => {
     backgroundColor: '#fff',
     border: 'none',
     borderRadius: '12px',
-    padding: '16px 20px',
+    padding: '20px 24px',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
