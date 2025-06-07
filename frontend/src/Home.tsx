@@ -33,7 +33,7 @@ const iconStyle: React.CSSProperties = {
   border: 'none',
   outline: 'none',
   cursor: 'pointer',
-  filter: 'none', // убираем grayscale, SVG сами черно-белые
+  filter: 'none',
   minWidth: 0,
   padding: 0,
 };
@@ -44,6 +44,22 @@ const labelStyle: React.CSSProperties = {
   marginTop: 2,
   fontFamily: 'Geraldton, Arial, sans-serif',
   fontWeight: 500,
+};
+
+const headerStyle: React.CSSProperties = {
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  backgroundColor: 'rgba(255, 255, 255, 0.98)',
+  backdropFilter: 'blur(10px)',
+  zIndex: 1000,
+  padding: '12px 16px',
+  boxShadow: '0 1px 2px rgba(0,0,0,0.03)',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '16px',
 };
 
 const logoStyle: React.CSSProperties = {
@@ -108,22 +124,6 @@ const SearchIcon = () => (
     <path d="M21 21l-4.35-4.35"/>
   </svg>
 );
-
-const headerStyle: React.CSSProperties = {
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  right: 0,
-  backgroundColor: 'rgba(255, 255, 255, 0.98)',
-  backdropFilter: 'blur(10px)',
-  zIndex: 1000,
-  padding: '12px 16px',
-  boxShadow: '0 1px 2px rgba(0,0,0,0.03)',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  gap: '16px',
-};
 
 const storiesContainerStyle: React.CSSProperties = {
   display: 'flex',
