@@ -61,11 +61,10 @@ const ReviewsIcon: React.FC<IconProps> = ({ style }) => (
   </svg>
 );
 
-const iconStyle: React.CSSProperties = {
-  width: '24px',
-  height: '24px',
-  marginRight: '12px',
+const buttonTextStyle: React.CSSProperties = {
+  fontSize: '14px',
   color: '#000',
+  textAlign: 'center',
 };
 
 const actionIconStyle: React.CSSProperties = {
@@ -106,13 +105,6 @@ const Profile: React.FC = () => {
       WebApp.BackButton.offClick(handleBack);
     };
   }, []);
-
-  const buttonTextStyle: React.CSSProperties = {
-    marginTop: '8px',
-    fontSize: '12px',
-    color: '#000',
-    textAlign: 'center',
-  };
 
   const fullWidthButtonStyle: React.CSSProperties = {
     display: 'flex',
