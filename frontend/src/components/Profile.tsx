@@ -142,6 +142,30 @@ const Profile: React.FC = () => {
     opacity: 1,
   };
 
+  const infoGridContainerStyle: React.CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gap: '10px',
+    padding: '16px',
+    backgroundColor: '#fff',
+    margin: '10px 16px',
+    borderRadius: '16px',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+  };
+
+  const infoButtonStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    border: 'none',
+    borderRadius: '12px',
+    padding: '12px',
+    cursor: 'pointer',
+    transition: 'all 0.2s ease',
+  };
+
   return (
     <div style={containerStyle}>
       <div style={headerStyle}>
@@ -189,28 +213,19 @@ const Profile: React.FC = () => {
         </button>
       </div>
 
-      <div style={infoSectionStyle}>
+      <div style={infoGridContainerStyle}>
         <button style={infoButtonStyle} onClick={() => window.location.replace('/points')}>
           <PointsIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Баллы</span>
         </button>
-      </div>
-
-      <div style={infoSectionStyle}>
         <button style={infoButtonStyle} onClick={() => window.location.replace('/favorite-brands')}>
           <FavoriteBrandsIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Любимые бренды</span>
         </button>
-      </div>
-
-      <div style={infoSectionStyle}>
         <button style={infoButtonStyle} onClick={() => window.location.replace('/viewed')}>
           <ViewedIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Просмотренные</span>
         </button>
-      </div>
-
-      <div style={infoSectionStyle}>
         <button style={infoButtonStyle} onClick={() => window.location.replace('/reviews')}>
           <ReviewsIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Отзывы</span>
@@ -404,19 +419,6 @@ const infoSectionStyle: React.CSSProperties = {
   margin: '10px 16px',
   borderRadius: '16px',
   boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-};
-
-const infoButtonStyle: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: '#fff',
-  border: 'none',
-  borderRadius: '12px',
-  padding: '12px',
-  cursor: 'pointer',
-  transition: 'all 0.2s ease',
 };
 
 const smallIconStyle: React.CSSProperties = {
