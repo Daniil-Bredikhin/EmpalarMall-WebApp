@@ -151,60 +151,51 @@ const Profile: React.FC = () => {
         </div>
       </div>
 
-      <div style={sectionStyle}>
-        <div style={sectionTitleStyle}>Действия</div>
-        <div style={buttonLayoutStyle}>
-          <button style={buttonStyle} onClick={() => window.location.replace('/favorites')}>
-            <FavoriteIcon style={iconStyle} />
-            <span style={buttonTextStyle}>Избранное</span>
-          </button>
-          <button style={buttonStyle} onClick={() => window.location.replace('/deliveries')}>
-            <DeliveryIcon style={iconStyle} />
-            <span style={buttonTextStyle}>Доставки</span>
-          </button>
-          <button style={buttonStyle} onClick={() => window.location.replace('/purchases')}>
-            <PurchaseIcon style={iconStyle} />
-            <span style={buttonTextStyle}>Покупки</span>
-          </button>
-          <button style={buttonStyle} onClick={() => window.location.replace('/support')}>
-            <SupportIcon style={iconStyle} />
-            <span style={buttonTextStyle}>Поддержка</span>
-          </button>
-        </div>
+      <div style={actionsGridStyle}>
+        <button style={actionButtonStyle} onClick={() => window.location.replace('/favorites')}>
+          <FavoriteIcon style={iconStyle} />
+          <span style={buttonTextStyle}>Избранное</span>
+        </button>
+        <button style={actionButtonStyle} onClick={() => window.location.replace('/deliveries')}>
+          <DeliveryIcon style={iconStyle} />
+          <span style={buttonTextStyle}>Доставки</span>
+        </button>
+        <button style={actionButtonStyle} onClick={() => window.location.replace('/purchases')}>
+          <PurchaseIcon style={iconStyle} />
+          <span style={buttonTextStyle}>Покупки</span>
+        </button>
+        <button style={actionButtonStyle} onClick={() => window.location.replace('/support')}>
+          <SupportIcon style={iconStyle} />
+          <span style={buttonTextStyle}>Поддержка</span>
+        </button>
       </div>
 
-      <div style={sectionStyle}>
-        <div style={sectionTitleStyle}>Информация</div>
-        <div style={tableLayoutStyle}>
-          <div style={tableRowStyle}>
-            <div style={tableCellStyle}>
-              <button style={tableButtonStyle} onClick={() => window.location.replace('/points')}>
-                <PointsIcon style={iconStyle} />
-                <span style={tableTextStyle}>Баллы</span>
-              </button>
-            </div>
-            <div style={tableCellStyle}>
-              <button style={tableButtonStyle} onClick={() => window.location.replace('/favorite-brands')}>
-                <FavoriteBrandsIcon style={iconStyle} />
-                <span style={tableTextStyle}>Любимые бренды</span>
-              </button>
-            </div>
-          </div>
-          <div style={tableRowStyle}>
-            <div style={tableCellStyle}>
-              <button style={tableButtonStyle} onClick={() => window.location.replace('/viewed')}>
-                <ViewedIcon style={iconStyle} />
-                <span style={tableTextStyle}>Просмотренные</span>
-              </button>
-            </div>
-            <div style={tableCellStyle}>
-              <button style={tableButtonStyle} onClick={() => window.location.replace('/reviews')}>
-                <ReviewsIcon style={iconStyle} />
-                <span style={tableTextStyle}>Отзывы</span>
-              </button>
-            </div>
-          </div>
-        </div>
+      <div style={infoSectionStyle}>
+        <button style={infoButtonStyle} onClick={() => window.location.replace('/points')}>
+          <PointsIcon style={iconStyle} />
+          <span style={infoTextStyle}>Баллы</span>
+        </button>
+      </div>
+
+      <div style={infoSectionStyle}>
+        <button style={infoButtonStyle} onClick={() => window.location.replace('/favorite-brands')}>
+          <FavoriteBrandsIcon style={iconStyle} />
+          <span style={infoTextStyle}>Любимые бренды</span>
+        </button>
+      </div>
+
+      <div style={infoSectionStyle}>
+        <button style={infoButtonStyle} onClick={() => window.location.replace('/viewed')}>
+          <ViewedIcon style={iconStyle} />
+          <span style={infoTextStyle}>Просмотренные</span>
+        </button>
+      </div>
+
+      <div style={infoSectionStyle}>
+        <button style={infoButtonStyle} onClick={() => window.location.replace('/reviews')}>
+          <ReviewsIcon style={iconStyle} />
+          <span style={infoTextStyle}>Отзывы</span>
+        </button>
       </div>
 
       <div style={actionsSectionStyle}>
@@ -232,44 +223,6 @@ const Profile: React.FC = () => {
           </div>
         </button>
       </div>
-
-      <nav style={menuStyle}>
-        <button style={iconStyle} onClick={() => window.location.replace('/')}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-            <polyline points="9 22 9 12 15 12 15 22"/>
-          </svg>
-          <span style={labelStyle}>Главная</span>
-        </button>
-        <button style={iconStyle} onClick={() => window.location.replace('/catalog')}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="3" width="7" height="7" rx="2" ry="2"/>
-            <rect x="14" y="3" width="7" height="7" rx="2" ry="2"/>
-            <rect x="14" y="14" width="7" height="7" rx="2" ry="2"/>
-            <rect x="3" y="14" width="7" height="7" rx="2" ry="2"/>
-          </svg>
-          <span style={labelStyle}>Каталог</span>
-        </button>
-        <button style={iconStyle} onClick={() => window.location.replace('/shorts')}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 2v20M2 12h20M12 2l10 10M12 2L2 12M12 22l10-10M12 22L2 12"/>
-          </svg>
-          <span style={labelStyle}>Шортсы</span>
-        </button>
-        <button style={iconStyle} onClick={() => window.location.replace('/cart')}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-          </svg>
-          <span style={labelStyle}>Корзина</span>
-        </button>
-        <button style={activeIconStyle} onClick={() => WebApp.showAlert('Профиль')}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
-          <span style={labelStyle}>Профиль</span>
-        </button>
-      </nav>
     </div>
   );
 };
@@ -357,7 +310,31 @@ const usernameStyle: React.CSSProperties = {
   color: '#666',
 };
 
-const sectionStyle: React.CSSProperties = {
+const actionsGridStyle: React.CSSProperties = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(4, 1fr)',
+  gap: '8px',
+  padding: '16px',
+  backgroundColor: '#fff',
+  margin: '10px 16px',
+  borderRadius: '16px',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+};
+
+const actionButtonStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '#fff',
+  border: 'none',
+  borderRadius: '12px',
+  padding: '12px',
+  cursor: 'pointer',
+  transition: 'all 0.2s ease',
+};
+
+const infoSectionStyle: React.CSSProperties = {
   backgroundColor: '#fff',
   borderRadius: '16px',
   padding: '16px',
@@ -365,19 +342,22 @@ const sectionStyle: React.CSSProperties = {
   boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
 };
 
-const sectionTitleStyle: React.CSSProperties = {
-  fontSize: '18px',
-  fontWeight: 'bold',
-  color: '#333',
-  marginBottom: '16px',
+const infoButtonStyle: React.CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  backgroundColor: '#fff',
+  border: 'none',
+  borderRadius: '12px',
+  padding: '12px',
+  width: '100%',
+  cursor: 'pointer',
+  transition: 'all 0.2s ease',
 };
 
-const buttonLayoutStyle: React.CSSProperties = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  gap: '8px',
-  marginBottom: '8px',
+const infoTextStyle: React.CSSProperties = {
+  fontSize: '14px',
+  color: '#000',
+  textAlign: 'left',
 };
 
 const actionsSectionStyle: React.CSSProperties = {
@@ -403,68 +383,6 @@ const actionLabelStyle: React.CSSProperties = {
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   maxWidth: '100%',
-};
-
-const menuStyle: React.CSSProperties = {
-  position: 'fixed',
-  bottom: 0,
-  left: 0,
-  right: 0,
-  backgroundColor: 'rgba(255, 255, 255, 0.95)',
-  display: 'flex',
-  justifyContent: 'space-around',
-  padding: '8px 24px 24px 24px',
-  boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
-  backdropFilter: 'blur(12px)',
-  zIndex: 1000,
-  transition: 'transform 0.3s ease',
-};
-
-const activeIconStyle: React.CSSProperties = {
-  ...iconStyle,
-  color: '#000000',
-  opacity: 1,
-};
-
-const labelStyle: React.CSSProperties = {
-  fontSize: '12px',
-  color: '#111',
-  fontFamily: 'Geraldton, Arial, sans-serif',
-  fontWeight: 500,
-};
-
-const tableLayoutStyle: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '12px',
-};
-
-const tableRowStyle: React.CSSProperties = {
-  display: 'flex',
-  gap: '12px',
-};
-
-const tableCellStyle: React.CSSProperties = {
-  flex: 1,
-};
-
-const tableButtonStyle: React.CSSProperties = {
-  display: 'flex',
-  alignItems: 'center',
-  backgroundColor: '#fff',
-  border: 'none',
-  borderRadius: '12px',
-  padding: '12px',
-  width: '100%',
-  cursor: 'pointer',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-  transition: 'all 0.2s ease',
-};
-
-const tableTextStyle: React.CSSProperties = {
-  fontSize: '14px',
-  color: '#000',
-  textAlign: 'left',
 };
 
 export default Profile; 
