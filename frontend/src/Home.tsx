@@ -11,27 +11,36 @@ declare namespace JSX {
 
 const menuStyle: React.CSSProperties = {
   position: 'fixed' as const,
-  bottom: 0,
+  bottom: 16px,
   left: 0,
   right: 0,
-  backgroundColor: '#fff',
-  borderTop: '1px solid #f0f0f0',
+  backgroundColor: 'rgba(255, 255, 255, 0.95)',
   display: 'flex' as const,
   justifyContent: 'space-around' as const,
-  padding: '12px 0',
-  boxShadow: '0 -2px 10px rgba(0,0,0,0.05)',
+  padding: '12px 24px',
+  borderRadius: '24px',
+  boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
+  backdropFilter: 'blur(12px)',
 };
 
 const iconStyle: React.CSSProperties = {
   display: 'flex' as const,
   flexDirection: 'column' as const,
   alignItems: 'center' as const,
-  gap: '4px',
+  gap: '6px',
   padding: 0,
   background: 'none',
   border: 'none',
   cursor: 'pointer',
   color: '#111',
+  transition: 'all 0.2s ease',
+  '&:hover': {
+    color: '#646cff',
+  },
+};
+
+const activeIconStyle: React.CSSProperties = {
+  color: '#646cff',
 };
 
 const labelStyle: React.CSSProperties = {
@@ -43,29 +52,34 @@ const labelStyle: React.CSSProperties = {
 
 const headerStyle: React.CSSProperties = {
   position: 'fixed',
-  top: 0,
+  top: 20px,
   left: 0,
   right: 0,
   backgroundColor: 'rgba(255, 255, 255, 0.98)',
   backdropFilter: 'blur(10px)',
   zIndex: 1000,
-  padding: '12px 16px',
-  boxShadow: '0 1px 2px rgba(0,0,0,0.03)',
+  padding: '8px 16px',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center',
-  gap: '16px',
+  alignItems: 'flex-start',
+  gap: '8px',
+  maxWidth: '400px',
+  margin: '0 auto',
+  left: '50%',
+  transform: 'translateX(-50%)',
 };
 
 const logoStyle: React.CSSProperties = {
-  fontFamily: 'Geraldton, Arial, sans-serif',
+  fontFamily: 'Geraldton Medium, Arial, sans-serif',
   color: '#111',
-  fontWeight: 700,
-  fontSize: '24px',
+  fontWeight: 500,
+  fontSize: '20px',
   letterSpacing: '0.5px',
   margin: '0',
   padding: '0',
-  textAlign: 'center',
+  textAlign: 'left',
+  lineHeight: '1.2',
 };
 
 const searchBarStyle: React.CSSProperties = {
@@ -98,19 +112,40 @@ const searchIconStyle: React.CSSProperties = {
 
 // SVG-иконки (минимализм, черно-белые)
 const HomeIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 11L12 4l9 7"/><path d="M9 22V12h6v10"/></svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+    <polyline points="9 22 9 12 15 12 15 22"/>
+  </svg>
 );
+
 const CatalogIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="7" height="7" rx="2"/><rect x="14" y="4" width="7" height="7" rx="2"/><rect x="14" y="13" width="7" height="7" rx="2"/><rect x="3" y="13" width="7" height="7" rx="2"/></svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="3" width="7" height="7" rx="2" ry="2"/>
+    <rect x="14" y="3" width="7" height="7" rx="2" ry="2"/>
+    <rect x="14" y="14" width="7" height="7" rx="2" ry="2"/>
+    <rect x="3" y="14" width="7" height="7" rx="2" ry="2"/>
+  </svg>
 );
+
 const FavoritesIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"/></svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+  </svg>
 );
+
 const CartIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="9" cy="21" r="1"/>
+    <circle cx="20" cy="21" r="1"/>
+    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+  </svg>
 );
+
 const ProfileIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-7 8-7s8 3 8 7"/></svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+    <circle cx="12" cy="7" r="4"/>
+  </svg>
 );
 
 const SearchIcon = () => (
