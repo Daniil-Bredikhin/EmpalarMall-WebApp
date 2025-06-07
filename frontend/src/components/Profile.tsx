@@ -234,22 +234,22 @@ const Profile: React.FC = () => {
     justifyContent: 'center',
     backgroundColor: '#fff',
     border: 'none',
-    borderRadius: '12px',
-    padding: '16px',
+    borderRadius: '16px',
+    padding: '20px',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
-    boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   };
 
   const smallIconStyle: React.CSSProperties = {
-    width: '20px',
-    height: '20px',
-    marginBottom: '8px',
+    width: '24px',
+    height: '24px',
+    marginBottom: '12px',
     color: '#333',
   };
 
   const infoTextStyle: React.CSSProperties = {
-    fontSize: '14px',
+    fontSize: '15px',
     color: '#333',
     textAlign: 'center',
   };
@@ -259,10 +259,8 @@ const Profile: React.FC = () => {
     gridTemplateColumns: 'repeat(2, 1fr)',
     gap: '16px',
     padding: '16px',
-    backgroundColor: '#f8f8f8',
     margin: '10px 16px',
     borderRadius: '16px',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   };
 
   const bottomButtonStyle: React.CSSProperties = {
