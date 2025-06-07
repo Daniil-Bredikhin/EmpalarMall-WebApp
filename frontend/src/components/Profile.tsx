@@ -5,8 +5,20 @@ const Profile: React.FC = () => {
   const user = WebApp.initDataUnsafe.user;
 
   const handleBack = () => {
-    WebApp.BackButton.hide();
-    window.location.href = '/'; // Возвращаемся на главную страницу
+    WebApp.showPopup({
+      title: 'Выход',
+      message: 'Вы уверены, что хотите выйти?',
+      buttons: [
+        { id: 'cancel', type: 'cancel' },
+        { id: 'confirm', type: 'destructive', text: 'Выйти' }
+      ]
+    }).then((buttonId: string) => {
+      if (buttonId === 'confirm') {
+        window.location.replace('/');
+      }
+    }).catch(() => {
+      // Игнорируем ошибки при закрытии попапа
+    });
   };
 
   React.useEffect(() => {
@@ -40,10 +52,15 @@ const Profile: React.FC = () => {
   };
 
   const logoStyle: React.CSSProperties = {
-    fontSize: '24px',
-    fontWeight: 'bold',
-    color: '#333',
-    fontFamily: 'Geraldton Medium, sans-serif',
+    fontSize: '20px',
+    fontWeight: 700,
+    color: '#111',
+    fontFamily: 'Montserrat, Arial, sans-serif',
+    letterSpacing: '1.2px',
+    lineHeight: '1.2',
+    width: '100%',
+    paddingLeft: '44px',
+    paddingRight: '24px',
   };
 
   const profileSectionStyle: React.CSSProperties = {
@@ -95,10 +112,11 @@ const Profile: React.FC = () => {
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   };
 
-  const actionsGridStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '16px',
+  const actionsRowStyle: React.CSSProperties = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: '8px',
   };
 
   const actionButtonStyle: React.CSSProperties = {
@@ -106,17 +124,19 @@ const Profile: React.FC = () => {
     flexDirection: 'column',
     alignItems: 'center',
     gap: '8px',
-    padding: '16px',
+    padding: '12px',
     backgroundColor: '#fff',
     borderRadius: '12px',
     border: 'none',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
+    flex: 1,
   };
 
   const actionLabelStyle: React.CSSProperties = {
-    fontSize: '14px',
-    color: '#111',
+    fontSize: '12px',
+    color: '#000',
+    textAlign: 'center',
   };
 
   const menuStyle: React.CSSProperties = {
@@ -170,15 +190,15 @@ const Profile: React.FC = () => {
       </div>
 
       <div style={actionsSectionStyle}>
-        <div style={actionsGridStyle}>
+        <div style={actionsRowStyle}>
           <button style={actionButtonStyle}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
             </svg>
             <span style={actionLabelStyle}>Избранное</span>
           </button>
           <button style={actionButtonStyle}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
               <rect x="1" y="3" width="15" height="13"/>
               <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
               <circle cx="5.5" cy="18.5" r="2.5"/>
@@ -187,7 +207,7 @@ const Profile: React.FC = () => {
             <span style={actionLabelStyle}>Доставки</span>
           </button>
           <button style={actionButtonStyle}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
               <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
               <line x1="3" y1="6" x2="21" y2="6"/>
               <path d="M16 10a4 4 0 0 1-8 0"/>
@@ -195,7 +215,7 @@ const Profile: React.FC = () => {
             <span style={actionLabelStyle}>Покупки</span>
           </button>
           <button style={actionButtonStyle}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
               <circle cx="12" cy="12" r="10"/>
               <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
               <line x1="12" y1="17" x2="12.01" y2="17"/>
@@ -206,7 +226,7 @@ const Profile: React.FC = () => {
       </div>
 
       <div style={menuStyle}>
-        <div style={menuItemStyle} onClick={() => window.location.href = '/'}>
+        <div style={menuItemStyle} onClick={() => window.location.replace('/')}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
             <polyline points="9 22 9 12 15 12 15 22" />
