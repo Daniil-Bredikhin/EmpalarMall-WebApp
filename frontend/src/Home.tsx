@@ -49,14 +49,15 @@ const logoStyle: React.CSSProperties = {
   fontFamily: 'Geraldton, Arial, sans-serif',
   color: '#111',
   fontWeight: 700,
-  fontSize: 20, // немного увеличен
+  fontSize: 20,
   letterSpacing: 1,
   textAlign: 'center',
-  margin: '32px auto 20px auto', // чуть ниже
+  margin: '48px auto 20px auto', // увеличиваем отступ сверху
   padding: '0',
   width: 'fit-content',
   display: 'block',
-  marginLeft: 64, // увеличиваем отступ слева
+  marginLeft: 48, // сдвигаем правее
+  transform: 'translateX(16px)', // дополнительное смещение вправо
 };
 
 // SVG-иконки (минимализм, черно-белые)
@@ -83,7 +84,13 @@ const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick 
       WebApp.expand();
     }
     if (WebApp && WebApp.themeParams) {
-      document.body.style.background = WebApp.themeParams.bg_color || '#f7f7f7';
+      // Устанавливаем светлый фон по умолчанию
+      document.body.style.background = WebApp.themeParams.bg_color || '#ffffff';
+      // Если темная тема, устанавливаем соответствующие цвета
+      if (WebApp.themeParams.bg_color === '#000000') {
+        document.body.style.background = '#ffffff';
+        document.body.style.color = '#000000';
+      }
     }
     // Удаляем MainButton (добавить в корзину)
     if (WebApp && WebApp.MainButton) {
@@ -102,7 +109,9 @@ const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick 
   return (
     <div style={{ padding: '0 0 110px 0', minHeight: '100vh', boxSizing: 'border-box', overflow: 'hidden' }}>
       {/* Логотип в самом верху */}
-      <div style={logoStyle}>EMPALAR MALL</div>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', paddingLeft: 32 }}>
+        <div style={logoStyle}>EMPALAR MALL</div>
+      </div>
       <p style={{ fontSize: 18, marginBottom: 24, textAlign: 'center' }}>
         Добро пожаловать в EMPALAR MALL — интернет-магазин с интеграцией Telegram WebApp!
       </p>
