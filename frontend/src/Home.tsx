@@ -64,7 +64,7 @@ const headerStyle: React.CSSProperties = {
 };
 
 const logoStyle: React.CSSProperties = {
-  fontFamily: 'axios pro regular',
+  fontFamily: 'sans-serif',
   color: '#111',
   fontWeight: 400,
   fontSize: '20px',
@@ -74,7 +74,7 @@ const logoStyle: React.CSSProperties = {
   textAlign: 'center',
   lineHeight: '1.2',
   width: '100%',
-  paddingLeft: '24px',
+  paddingLeft: '32px',
   paddingRight: '24px',
 };
 
