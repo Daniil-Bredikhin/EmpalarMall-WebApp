@@ -3,16 +3,16 @@ import React, { useState } from 'react';
 // Стили
 const menuStyle: React.CSSProperties = {
   position: 'fixed',
-  bottom: '16px',
+  bottom: 0,
   left: 0,
   right: 0,
   backgroundColor: 'rgba(255, 255, 255, 0.95)',
   display: 'flex',
   justifyContent: 'space-around',
-  padding: '12px 24px',
-  borderRadius: '24px',
+  padding: '8px 24px 24px 24px',
   boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
   backdropFilter: 'blur(12px)',
+  zIndex: 1000,
 };
 
 const iconStyle: React.CSSProperties = {
@@ -26,6 +26,7 @@ const iconStyle: React.CSSProperties = {
   cursor: 'pointer',
   color: '#111',
   transition: 'all 0.2s ease',
+  width: '100%',
 };
 
 const labelStyle: React.CSSProperties = {
@@ -37,16 +38,17 @@ const labelStyle: React.CSSProperties = {
 
 const headerStyle: React.CSSProperties = {
   position: 'fixed',
-  top: '20px',
+  top: 0,
   backgroundColor: 'rgba(255, 255, 255, 0.98)',
   backdropFilter: 'blur(10px)',
   zIndex: 1000,
-  padding: '8px 16px',
+  padding: '16px',
   boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'flex-start',
-  gap: '8px',
+  alignItems: 'center',
+  gap: '16px',
+  width: '100%',
   maxWidth: '400px',
   margin: '0 auto',
   left: '50%',
@@ -57,11 +59,11 @@ const logoStyle: React.CSSProperties = {
   fontFamily: 'Geraldton Medium, Arial, sans-serif',
   color: '#111',
   fontWeight: 500,
-  fontSize: '20px',
+  fontSize: '24px',
   letterSpacing: '0.5px',
   margin: '0',
   padding: '0',
-  textAlign: 'left',
+  textAlign: 'center',
   lineHeight: '1.2',
 };
 
@@ -91,6 +93,13 @@ const searchIconStyle: React.CSSProperties = {
   top: '50%',
   transform: 'translateY(-50%)',
   color: '#999',
+};
+
+const contentStyle: React.CSSProperties = {
+  padding: '20px',
+  marginTop: '140px',
+  marginBottom: '100px',
+  minHeight: 'calc(100vh - 240px)',
 };
 
 // Интерфейс для MenuIcon
@@ -141,9 +150,10 @@ const CatalogIcon = () => (
   </svg>
 );
 
-const FavoritesIcon = () => (
+const ShortsIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
   </svg>
 );
 
@@ -169,6 +179,35 @@ const SearchIcon = () => (
   </svg>
 );
 
+// Временные компоненты для страниц
+const CatalogPage = () => (
+  <div style={{ textAlign: 'center', padding: '20px' }}>
+    <h2>Каталог</h2>
+    <p>Страница в разработке</p>
+  </div>
+);
+
+const ShortsPage = () => (
+  <div style={{ textAlign: 'center', padding: '20px' }}>
+    <h2>Шортсы</h2>
+    <p>Страница в разработке</p>
+  </div>
+);
+
+const CartPage = () => (
+  <div style={{ textAlign: 'center', padding: '20px' }}>
+    <h2>Корзина</h2>
+    <p>Страница в разработке</p>
+  </div>
+);
+
+const ProfilePage = () => (
+  <div style={{ textAlign: 'center', padding: '20px' }}>
+    <h2>Профиль</h2>
+    <p>Страница в разработке</p>
+  </div>
+);
+
 // Интерфейс для пропсов Home
 interface HomeProps {
   onMenuClick: (menu: string) => void;
@@ -178,17 +217,33 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
   const [searchValue, setSearchValue] = useState('');
   const [activeMenu, setActiveMenu] = useState('home');
+  const [currentPage, setCurrentPage] = useState('home');
 
   const handleMenuClick = (menu: string) => {
     setActiveMenu(menu);
+    setCurrentPage(menu);
     onMenuClick(menu);
+  };
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'catalog':
+        return <CatalogPage />;
+      case 'shorts':
+        return <ShortsPage />;
+      case 'cart':
+        return <CartPage />;
+      case 'profile':
+        return <ProfilePage />;
+      default:
+        return null;
+    }
   };
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f8f8f8' }}>
       {/* Шапка */}
       <header style={headerStyle}>
-        <h1 style={logoStyle}>EmpalarMall</h1>
         <div style={searchBarStyle}>
           <input
             type="text"
@@ -201,7 +256,13 @@ const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
             <SearchIcon />
           </div>
         </div>
+        <h1 style={logoStyle}>EMPALAR MALL</h1>
       </header>
+
+      {/* Основной контент */}
+      <main style={contentStyle}>
+        {renderPage()}
+      </main>
 
       {/* Мобильное меню */}
       <nav style={menuStyle}>
@@ -218,10 +279,10 @@ const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
           onClick={() => handleMenuClick('catalog')}
         />
         <MenuIcon
-          icon={<FavoritesIcon />}
-          label="Избранное"
-          isActive={activeMenu === 'favorites'}
-          onClick={() => handleMenuClick('favorites')}
+          icon={<ShortsIcon />}
+          label="Шортсы"
+          isActive={activeMenu === 'shorts'}
+          onClick={() => handleMenuClick('shorts')}
         />
         <MenuIcon
           icon={<CartIcon />}
@@ -236,11 +297,6 @@ const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
           onClick={() => handleMenuClick('profile')}
         />
       </nav>
-
-      {/* Основной контент */}
-      <main style={{ padding: '20px', marginTop: '120px', marginBottom: '80px' }}>
-        {/* Сюда добавляется контент страницы */}
-      </main>
     </div>
   );
 };
