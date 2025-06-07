@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { init } from '@twa-dev/sdk';
+import WebApp from '@twa-dev/sdk';
 import Home from './Home';
 import Profile from './Profile';
 import AdminPanel from './AdminPanel';
@@ -7,11 +7,10 @@ import AdminPanel from './AdminPanel';
 export type Page = 'home' | 'profile' | 'admin';
 
 interface NavigationProps {
-  page: Page;
   setPage: (page: Page) => void;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ page, setPage }) => (
+const Navigation: React.FC<NavigationProps> = ({ setPage }) => (
   <nav style={{ marginBottom: 20 }}>
     <button onClick={() => setPage('home')}>Главная</button>{' '}
     <button onClick={() => setPage('profile')}>Личный кабинет</button>{' '}
@@ -21,14 +20,17 @@ const Navigation: React.FC<NavigationProps> = ({ page, setPage }) => (
 
 const MainPage: React.FC = () => {
   useEffect(() => {
-    init(); // Инициализация Telegram WebApp SDK
+    // Используем WebApp для инициализации Telegram WebApp SDK
+    if (WebApp && typeof WebApp.expand === 'function') {
+      WebApp.expand();
+    }
   }, []);
 
   const [page, setPage] = React.useState<Page>('home');
 
   return (
     <div>
-      <Navigation page={page} setPage={setPage} />
+      <Navigation setPage={setPage} />
       {page === 'home' && <Home />}
       {page === 'profile' && <Profile />}
       {page === 'admin' && <AdminPanel />}
