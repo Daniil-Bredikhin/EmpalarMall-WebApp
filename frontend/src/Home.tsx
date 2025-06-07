@@ -7,16 +7,17 @@ const menuStyle: React.CSSProperties = {
   position: 'fixed',
   left: 0,
   right: 0,
-  bottom: 16, // меню чуть ниже
-  height: 76, // меню выше
-  background: '#fff',
-  borderTop: '1px solid #eee',
+  bottom: 0,
+  height: '72px',
+  background: 'rgba(255, 255, 255, 0.98)',
+  backdropFilter: 'blur(10px)',
+  borderTop: '1px solid #f0f0f0',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
   zIndex: 100,
-  padding: '0 0', // убираем боковые отступы
-  width: '100vw', // фон до краёв экрана
+  padding: '0 16px',
+  width: '100%',
   boxSizing: 'border-box',
 };
 
@@ -49,32 +50,27 @@ const logoStyle: React.CSSProperties = {
   fontFamily: 'Geraldton, Arial, sans-serif',
   color: '#111',
   fontWeight: 700,
-  fontSize: '20px',
-  letterSpacing: '1px',
-  textAlign: 'right',
-  margin: '0 24px 16px 0',
-  padding: '0',
-  width: 'fit-content',
-  display: 'block',
-  marginLeft: 'auto',
+  fontSize: '18px',
+  letterSpacing: '0.5px',
+  margin: 0,
+  padding: 0,
 };
 
 const searchBarStyle: React.CSSProperties = {
-  width: '100%',
-  maxWidth: 400,
-  margin: '0 auto',
+  flex: 1,
   position: 'relative',
+  maxWidth: 'none',
+  margin: 0,
 };
 
 const searchInputStyle: React.CSSProperties = {
   width: '100%',
-  padding: '12px 16px',
-  paddingLeft: '40px',
-  borderRadius: '24px',
-  border: '1px solid #eee',
-  fontSize: '16px',
-  backgroundColor: '#fff',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+  padding: '10px 16px 10px 36px',
+  borderRadius: '12px',
+  border: '1px solid #f0f0f0',
+  fontSize: '15px',
+  backgroundColor: '#f8f8f8',
+  boxShadow: 'none',
   outline: 'none',
   transition: 'all 0.2s ease',
   fontFamily: 'Geraldton, Arial, sans-serif',
@@ -85,7 +81,7 @@ const searchIconStyle: React.CSSProperties = {
   left: '12px',
   top: '50%',
   transform: 'translateY(-50%)',
-  color: '#666',
+  color: '#999',
 };
 
 // SVG-иконки (минимализм, черно-белые)
@@ -117,60 +113,70 @@ const headerStyle: React.CSSProperties = {
   top: 0,
   left: 0,
   right: 0,
-  backgroundColor: '#fff',
+  backgroundColor: 'rgba(255, 255, 255, 0.98)',
+  backdropFilter: 'blur(10px)',
   zIndex: 1000,
-  padding: '16px 0',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+  padding: '12px 16px',
+  boxShadow: '0 1px 2px rgba(0,0,0,0.03)',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '12px',
 };
 
 const storiesContainerStyle: React.CSSProperties = {
   display: 'flex',
-  gap: '12px',
+  gap: '16px',
   padding: '16px',
   overflowX: 'auto',
-  marginTop: '80px',
+  marginTop: '60px',
   scrollbarWidth: 'none',
   msOverflowStyle: 'none',
 };
 
 const storyStyle: React.CSSProperties = {
-  width: '80px',
-  height: '80px',
-  borderRadius: '50%',
-  backgroundColor: '#f5f5f5',
+  width: '64px',
+  height: '64px',
+  borderRadius: '16px',
+  backgroundColor: '#f8f8f8',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   flexShrink: 0,
-  border: '2px solid #646cff',
+  border: 'none',
   cursor: 'pointer',
-  transition: 'transform 0.2s ease',
+  transition: 'all 0.2s ease',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.03)',
 };
 
 const productsContainerStyle: React.CSSProperties = {
   display: 'grid',
   gridTemplateColumns: 'repeat(2, 1fr)',
-  gap: '16px',
+  gap: '12px',
   padding: '16px',
-  marginTop: '16px',
+  marginTop: '8px',
 };
 
 const productCardStyle: React.CSSProperties = {
   backgroundColor: '#fff',
-  borderRadius: '12px',
+  borderRadius: '16px',
   padding: '12px',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+  boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
   display: 'flex',
   flexDirection: 'column',
   gap: '8px',
+  transition: 'transform 0.2s ease',
+  cursor: 'pointer',
 };
 
 const productImageStyle: React.CSSProperties = {
   width: '100%',
-  height: '150px',
-  borderRadius: '8px',
-  backgroundColor: '#f5f5f5',
-  objectFit: 'cover',
+  aspectRatio: '1',
+  borderRadius: '12px',
+  backgroundColor: '#f8f8f8',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  overflow: 'hidden',
 };
 
 const productTitleStyle: React.CSSProperties = {
@@ -178,12 +184,13 @@ const productTitleStyle: React.CSSProperties = {
   fontWeight: 500,
   color: '#111',
   margin: 0,
+  lineHeight: '1.4',
 };
 
 const productPriceStyle: React.CSSProperties = {
-  fontSize: '16px',
-  fontWeight: 700,
-  color: '#646cff',
+  fontSize: '15px',
+  fontWeight: 600,
+  color: '#111',
   margin: 0,
 };
 
@@ -217,31 +224,44 @@ const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick 
   }, [onMenuClick]);
 
   return (
-    <div style={{ padding: '0 0 110px 0', minHeight: '100vh', boxSizing: 'border-box', overflow: 'hidden' }}>
+    <div style={{ padding: '0 0 88px 0', minHeight: '100vh', boxSizing: 'border-box', backgroundColor: '#fff' }}>
       {/* Фиксированный хедер */}
       <div style={headerStyle}>
-        {/* Логотип */}
-        <div style={logoStyle}>EMPALAR MALL</div>
-        {/* Поисковая строка */}
+        <div style={logoStyle}>EMPALAR</div>
         <div style={searchBarStyle}>
           <div style={searchIconStyle}>
             <SearchIcon />
           </div>
           <input
             type="text"
-            placeholder="Найти товар..."
+            placeholder="Поиск..."
             style={searchInputStyle}
-            onFocus={(e) => e.target.style.borderColor = '#646cff'}
-            onBlur={(e) => e.target.style.borderColor = '#eee'}
+            onFocus={(e) => {
+              e.target.style.backgroundColor = '#fff';
+              e.target.style.borderColor = '#646cff';
+            }}
+            onBlur={(e) => {
+              e.target.style.backgroundColor = '#f8f8f8';
+              e.target.style.borderColor = '#f0f0f0';
+            }}
           />
         </div>
       </div>
 
       {/* Сторисы */}
       <div style={storiesContainerStyle}>
-        {[1, 2, 3, 4, 5].map((story) => (
-          <div key={story} style={storyStyle}>
-            <span style={{ fontSize: '24px' }}>📱</span>
+        {[
+          { emoji: '🔥', label: 'Новинки' },
+          { emoji: '⭐', label: 'Популярное' },
+          { emoji: '🎁', label: 'Акции' },
+          { emoji: '📱', label: 'Техника' },
+          { emoji: '👕', label: 'Одежда' },
+        ].map((story, index) => (
+          <div key={index} style={storyStyle}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+              <span style={{ fontSize: '24px' }}>{story.emoji}</span>
+              <span style={{ fontSize: '10px', color: '#666' }}>{story.label}</span>
+            </div>
           </div>
         ))}
       </div>
@@ -249,14 +269,14 @@ const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick 
       {/* Тестовые товары */}
       <div style={productsContainerStyle}>
         {[
-          { title: 'Смартфон X', price: '29 999 ₽', image: '📱' },
-          { title: 'Ноутбук Pro', price: '89 999 ₽', image: '💻' },
-          { title: 'Наушники Air', price: '12 999 ₽', image: '🎧' },
-          { title: 'Умные часы', price: '15 999 ₽', image: '⌚' },
+          { title: 'iPhone 14 Pro', price: '89 999 ₽', image: '📱' },
+          { title: 'MacBook Air M2', price: '129 999 ₽', image: '💻' },
+          { title: 'AirPods Pro', price: '24 999 ₽', image: '🎧' },
+          { title: 'Apple Watch', price: '32 999 ₽', image: '⌚' },
         ].map((product, index) => (
           <div key={index} style={productCardStyle}>
             <div style={productImageStyle}>
-              <span style={{ fontSize: '48px' }}>{product.image}</span>
+              <span style={{ fontSize: '32px' }}>{product.image}</span>
             </div>
             <h3 style={productTitleStyle}>{product.title}</h3>
             <p style={productPriceStyle}>{product.price}</p>
