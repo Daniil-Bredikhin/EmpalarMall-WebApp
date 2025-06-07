@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import WebApp from '@twa-dev/sdk';
 import Home from './Home';
-import Profile from './Profile';
+import Profile from './components/Profile';
 import AdminPanel from './AdminPanel';
 
 export type Page = 'home' | 'profile' | 'admin';
 
 const MainPage: React.FC = () => {
-  const [page, setPage] = React.useState<Page>('home');
+  const [page, setPage] = useState<Page>('home');
 
   useEffect(() => {
     // Используем WebApp для инициализации Telegram WebApp SDK
@@ -30,7 +30,7 @@ const MainPage: React.FC = () => {
         break;
       // Каталог, Избранное, Корзина — пока не реализованы, можно добавить позже
       default:
-        break;
+        setPage('home');
     }
   };
 
