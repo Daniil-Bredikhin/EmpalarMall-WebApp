@@ -83,8 +83,8 @@ const Profile: React.FC = () => {
       </div>
 
       <div style={actionsSectionStyle}>
-        <div style={actionsRowStyle}>
-          <button style={actionButtonStyle}>
+        <div style={separatedButtonsContainerStyle}>
+          <button style={separatedButtonStyle}>
             <div style={iconWithTextStyle}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
                 <circle cx="12" cy="12" r="10"/>
@@ -93,7 +93,7 @@ const Profile: React.FC = () => {
               <span style={actionLabelStyle}>Баллы</span>
             </div>
           </button>
-          <button style={actionButtonStyle}>
+          <button style={separatedButtonStyle}>
             <div style={iconWithTextStyle}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
                 <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
@@ -102,9 +102,7 @@ const Profile: React.FC = () => {
               <span style={actionLabelStyle}>Любимые бренды</span>
             </div>
           </button>
-        </div>
-        <div style={actionsRowStyle}>
-          <button style={actionButtonStyle}>
+          <button style={separatedButtonStyle}>
             <div style={iconWithTextStyle}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
@@ -113,7 +111,7 @@ const Profile: React.FC = () => {
               <span style={actionLabelStyle}>Просмотренные</span>
             </div>
           </button>
-          <button style={actionButtonStyle}>
+          <button style={separatedButtonStyle}>
             <div style={iconWithTextStyle}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
@@ -232,7 +230,7 @@ const logoStyle: React.CSSProperties = {
   textAlign: 'center',
   lineHeight: '1.2',
   width: '100%',
-  paddingLeft: '44px',
+  paddingLeft: '24px',
   paddingRight: '24px',
 };
 
@@ -309,6 +307,26 @@ const fullWidthButtonStyle: React.CSSProperties = {
   ...actionButtonStyle,
   width: '100%',
   justifyContent: 'flex-start',
+};
+
+const separatedButtonsContainerStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '8px',
+};
+
+const separatedButtonStyle: React.CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  padding: '12px 16px',
+  backgroundColor: '#fff',
+  borderRadius: '12px',
+  border: 'none',
+  cursor: 'pointer',
+  transition: 'all 0.2s ease',
+  width: '100%',
+  justifyContent: 'flex-start',
+  boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
 };
 
 const iconWithTextStyle: React.CSSProperties = {
