@@ -79,6 +79,10 @@ const Profile: React.FC = () => {
       setUser(userData as User);
     }
 
+    // Установка светлой темы
+    WebApp.setHeaderColor('#ffffff');
+    WebApp.setBackgroundColor('#f8f8f8');
+
     WebApp.BackButton.show();
     WebApp.BackButton.onClick(handleBack);
     return () => {
