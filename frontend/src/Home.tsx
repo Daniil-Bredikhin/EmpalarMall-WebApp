@@ -75,7 +75,7 @@ const logoStyle: React.CSSProperties = {
   textAlign: 'center',
   lineHeight: '1.2',
   width: '100%',
-  paddingLeft: '44px',
+  paddingLeft: '25px',
   paddingRight: '24px',
 };
 
