@@ -6,18 +6,6 @@ import AdminPanel from './AdminPanel';
 
 export type Page = 'home' | 'profile' | 'admin';
 
-interface NavigationProps {
-  setPage: (page: Page) => void;
-}
-
-const Navigation: React.FC<NavigationProps> = ({ setPage }) => (
-  <nav style={{ marginBottom: 20 }}>
-    <button onClick={() => setPage('home')}>Главная</button>{' '}
-    <button onClick={() => setPage('profile')}>Личный кабинет</button>{' '}
-    <button onClick={() => setPage('admin')}>Админ-панель</button>
-  </nav>
-);
-
 const MainPage: React.FC = () => {
   const [page, setPage] = React.useState<Page>('home');
 
@@ -48,7 +36,6 @@ const MainPage: React.FC = () => {
 
   return (
     <div>
-      <Navigation setPage={setPage} />
       {page === 'home' && <Home onMenuClick={handleMenuClick} />}
       {page === 'profile' && <Profile />}
       {page === 'admin' && <AdminPanel />}
