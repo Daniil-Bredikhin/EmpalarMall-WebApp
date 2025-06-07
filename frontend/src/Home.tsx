@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Profile from './components/Profile';
 
 // Стили
 const menuStyle: React.CSSProperties = {
@@ -248,16 +249,18 @@ const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
 
   const renderPage = () => {
     switch (currentPage) {
+      case 'home':
+        return <div>Главная страница</div>;
       case 'catalog':
-        return <CatalogPage />;
+        return <div>Каталог</div>;
       case 'shorts':
-        return <ShortsPage />;
+        return <div>Шортсы</div>;
       case 'cart':
-        return <CartPage />;
+        return <div>Корзина</div>;
       case 'profile':
-        return <ProfilePage />;
+        return <Profile onMenuClick={handleMenuClick} />;
       default:
-        return null;
+        return <div>Главная страница</div>;
     }
   };
 
