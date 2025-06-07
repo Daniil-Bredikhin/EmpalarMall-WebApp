@@ -43,10 +43,10 @@ const labelStyle: React.CSSProperties = {
 };
 
 const logoStyle: React.CSSProperties = {
-  fontFamily: 'Dubai, Arial, sans-serif',
+  fontFamily: 'Geraldton, Arial, sans-serif',
   color: '#111',
   fontWeight: 700,
-  fontSize: 28,
+  fontSize: 22, // уменьшен размер
   letterSpacing: 1,
   textAlign: 'center',
   margin: '0 0 24px 0',
