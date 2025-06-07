@@ -83,29 +83,34 @@ const searchContainerStyle: React.CSSProperties = {
   maxWidth: '600px',
   margin: '0 auto 24px auto',
   position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
 };
 
 const searchInputStyle: React.CSSProperties = {
   width: '100%',
-  padding: '12px 48px 12px 16px',
+  padding: '12px 16px 12px 48px',
   fontSize: 16,
   border: '1px solid #eee',
-  borderRadius: '12px',
+  borderRadius: '24px',
   backgroundColor: '#fff',
   boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
   transition: 'all 0.2s ease',
   outline: 'none',
+  position: 'relative',
+  zIndex: 1,
 };
 
 const searchIconStyle: React.CSSProperties = {
   position: 'absolute',
-  right: 16,
+  left: 16,
   top: '50%',
   transform: 'translateY(-50%)',
   width: 20,
   height: 20,
   color: '#666',
   cursor: 'pointer',
+  zIndex: 2,
 };
 
 // Компонент иконки поиска
@@ -131,25 +136,32 @@ const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick 
       WebApp.expand();
     }
     if (WebApp && WebApp.themeParams) {
-      // Устанавливаем светлый фон по умолчанию
       document.body.style.background = WebApp.themeParams.bg_color || '#ffffff';
-      // Если темная тема, устанавливаем соответствующие цвета
-      if (WebApp.themeParams.bg_color === '#000000') {
-        document.body.style.background = '#ffffff';
-        document.body.style.color = '#000000';
-      }
     }
     // Удаляем MainButton (добавить в корзину)
     if (WebApp && WebApp.MainButton) {
       WebApp.MainButton.hide();
     }
-    // Убираем прокрутку
+    // Убираем прокрутку и запрещаем масштабирование
     document.body.style.overflow = 'hidden';
+    document.body.style.touchAction = 'none';
+    // Запрещаем масштабирование
+    const meta = document.createElement('meta');
+    meta.name = 'viewport';
+    meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+    document.head.appendChild(meta);
+
     return () => {
       if (WebApp && WebApp.MainButton) {
         WebApp.MainButton.hide();
       }
       document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+      // Удаляем мета-тег при размонтировании
+      const metaTag = document.querySelector('meta[name="viewport"]');
+      if (metaTag) {
+        metaTag.remove();
+      }
     };
   }, [onMenuClick]);
 
@@ -162,6 +174,9 @@ const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick 
 
       {/* Поиск */}
       <form onSubmit={handleSearch} style={searchContainerStyle}>
+        <div style={searchIconStyle}>
+          <SearchIcon />
+        </div>
         <input
           type="text"
           placeholder="Поиск товаров..."
@@ -169,9 +184,6 @@ const Home: React.FC<{ onMenuClick?: (menu: string) => void }> = ({ onMenuClick 
           onChange={(e) => setSearchQuery(e.target.value)}
           style={searchInputStyle}
         />
-        <div style={searchIconStyle}>
-          <SearchIcon />
-        </div>
       </form>
 
       <p style={{ fontSize: 18, marginBottom: 24, textAlign: 'center' }}>
