@@ -74,7 +74,6 @@ html, body, #root {
   padding: 0;
   box-sizing: border-box;
   background: #f7f7f7;
-  overflow: hidden;
 }
 
 #root {
