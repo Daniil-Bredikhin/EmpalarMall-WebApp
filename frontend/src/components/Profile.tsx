@@ -229,36 +229,36 @@ const Profile: React.FC = () => {
 
   const infoButtonStyle: React.CSSProperties = {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     backgroundColor: '#fff',
     border: 'none',
-    borderRadius: '16px',
-    padding: '20px',
+    borderRadius: '12px',
+    padding: '16px 20px',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   };
 
   const smallIconStyle: React.CSSProperties = {
-    width: '24px',
-    height: '24px',
-    marginBottom: '12px',
+    width: '20px',
+    height: '20px',
+    marginRight: '12px',
     color: '#333',
   };
 
   const infoTextStyle: React.CSSProperties = {
-    fontSize: '15px',
+    fontSize: '14px',
     color: '#333',
-    textAlign: 'center',
+    textAlign: 'left',
   };
 
   const infoGridContainerStyle: React.CSSProperties = {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '16px',
-    padding: '16px',
+    gap: '12px',
+    padding: '12px',
     margin: '10px 16px',
     borderRadius: '16px',
   };
