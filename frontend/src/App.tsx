@@ -1,12 +1,13 @@
+import React from 'react'
 import './App.css'
 import MainPage from './main-page'
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div style={{ height: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div className="app">
       <MainPage />
     </div>
-  );
+  )
 }
 
 export default App
