@@ -235,7 +235,7 @@ const Profile: React.FC = () => {
     backgroundColor: '#fff',
     border: 'none',
     borderRadius: '12px',
-    padding: '20px 24px',
+    padding: '16px',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
@@ -258,13 +258,13 @@ const Profile: React.FC = () => {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
     gap: '12px',
-    padding: '12px',
+    padding: '16px',
     margin: '10px 16px',
     borderRadius: '16px',
   };
 
   const bottomButtonStyle: React.CSSProperties = {
-    width: '100%',
+    width: 'calc(100% - 32px)',
     backgroundColor: '#fff',
     border: 'none',
     borderRadius: '16px',
