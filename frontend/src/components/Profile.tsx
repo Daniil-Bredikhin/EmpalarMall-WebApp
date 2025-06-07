@@ -85,38 +85,72 @@ const Profile: React.FC = () => {
       <div style={actionsSectionStyle}>
         <div style={actionsRowStyle}>
           <button style={actionButtonStyle}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 6v6l4 2"/>
-            </svg>
-            <span style={actionLabelStyle}>Баллы</span>
+            <div style={iconWithTextStyle}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+              <span style={actionLabelStyle}>Баллы</span>
+            </div>
           </button>
           <button style={actionButtonStyle}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
-              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
-              <line x1="7" y1="7" x2="7.01" y2="7"/>
-            </svg>
-            <span style={actionLabelStyle}>Любимые бренды</span>
+            <div style={iconWithTextStyle}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                <line x1="7" y1="7" x2="7.01" y2="7"/>
+              </svg>
+              <span style={actionLabelStyle}>Любимые бренды</span>
+            </div>
           </button>
         </div>
         <div style={actionsRowStyle}>
           <button style={actionButtonStyle}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-              <circle cx="12" cy="12" r="3"/>
-            </svg>
-            <span style={actionLabelStyle}>Просмотренные</span>
+            <div style={iconWithTextStyle}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <span style={actionLabelStyle}>Просмотренные</span>
+            </div>
           </button>
           <button style={actionButtonStyle}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-              <path d="M8 10h.01"/>
-              <path d="M12 10h.01"/>
-              <path d="M16 10h.01"/>
-            </svg>
-            <span style={actionLabelStyle}>Отзывы</span>
+            <div style={iconWithTextStyle}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                <path d="M8 10h.01"/>
+                <path d="M12 10h.01"/>
+                <path d="M16 10h.01"/>
+              </svg>
+              <span style={actionLabelStyle}>Отзывы</span>
+            </div>
           </button>
         </div>
+      </div>
+
+      <div style={actionsSectionStyle}>
+        <button style={fullWidthButtonStyle}>
+          <div style={iconWithTextStyle}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span style={actionLabelStyle}>Данные доставки</span>
+          </div>
+        </button>
+      </div>
+
+      <div style={actionsSectionStyle}>
+        <button style={fullWidthButtonStyle}>
+          <div style={iconWithTextStyle}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            <span style={actionLabelStyle}>Сообщество EMPALAR MALL</span>
+          </div>
+        </button>
       </div>
 
       <nav style={menuStyle}>
@@ -261,9 +295,7 @@ const actionsRowStyle: React.CSSProperties = {
 
 const actionButtonStyle: React.CSSProperties = {
   display: 'flex',
-  flexDirection: 'column',
   alignItems: 'center',
-  gap: '8px',
   padding: '12px',
   backgroundColor: '#fff',
   borderRadius: '12px',
@@ -273,10 +305,23 @@ const actionButtonStyle: React.CSSProperties = {
   flex: 1,
 };
 
+const fullWidthButtonStyle: React.CSSProperties = {
+  ...actionButtonStyle,
+  width: '100%',
+  justifyContent: 'flex-start',
+};
+
+const iconWithTextStyle: React.CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '12px',
+  width: '100%',
+};
+
 const actionLabelStyle: React.CSSProperties = {
-  fontSize: '12px',
+  fontSize: '14px',
   color: '#000',
-  textAlign: 'center',
+  textAlign: 'left',
   whiteSpace: 'nowrap',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
