@@ -8,15 +8,19 @@ import './App.css'
 const App: React.FC = () => {
   useEffect(() => {
     // Инициализация и настройка Telegram Mini App
-    // Устанавливаем тему и расширяем на весь экран
     WebApp.ready()
     
     // Установка светлой темы по умолчанию
     WebApp.setHeaderColor('#ffffff')
     WebApp.setBackgroundColor('#ffffff')
     
-    // Расширяем на весь экран для лучшего UX
+    // Включаем полноэкранный режим
+    WebApp.enableClosingConfirmation()
     WebApp.expand()
+    
+    // Устанавливаем параметры отображения
+    WebApp.setHeaderColor('#ffffff')
+    WebApp.setBackgroundColor('#ffffff')
   }, [])
 
   const handleMenuClick = (menu: string) => {
