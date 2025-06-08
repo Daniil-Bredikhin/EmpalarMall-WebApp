@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { MenuIcon } from '../../components/common/MenuIcon'
 import {
   HomeIcon,
@@ -27,6 +28,7 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
+  const navigate = useNavigate()
   const [searchValue, setSearchValue] = useState('')
   const [activeMenu, setActiveMenu] = useState('home')
   const [currentPage, setCurrentPage] = useState('home')
@@ -133,7 +135,7 @@ const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
         <MenuIcon
           icon={<ProfileIcon />}
           label="Профиль"
-          onClick={() => window.location.replace('/profile')}
+          onClick={() => navigate('/profile')}
           style={activeMenu === 'profile' ? activeIconStyle : iconStyle}
         />
       </nav>

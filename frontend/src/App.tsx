@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import WebApp from '@twa-dev/sdk'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/home/Home'
+import Profile from './components/Profile'
 import './App.css'
 
 const App: React.FC = () => {
@@ -23,9 +25,14 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="app">
-      <Home onMenuClick={handleMenuClick} />
-    </div>
+    <Router>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<Home onMenuClick={handleMenuClick} />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </div>
+    </Router>
   )
 }
 

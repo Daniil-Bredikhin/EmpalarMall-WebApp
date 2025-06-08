@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import WebApp from '@twa-dev/sdk';
 
 interface User {
@@ -70,6 +71,7 @@ const ReviewsIcon: React.FC<IconProps> = ({ style }) => (
 );
 
 const Profile: React.FC = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
@@ -101,7 +103,7 @@ const Profile: React.FC = () => {
       ]
     }, (buttonId?: string) => {
       if (buttonId === 'confirm') {
-        window.location.replace('/');
+        navigate('/');
       }
     });
   };
@@ -348,25 +350,25 @@ const Profile: React.FC = () => {
       </div>
 
       <div style={actionsGridStyle}>
-        <button style={actionButtonStyle} onClick={() => window.location.replace('/favorites')}>
+        <button style={actionButtonStyle} onClick={() => navigate('/favorites')}>
           <div style={iconWrapperStyle}>
             <FavoriteIcon style={actionIconStyle} />
           </div>
           <span style={buttonTextStyle}>Избранное</span>
         </button>
-        <button style={actionButtonStyle} onClick={() => window.location.replace('/deliveries')}>
+        <button style={actionButtonStyle} onClick={() => navigate('/deliveries')}>
           <div style={iconWrapperStyle}>
             <DeliveryIcon style={actionIconStyle} />
           </div>
           <span style={buttonTextStyle}>Доставки</span>
         </button>
-        <button style={actionButtonStyle} onClick={() => window.location.replace('/purchases')}>
+        <button style={actionButtonStyle} onClick={() => navigate('/purchases')}>
           <div style={iconWrapperStyle}>
             <PurchaseIcon style={actionIconStyle} />
           </div>
           <span style={buttonTextStyle}>Покупки</span>
         </button>
-        <button style={actionButtonStyle} onClick={() => window.location.replace('/support')}>
+        <button style={actionButtonStyle} onClick={() => navigate('/support')}>
           <div style={iconWrapperStyle}>
             <SupportIcon style={actionIconStyle} />
           </div>
@@ -375,19 +377,19 @@ const Profile: React.FC = () => {
       </div>
 
       <div style={infoGridContainerStyle}>
-        <button style={infoButtonStyle} onClick={() => window.location.replace('/favorite-brands')}>
+        <button style={infoButtonStyle} onClick={() => navigate('/favorite-brands')}>
           <FavoriteBrandsIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Любимые бренды</span>
         </button>
-        <button style={infoButtonStyle} onClick={() => window.location.replace('/points')}>
+        <button style={infoButtonStyle} onClick={() => navigate('/points')}>
           <PointsIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Баллы</span>
         </button>
-        <button style={infoButtonStyle} onClick={() => window.location.replace('/viewed')}>
+        <button style={infoButtonStyle} onClick={() => navigate('/viewed')}>
           <ViewedIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Просмотренные</span>
         </button>
-        <button style={infoButtonStyle} onClick={() => window.location.replace('/reviews')}>
+        <button style={infoButtonStyle} onClick={() => navigate('/reviews')}>
           <ReviewsIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Отзывы</span>
         </button>
@@ -429,14 +431,14 @@ const Profile: React.FC = () => {
         zIndex: 1000,
         transition: 'transform 0.3s ease',
       }}>
-        <button style={menuIconStyle} onClick={() => window.location.replace('/')}>
+        <button style={menuIconStyle} onClick={() => navigate('/')}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
             <polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
           <span style={labelStyle}>Главная</span>
         </button>
-        <button style={menuIconStyle} onClick={() => window.location.replace('/catalog')}>
+        <button style={menuIconStyle} onClick={() => navigate('/catalog')}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <rect x="3" y="3" width="7" height="7" rx="2" ry="2"/>
             <rect x="14" y="3" width="7" height="7" rx="2" ry="2"/>
@@ -445,13 +447,13 @@ const Profile: React.FC = () => {
           </svg>
           <span style={labelStyle}>Каталог</span>
         </button>
-        <button style={menuIconStyle} onClick={() => window.location.replace('/shorts')}>
+        <button style={menuIconStyle} onClick={() => navigate('/shorts')}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 2v20M2 12h20M12 2l10 10M12 2L2 12M12 22l10-10M12 22L2 12"/>
           </svg>
           <span style={labelStyle}>Шортсы</span>
         </button>
-        <button style={menuIconStyle} onClick={() => window.location.replace('/cart')}>
+        <button style={menuIconStyle} onClick={() => navigate('/cart')}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
           </svg>
