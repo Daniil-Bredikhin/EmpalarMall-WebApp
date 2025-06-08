@@ -47,18 +47,6 @@ const SavedIcon: React.FC<IconProps> = ({ style }) => (
   </svg>
 );
 
-const FavoriteBrandsIcon: React.FC<IconProps> = ({ style }) => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={style}>
-    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-  </svg>
-);
-
-const SettingsIcon: React.FC<IconProps> = ({ style }) => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={style}>
-    <path d="M12 2L2 22M22 2L12 22M12 12L2 12M12 12L22 12M12 22L2 22M22 2L2 2"/>
-  </svg>
-);
-
 const ViewedIcon: React.FC<IconProps> = ({ style }) => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={style}>
     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
