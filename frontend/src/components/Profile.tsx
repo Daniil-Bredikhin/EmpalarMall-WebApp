@@ -248,17 +248,12 @@ const Profile: React.FC = () => {
     width: '18px',
     height: '18px',
     marginRight: '10px',
-    color: '#333',
-    flexShrink: 0,
   };
 
   const infoTextStyle: React.CSSProperties = {
     fontSize: '14px',
     color: '#333',
-    textAlign: 'left',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
+    fontWeight: 500,
   };
 
   const bottomButtonStyle: React.CSSProperties = {
