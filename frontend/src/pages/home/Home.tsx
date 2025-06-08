@@ -70,7 +70,7 @@ const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
       case 'cart':
         return <div>Корзина</div>
       case 'profile':
-        return <Profile />
+        return null
       default:
         return <div>Главная страница</div>
     }
@@ -134,7 +134,7 @@ const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
         <MenuIcon
           icon={<ProfileIcon />}
           label="Профиль"
-          onClick={() => handleMenuClick('profile')}
+          onClick={() => window.location.replace('/profile')}
           style={activeMenu === 'profile' ? activeIconStyle : iconStyle}
         />
       </nav>
