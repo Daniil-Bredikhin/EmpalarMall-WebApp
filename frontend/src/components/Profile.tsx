@@ -66,6 +66,25 @@ const SettingsIcon: React.FC<IconProps> = ({ style }) => (
   </svg>
 );
 
+const ViewedIcon: React.FC<IconProps> = ({ style }) => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={style}>
+    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+    <circle cx="12" cy="12" r="3"/>
+  </svg>
+);
+
+const ReviewsIcon: React.FC<IconProps> = ({ style }) => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={style}>
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+);
+
+const BonusIcon: React.FC<IconProps> = ({ style }) => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={style}>
+    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+  </svg>
+);
+
 const Profile: React.FC = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
@@ -377,9 +396,19 @@ const Profile: React.FC = () => {
           <span style={infoTextStyle}>Отложенные</span>
         </button>
 
-        <button style={infoButtonStyle} onClick={() => navigate('/points')}>
-          <PointsIcon style={smallIconStyle} />
-          <span style={infoTextStyle}>Бонусные баллы</span>
+        <button style={infoButtonStyle} onClick={() => navigate('/bonus')}>
+          <BonusIcon style={smallIconStyle} />
+          <span style={infoTextStyle}>Бонусы</span>
+        </button>
+
+        <button style={infoButtonStyle} onClick={() => navigate('/viewed')}>
+          <ViewedIcon style={smallIconStyle} />
+          <span style={infoTextStyle}>Просмотренные</span>
+        </button>
+
+        <button style={infoButtonStyle} onClick={() => navigate('/reviews')}>
+          <ReviewsIcon style={smallIconStyle} />
+          <span style={infoTextStyle}>Отзывы</span>
         </button>
 
         <button style={infoButtonStyle} onClick={() => navigate('/settings')}>
