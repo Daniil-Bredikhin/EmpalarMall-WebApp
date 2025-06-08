@@ -2,6 +2,8 @@
 
 Интернет-магазин в формате Telegram WebApp.
 
+a59a268 - стабильная версия
+
 ## Структура
 - frontend — React + TypeScript (Vite)
 - backend — Node.js + Express
