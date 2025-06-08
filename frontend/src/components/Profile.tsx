@@ -69,6 +69,12 @@ const ReviewsIcon: React.FC<IconProps> = ({ style }) => (
   </svg>
 );
 
+const FavoriteBrandsIcon: React.FC<IconProps> = ({ style }) => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={style}>
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+  </svg>
+);
+
 const Profile: React.FC = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
@@ -317,6 +323,28 @@ const Profile: React.FC = () => {
     fontWeight: 500,
   };
 
+  const buttonStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    padding: '8px 12px',
+    backgroundColor: '#f5f5f5',
+    border: 'none',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    width: '100%',
+    textAlign: 'left',
+    fontSize: '14px',
+    color: '#333',
+    transition: 'background-color 0.2s',
+  };
+
+  const iconStyle: React.CSSProperties = {
+    width: '16px',
+    height: '16px',
+    flexShrink: 0,
+  };
+
   return (
     <div style={containerStyle}>
       <div style={headerStyle}>
@@ -365,10 +393,38 @@ const Profile: React.FC = () => {
       </div>
 
       <div style={infoGridContainerStyle}>
-        <button style={infoButtonStyle} onClick={() => navigate('/saved')}>
-          <SavedIcon style={smallIconStyle} />
-          <span style={infoTextStyle}>Отложенные</span>
+        <button 
+          onClick={() => navigate('/delivery')}
+          style={buttonStyle}
+        >
+          <DeliveryIcon style={iconStyle} />
+          <span>Данные доставки</span>
         </button>
+
+        <button 
+          onClick={() => navigate('/purchase')}
+          style={buttonStyle}
+        >
+          <PurchaseIcon style={iconStyle} />
+          <span>История покупок</span>
+        </button>
+
+        <button 
+          onClick={() => navigate('/favorite-brands')}
+          style={buttonStyle}
+        >
+          <FavoriteBrandsIcon style={iconStyle} />
+          <span>Любимые бренды</span>
+        </button>
+
+        <button 
+          onClick={() => navigate('/saved')}
+          style={buttonStyle}
+        >
+          <SavedIcon style={iconStyle} />
+          <span>Отложенные</span>
+        </button>
+
         <button style={infoButtonStyle} onClick={() => navigate('/points')}>
           <PointsIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Баллы</span>
