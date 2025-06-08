@@ -41,13 +41,6 @@ const SupportIcon: React.FC<IconProps> = ({ style }) => (
   </svg>
 );
 
-const PointsIcon: React.FC<IconProps> = ({ style }) => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={style}>
-    <circle cx="12" cy="12" r="10"/>
-    <path d="M12 6v6l4 2"/>
-  </svg>
-);
-
 const SavedIcon: React.FC<IconProps> = ({ style }) => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={style}>
     <path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/>
