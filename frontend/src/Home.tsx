@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Profile from './components/Profile';
+import WebApp from '@twa-dev/sdk';
 
 // Стили
 const menuStyle: React.CSSProperties = {
@@ -180,7 +181,8 @@ const SearchIcon = () => (
   </svg>
 );
 
-// Интерфейс для пропсов Home
+// Главный компонент домашней страницы Mini App
+// Отображает основное меню и управляет навигацией
 interface HomeProps {
   onMenuClick: (menu: string) => void;
 }
