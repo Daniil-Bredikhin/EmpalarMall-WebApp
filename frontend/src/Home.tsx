@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Profile from './components/Profile';
-import WebApp from '@twa-dev/sdk';
 
 // Стили
 const menuStyle: React.CSSProperties = {
