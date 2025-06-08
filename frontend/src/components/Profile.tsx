@@ -94,18 +94,7 @@ const Profile: React.FC = () => {
   }, []);
 
   const handleBack = () => {
-    WebApp.showPopup({
-      title: 'Выход',
-      message: 'Вы уверены, что хотите выйти?',
-      buttons: [
-        { id: 'cancel', type: 'cancel' },
-        { id: 'confirm', type: 'destructive', text: 'Выйти' }
-      ]
-    }, (buttonId?: string) => {
-      if (buttonId === 'confirm') {
-        navigate('/');
-      }
-    });
+    navigate('/');
   };
 
   const containerStyle: React.CSSProperties = {
