@@ -383,30 +383,15 @@ const Profile: React.FC = () => {
         </button>
       </div>
 
-      <section style={{
-        backgroundColor: '#fff',
-        padding: '20px',
-        margin: '0 16px 8px 16px',
-        borderRadius: '16px',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-      }}>
-        <h2 style={{
-          fontSize: '18px',
-          fontWeight: '600',
-          marginBottom: '16px',
-          color: '#333',
-        }}>Любимые бренды</h2>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '12px',
-          color: '#666',
-        }}>
-          <p>Nike</p>
-          <p>Adidas</p>
-          <p>Puma</p>
+      <button style={bottomButtonStyle}>
+        <div style={iconWithTextStyle}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+            <line x1="7" y1="7" x2="7.01" y2="7"/>
+          </svg>
+          <span style={actionLabelStyle}>Любимые бренды</span>
         </div>
-      </section>
+      </button>
 
       <button style={bottomButtonStyle}>
         <div style={iconWithTextStyle}>
