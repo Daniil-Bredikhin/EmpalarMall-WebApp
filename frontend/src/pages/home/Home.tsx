@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Profile from '../../components/Profile'
 import { MenuIcon } from '../../components/common/MenuIcon'
 import {
   HomeIcon,
