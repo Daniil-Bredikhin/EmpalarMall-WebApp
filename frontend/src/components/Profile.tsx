@@ -248,6 +248,7 @@ const Profile: React.FC = () => {
     width: '18px',
     height: '18px',
     marginRight: '10px',
+    color: '#000000',
   };
 
   const infoTextStyle: React.CSSProperties = {
@@ -257,14 +258,16 @@ const Profile: React.FC = () => {
   };
 
   const bottomButtonStyle: React.CSSProperties = {
-    width: 'calc(100% - 32px)',
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+    padding: '12px 16px',
     backgroundColor: '#fff',
     border: 'none',
-    borderRadius: '16px',
-    padding: '16px',
-    margin: '0 16px 8px 16px',
+    borderBottom: '1px solid #f0f0f0',
     cursor: 'pointer',
-    transition: 'all 0.2s ease',
+    margin: '0 16px',
+    borderRadius: '12px',
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   };
 
@@ -275,10 +278,16 @@ const Profile: React.FC = () => {
   };
 
   const actionLabelStyle: React.CSSProperties = {
-    fontSize: '16px',
-    color: '#000',
+    fontSize: '13px',
+    color: '#111',
     fontFamily: 'Geraldton, Arial, sans-serif',
     fontWeight: 500,
+  };
+
+  const bottomIconStyle: React.CSSProperties = {
+    width: '16px',
+    height: '16px',
+    color: '#000000',
   };
 
   const menuIconStyle: React.CSSProperties = {
@@ -380,7 +389,7 @@ const Profile: React.FC = () => {
 
       <button style={bottomButtonStyle}>
         <div style={iconWithTextStyle}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" style={bottomIconStyle}>
             <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
             <line x1="7" y1="7" x2="7.01" y2="7"/>
           </svg>
@@ -390,7 +399,7 @@ const Profile: React.FC = () => {
 
       <button style={bottomButtonStyle}>
         <div style={iconWithTextStyle}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" style={bottomIconStyle}>
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
             <circle cx="12" cy="10" r="3"/>
           </svg>
@@ -400,7 +409,7 @@ const Profile: React.FC = () => {
 
       <button style={bottomButtonStyle}>
         <div style={iconWithTextStyle}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" style={bottomIconStyle}>
             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
             <circle cx="9" cy="7" r="4"/>
             <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
