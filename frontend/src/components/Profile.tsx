@@ -309,28 +309,6 @@ const Profile: React.FC = () => {
     fontWeight: 500,
   };
 
-  const buttonStyle: React.CSSProperties = {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    padding: '8px 12px',
-    backgroundColor: '#f5f5f5',
-    border: 'none',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    width: '100%',
-    textAlign: 'left',
-    fontSize: '14px',
-    color: '#333',
-    transition: 'background-color 0.2s',
-  };
-
-  const iconStyle: React.CSSProperties = {
-    width: '16px',
-    height: '16px',
-    flexShrink: 0,
-  };
-
   return (
     <div style={containerStyle}>
       <div style={headerStyle}>
