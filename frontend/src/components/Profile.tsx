@@ -369,21 +369,6 @@ const Profile: React.FC = () => {
       </div>
 
       <div style={infoGridContainerStyle}>
-        <button style={infoButtonStyle} onClick={() => navigate('/delivery')}>
-          <DeliveryIcon style={smallIconStyle} />
-          <span style={infoTextStyle}>Данные доставки</span>
-        </button>
-
-        <button style={infoButtonStyle} onClick={() => navigate('/purchase')}>
-          <PurchaseIcon style={smallIconStyle} />
-          <span style={infoTextStyle}>История покупок</span>
-        </button>
-
-        <button style={infoButtonStyle} onClick={() => navigate('/favorite-brands')}>
-          <FavoriteBrandsIcon style={smallIconStyle} />
-          <span style={infoTextStyle}>Любимые бренды</span>
-        </button>
-
         <button style={infoButtonStyle} onClick={() => navigate('/saved')}>
           <SavedIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Отложенные</span>
@@ -402,11 +387,6 @@ const Profile: React.FC = () => {
         <button style={infoButtonStyle} onClick={() => navigate('/reviews')}>
           <ReviewsIcon style={smallIconStyle} />
           <span style={infoTextStyle}>Отзывы</span>
-        </button>
-
-        <button style={infoButtonStyle} onClick={() => navigate('/settings')}>
-          <SettingsIcon style={smallIconStyle} />
-          <span style={infoTextStyle}>Настройки</span>
         </button>
       </div>
 
