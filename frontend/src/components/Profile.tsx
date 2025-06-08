@@ -75,6 +75,12 @@ const FavoriteBrandsIcon: React.FC<IconProps> = ({ style }) => (
   </svg>
 );
 
+const SettingsIcon: React.FC<IconProps> = ({ style }) => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={style}>
+    <path d="M12 2L2 22M22 2L12 22M12 12L2 12M12 12L22 12M12 22L2 22M22 2L2 2"/>
+  </svg>
+);
+
 const Profile: React.FC = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
@@ -393,49 +399,34 @@ const Profile: React.FC = () => {
       </div>
 
       <div style={infoGridContainerStyle}>
-        <button 
-          onClick={() => navigate('/delivery')}
-          style={buttonStyle}
-        >
-          <DeliveryIcon style={iconStyle} />
-          <span>Данные доставки</span>
+        <button style={infoButtonStyle} onClick={() => navigate('/delivery')}>
+          <DeliveryIcon style={smallIconStyle} />
+          <span style={infoTextStyle}>Данные доставки</span>
         </button>
 
-        <button 
-          onClick={() => navigate('/purchase')}
-          style={buttonStyle}
-        >
-          <PurchaseIcon style={iconStyle} />
-          <span>История покупок</span>
+        <button style={infoButtonStyle} onClick={() => navigate('/purchase')}>
+          <PurchaseIcon style={smallIconStyle} />
+          <span style={infoTextStyle}>История покупок</span>
         </button>
 
-        <button 
-          onClick={() => navigate('/favorite-brands')}
-          style={buttonStyle}
-        >
-          <FavoriteBrandsIcon style={iconStyle} />
-          <span>Любимые бренды</span>
+        <button style={infoButtonStyle} onClick={() => navigate('/favorite-brands')}>
+          <FavoriteBrandsIcon style={smallIconStyle} />
+          <span style={infoTextStyle}>Любимые бренды</span>
         </button>
 
-        <button 
-          onClick={() => navigate('/saved')}
-          style={buttonStyle}
-        >
-          <SavedIcon style={iconStyle} />
-          <span>Отложенные</span>
+        <button style={infoButtonStyle} onClick={() => navigate('/saved')}>
+          <SavedIcon style={smallIconStyle} />
+          <span style={infoTextStyle}>Отложенные</span>
         </button>
 
         <button style={infoButtonStyle} onClick={() => navigate('/points')}>
           <PointsIcon style={smallIconStyle} />
-          <span style={infoTextStyle}>Баллы</span>
+          <span style={infoTextStyle}>Бонусные баллы</span>
         </button>
-        <button style={infoButtonStyle} onClick={() => navigate('/viewed')}>
-          <ViewedIcon style={smallIconStyle} />
-          <span style={infoTextStyle}>Просмотренные</span>
-        </button>
-        <button style={infoButtonStyle} onClick={() => navigate('/reviews')}>
-          <ReviewsIcon style={smallIconStyle} />
-          <span style={infoTextStyle}>Отзывы</span>
+
+        <button style={infoButtonStyle} onClick={() => navigate('/settings')}>
+          <SettingsIcon style={smallIconStyle} />
+          <span style={infoTextStyle}>Настройки</span>
         </button>
       </div>
 
