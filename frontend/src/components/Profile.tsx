@@ -64,6 +64,12 @@ const ViewedIcon: React.FC<IconProps> = ({ style }) => (
   </svg>
 );
 
+const SavedIcon: React.FC<IconProps> = ({ style }) => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={style}>
+    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+  </svg>
+);
+
 const ReviewsIcon: React.FC<IconProps> = ({ style }) => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={style}>
     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
@@ -366,9 +372,9 @@ const Profile: React.FC = () => {
       </div>
 
       <div style={infoGridContainerStyle}>
-        <button style={infoButtonStyle} onClick={() => navigate('/favorite-brands')}>
-          <FavoriteBrandsIcon style={smallIconStyle} />
-          <span style={infoTextStyle}>Любимые бренды</span>
+        <button style={infoButtonStyle} onClick={() => navigate('/saved')}>
+          <SavedIcon style={smallIconStyle} />
+          <span style={infoTextStyle}>Отложенные</span>
         </button>
         <button style={infoButtonStyle} onClick={() => navigate('/points')}>
           <PointsIcon style={smallIconStyle} />
@@ -383,6 +389,31 @@ const Profile: React.FC = () => {
           <span style={infoTextStyle}>Отзывы</span>
         </button>
       </div>
+
+      <section style={{
+        backgroundColor: '#fff',
+        padding: '20px',
+        margin: '0 16px 8px 16px',
+        borderRadius: '16px',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+      }}>
+        <h2 style={{
+          fontSize: '18px',
+          fontWeight: '600',
+          marginBottom: '16px',
+          color: '#333',
+        }}>Любимые бренды</h2>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '12px',
+          color: '#666',
+        }}>
+          <p>Nike</p>
+          <p>Adidas</p>
+          <p>Puma</p>
+        </div>
+      </section>
 
       <button style={bottomButtonStyle}>
         <div style={iconWithTextStyle}>
