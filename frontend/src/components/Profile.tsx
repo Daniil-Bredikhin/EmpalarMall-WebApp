@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WebApp from '@twa-dev/sdk';
+import { HomeIcon, SearchIcon, ShortsIcon, CartIcon, ProfileIcon } from './icons/MenuIcons';
 
 interface User {
   id: number;
@@ -310,6 +311,21 @@ const Profile: React.FC = () => {
     fontWeight: 500,
   };
 
+  const bottomMenuStyle: React.CSSProperties = {
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    display: 'flex',
+    justifyContent: 'space-around',
+    padding: '8px 24px 24px 24px',
+    boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
+    backdropFilter: 'blur(12px)',
+    zIndex: 1000,
+    transition: 'transform 0.3s ease',
+  };
+
   return (
     <div style={containerStyle}>
       <div style={headerStyle}>
@@ -411,58 +427,27 @@ const Profile: React.FC = () => {
         </div>
       </button>
 
-      <nav style={{
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        backgroundColor: 'rgba(255, 255, 255, 0.95)',
-        display: 'flex',
-        justifyContent: 'space-around',
-        padding: '8px 24px 24px 24px',
-        boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
-        backdropFilter: 'blur(12px)',
-        zIndex: 1000,
-        transition: 'transform 0.3s ease',
-      }}>
-        <button style={menuIconStyle} onClick={() => navigate('/')}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-            <polyline points="9 22 9 12 15 12 15 22"/>
-          </svg>
-          <span style={labelStyle}>Главная</span>
+      <div style={bottomMenuStyle}>
+        <button style={bottomButtonStyle} onClick={() => navigate('/')}>
+          <HomeIcon color="#000000" />
+          <span style={{ fontSize: '13px', color: '#000000' }}>Главная</span>
         </button>
-        <button style={menuIconStyle} onClick={() => navigate('/catalog')}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="3" width="7" height="7" rx="2" ry="2"/>
-            <rect x="14" y="3" width="7" height="7" rx="2" ry="2"/>
-            <rect x="14" y="14" width="7" height="7" rx="2" ry="2"/>
-            <rect x="3" y="14" width="7" height="7" rx="2" ry="2"/>
-          </svg>
-          <span style={labelStyle}>Каталог</span>
+        <button style={bottomButtonStyle} onClick={() => navigate('/search')}>
+          <SearchIcon color="#000000" />
+          <span style={{ fontSize: '13px', color: '#000000' }}>Поиск</span>
         </button>
-        <button style={menuIconStyle} onClick={() => navigate('/shorts')}>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 2v20M2 12h20M12 2l10 10M12 2L2 12M12 22l10-10M12 22L2 12"/>
-            </svg>
-          </div>
-          <span style={labelStyle}></span>
+        <button style={bottomButtonStyle} onClick={() => navigate('/shorts')}>
+          <ShortsIcon color="#000000" />
         </button>
-        <button style={menuIconStyle} onClick={() => navigate('/cart')}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-          </svg>
-          <span style={labelStyle}>Корзина</span>
+        <button style={bottomButtonStyle} onClick={() => navigate('/cart')}>
+          <CartIcon color="#000000" />
+          <span style={{ fontSize: '13px', color: '#000000' }}>Корзина</span>
         </button>
-        <button style={activeMenuIconStyle} onClick={() => WebApp.showAlert('Профиль')}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
-          <span style={labelStyle}>Профиль</span>
+        <button style={bottomButtonStyle} onClick={() => navigate('/profile')}>
+          <ProfileIcon color="#000000" />
+          <span style={{ fontSize: '13px', color: '#000000' }}>Профиль</span>
         </button>
-      </nav>
+      </div>
     </div>
   );
 };
