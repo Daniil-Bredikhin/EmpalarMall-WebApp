@@ -17,9 +17,11 @@ export const CatalogIcon: React.FC = () => (
 )
 
 export const ShortsIcon: React.FC = () => (
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 2v20M2 12h20M12 2l10 10M12 2L2 12M12 22l10-10M12 22L2 12"/>
-  </svg>
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2v20M2 12h20M12 2l10 10M12 2L2 12M12 22l10-10M12 22L2 12"/>
+    </svg>
+  </div>
 )
 
 export const CartIcon: React.FC = () => (
