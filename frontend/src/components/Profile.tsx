@@ -259,15 +259,17 @@ const Profile: React.FC = () => {
   };
 
   const bottomButtonStyle: React.CSSProperties = {
-    width: 'calc(100% - 32px)',
-    backgroundColor: '#fff',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '4px',
+    background: 'none',
     border: 'none',
-    borderRadius: '16px',
-    padding: '16px',
-    margin: '0 16px 8px 16px',
+    padding: '8px',
     cursor: 'pointer',
-    transition: 'all 0.2s ease',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+    color: '#000000',
+    fontSize: '13px',
+    fontWeight: 500,
   };
 
   const iconWithTextStyle: React.CSSProperties = {
