@@ -20,6 +20,8 @@ import {
   searchIconStyle,
   contentStyle
 } from './Home.styles'
+import WebApp from '@twa-dev/sdk'
+import BottomMenu from '../../components/common/BottomMenu'
 
 // Главный компонент домашней страницы Mini App
 // Отображает основное меню и управляет навигацией
@@ -103,42 +105,7 @@ const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
         {renderPage()}
       </main>
 
-      {/* Нижнее меню */}
-      <nav style={{
-        ...menuStyle,
-        transform: isKeyboardVisible ? 'translateY(100%)' : 'translateY(0)'
-      }}>
-        <MenuIcon
-          icon={<HomeIcon />}
-          label="Главная"
-          onClick={() => handleMenuClick('home')}
-          style={activeMenu === 'home' ? activeIconStyle : iconStyle}
-        />
-        <MenuIcon
-          icon={<CatalogIcon />}
-          label="Каталог"
-          onClick={() => handleMenuClick('catalog')}
-          style={activeMenu === 'catalog' ? activeIconStyle : iconStyle}
-        />
-        <MenuIcon
-          icon={<ShortsIcon />}
-          label=""
-          onClick={() => handleMenuClick('shorts')}
-          style={activeMenu === 'shorts' ? activeIconStyle : iconStyle}
-        />
-        <MenuIcon
-          icon={<CartIcon />}
-          label="Корзина"
-          onClick={() => handleMenuClick('cart')}
-          style={activeMenu === 'cart' ? activeIconStyle : iconStyle}
-        />
-        <MenuIcon
-          icon={<ProfileIcon />}
-          label="Профиль"
-          onClick={() => navigate('/profile')}
-          style={activeMenu === 'profile' ? activeIconStyle : iconStyle}
-        />
-      </nav>
+      <BottomMenu />
     </div>
   )
 }
