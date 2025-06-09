@@ -1,48 +1,64 @@
 import React, { useEffect } from 'react'
-import WebApp from '@twa-dev/sdk'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import WebApp from '@twa-dev/sdk'
 import Home from './pages/home/Home'
 import Profile from './components/Profile'
 import Cart from './pages/cart/Cart'
-import Favorites from './pages/favorites/Favorites'
 import Shorts from './pages/shorts/Shorts'
+import Search from './pages/search/Search'
+import Admin from './pages/admin/Admin'
 import './App.css'
 
 declare global {
   interface Window {
-    Telegram?: {
-      WebApp: {
-        expand: () => void;
-        enableClosingConfirmation: () => void;
-        setHeaderColor: (color: string) => void;
-        setBackgroundColor: (color: string) => void;
-        ready: () => void;
-      };
+    Telegram: {
+      WebApp: WebApp;
     };
   }
 }
 
+interface WebApp {
+  ready(): void;
+  expand(): void;
+  close(): void;
+  MainButton: {
+    text: string;
+    color: string;
+    textColor: string;
+    isVisible: boolean;
+    isActive: boolean;
+    isProgressVisible: boolean;
+    setText(text: string): void;
+    onClick(callback: () => void): void;
+    offClick(callback: () => void): void;
+    show(): void;
+    hide(): void;
+    enable(): void;
+    disable(): void;
+    showProgress(leaveActive: boolean): void;
+    hideProgress(): void;
+  };
+  BackButton: {
+    isVisible: boolean;
+    onClick(callback: () => void): void;
+    offClick(callback: () => void): void;
+    show(): void;
+    hide(): void;
+  };
+  enableClosingConfirmation(): void;
+  setHeaderColor(color: string): void;
+  setBackgroundColor(color: string): void;
+}
+
 const App: React.FC = () => {
   useEffect(() => {
-    // Инициализация и настройка Telegram Mini App
-    WebApp.ready()
-    
-    // Установка светлой темы по умолчанию
-    WebApp.setHeaderColor('#ffffff')
-    WebApp.setBackgroundColor('#ffffff')
-    
-    // Принудительно включаем полноэкранный режим
-    WebApp.enableClosingConfirmation()
-    WebApp.expand()
-    
-    // Принудительно устанавливаем полноэкранный режим
-    if (window.Telegram?.WebApp) {
-      window.Telegram.WebApp.expand()
-      window.Telegram.WebApp.enableClosingConfirmation()
-      window.Telegram.WebApp.setHeaderColor('#ffffff')
-      window.Telegram.WebApp.setBackgroundColor('#ffffff')
-    }
-  }, [])
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+    tg.expand();
+    tg.enableClosingConfirmation();
+    tg.setHeaderColor('#ffffff');
+    tg.setBackgroundColor('#f8f8f8');
+  }, []);
 
   const handleMenuClick = (menu: string) => {
     // Здесь можно добавить логику обработки кликов по меню
