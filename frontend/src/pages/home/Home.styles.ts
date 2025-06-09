@@ -1,5 +1,4 @@
 import type { CSSProperties } from 'react'
-import styled from 'styled-components'
 
 export const containerStyle: CSSProperties = {
   display: 'flex',
@@ -92,21 +91,4 @@ export const contentStyle: CSSProperties = {
   flex: 1,
   padding: '16px',
   marginTop: '20px',
-}
-
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #f8f8f8;
-`
-
-export const Logo = styled.img`
-  width: 200px;
-  height: auto;
-  margin: 20px auto;
-`
-
-export const BottomMenu = styled.div`
-  margin-top: auto;
-` 
+} 
