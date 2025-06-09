@@ -300,19 +300,6 @@ const Profile: React.FC = () => {
     opacity: 0.7,
   };
 
-  const activeMenuIconStyle: React.CSSProperties = {
-    ...menuIconStyle,
-    color: '#000000',
-    opacity: 1,
-  };
-
-  const labelStyle: React.CSSProperties = {
-    fontSize: '12px',
-    color: '#111',
-    fontFamily: 'Geraldton, Arial, sans-serif',
-    fontWeight: 500,
-  };
-
   const bottomMenuStyle: React.CSSProperties = {
     position: 'fixed',
     bottom: 0,
