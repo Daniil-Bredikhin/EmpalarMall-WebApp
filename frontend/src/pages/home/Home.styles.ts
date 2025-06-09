@@ -55,7 +55,7 @@ export const headerStyle: CSSProperties = {
   top: 0,
   left: 0,
   right: 0,
-  height: '120px',
+  height: '110px',
   backgroundColor: '#ffffff',
   display: 'flex',
   alignItems: 'center',
@@ -68,44 +68,52 @@ export const logoStyle: CSSProperties = {
   fontSize: '20px',
   fontWeight: 'bold',
   color: '#000000',
-  marginTop: '80px',
-  marginLeft: '8px',
+  marginTop: '70px',
+  marginLeft: '12px',
   letterSpacing: '0.5px',
 }
 
 export const searchContainerStyle: CSSProperties = {
-  marginTop: '140px',
+  marginTop: '130px',
   padding: '0 16px',
   position: 'relative',
-  width: 'calc(100% - 32px)',
+  width: '100%',
   boxSizing: 'border-box',
   display: 'flex',
   justifyContent: 'center',
+  alignItems: 'center',
+}
+
+export const searchWrapperStyle: CSSProperties = {
+  position: 'relative',
+  width: '100%',
+  maxWidth: '400px',
+  display: 'flex',
+  alignItems: 'center',
 }
 
 export const searchInputStyle: CSSProperties = {
   width: '100%',
-  maxWidth: '400px',
-  height: '44px',
+  height: '48px',
   padding: '0 16px 0 48px',
-  borderRadius: '22px',
-  border: '1px solid #e0e0e0',
+  borderRadius: '24px',
+  border: '1px solid rgba(0,0,0,0.08)',
   backgroundColor: '#ffffff',
   fontSize: '15px',
   outline: 'none',
-  boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+  boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
   transition: 'all 0.2s ease',
   boxSizing: 'border-box',
-  marginLeft: 'auto',
-  marginRight: 'auto',
+  color: '#333333',
 }
 
 export const searchIconStyle: CSSProperties = {
   position: 'absolute',
-  left: 'calc(50% - 180px)',
+  left: '16px',
   top: '50%',
   transform: 'translateY(-50%)',
   pointerEvents: 'none',
+  opacity: 0.6,
 }
 
 export const contentStyle: CSSProperties = {
