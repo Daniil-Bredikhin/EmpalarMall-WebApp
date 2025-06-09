@@ -122,7 +122,7 @@ const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
         />
         <MenuIcon
           icon={<ShortsIcon />}
-          label="Шортсы"
+          label=""
           onClick={() => handleMenuClick('shorts')}
           style={activeMenu === 'shorts' ? activeIconStyle : iconStyle}
         />

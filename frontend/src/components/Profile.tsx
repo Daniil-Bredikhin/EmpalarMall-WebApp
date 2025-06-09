@@ -445,7 +445,7 @@ const Profile: React.FC = () => {
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 2v20M2 12h20M12 2l10 10M12 2L2 12M12 22l10-10M12 22L2 12"/>
           </svg>
-          <span style={labelStyle}>Шортсы</span>
+          <span style={labelStyle}></span>
         </button>
         <button style={menuIconStyle} onClick={() => navigate('/cart')}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
