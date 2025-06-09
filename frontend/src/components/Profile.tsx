@@ -119,21 +119,6 @@ const Profile: React.FC = () => {
     transform: 'translateX(-50%)',
   };
 
-  const logoStyle: React.CSSProperties = {
-    fontFamily: 'Montserrat, Arial, sans-serif',
-    color: '#111',
-    fontWeight: 700,
-    fontSize: '20px',
-    letterSpacing: '1.2px',
-    margin: '0',
-    padding: '0',
-    textAlign: 'center',
-    lineHeight: '1.2',
-    width: '100%',
-    paddingLeft: '25px',
-    paddingRight: '24px',
-  };
-
   const profileSectionStyle: React.CSSProperties = {
     backgroundColor: '#fff',
     padding: '24px 16px',
@@ -288,7 +273,7 @@ const Profile: React.FC = () => {
   return (
     <div style={containerStyle}>
       <div style={headerStyle}>
-        <div style={logoStyle}>EMPALAR MALL</div>
+        {/* Logo will be removed from the header */}
       </div>
 
       <div style={profileSectionStyle}>
