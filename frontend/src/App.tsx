@@ -60,11 +60,6 @@ const App: React.FC = () => {
     tg.setBackgroundColor('#f8f8f8');
   }, []);
 
-  const handleMenuClick = (menu: string) => {
-    // Здесь можно добавить логику обработки кликов по меню
-    console.log('Menu clicked:', menu)
-  }
-
   return (
     <Router>
       <div className="app">
