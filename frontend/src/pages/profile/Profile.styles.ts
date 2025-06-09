@@ -40,24 +40,23 @@ export const contentStyle: CSSProperties = {
   padding: '16px',
 };
 
-export const sectionStyle: React.CSSProperties = {
-  backgroundColor: '#fff',
+export const sectionStyle: CSSProperties = {
+  backgroundColor: '#ffffff',
   borderRadius: '12px',
-  padding: '20px',
-  marginBottom: '20px',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
-}
-
-export const sectionTitleStyle: React.CSSProperties = {
-  fontSize: '18px',
-  fontWeight: '600',
+  padding: '16px',
   marginBottom: '16px',
-  color: '#333',
-}
+  boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+};
 
-export const sectionContentStyle: React.CSSProperties = {
+export const sectionTitleStyle: CSSProperties = {
+  fontSize: '16px',
+  fontWeight: 'bold',
+  color: '#000000',
+  marginBottom: '12px',
+};
+
+export const sectionContentStyle: CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   gap: '12px',
-  color: '#666',
-} 
+}; 
