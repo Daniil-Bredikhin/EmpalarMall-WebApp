@@ -34,6 +34,15 @@ const BottomMenu: React.FC = () => {
     fontWeight: 500,
   };
 
+  const shortsButtonStyle: React.CSSProperties = {
+    ...bottomButtonStyle,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '28px',
+    height: '28px',
+  };
+
   return (
     <div style={bottomMenuStyle}>
       <button style={bottomButtonStyle} onClick={() => navigate('/')}>
@@ -44,7 +53,7 @@ const BottomMenu: React.FC = () => {
         <SearchIcon color="#000000" />
         <span style={{ fontSize: '13px', color: '#000000' }}>Поиск</span>
       </button>
-      <button style={bottomButtonStyle} onClick={() => navigate('/shorts')}>
+      <button style={shortsButtonStyle} onClick={() => navigate('/shorts')}>
         <ShortsIcon color="#000000" />
       </button>
       <button style={bottomButtonStyle} onClick={() => navigate('/cart')}>
