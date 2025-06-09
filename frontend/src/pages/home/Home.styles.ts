@@ -1,5 +1,11 @@
 import type { CSSProperties } from 'react'
 
+export const containerStyle: CSSProperties = {
+  minHeight: '100vh',
+  backgroundColor: '#f8f8f8',
+  paddingBottom: '80px',
+}
+
 export const menuStyle: CSSProperties = {
   position: 'fixed',
   bottom: 0,
@@ -45,21 +51,14 @@ export const labelStyle: CSSProperties = {
 
 export const headerStyle: CSSProperties = {
   position: 'fixed',
-  top: '48px',
+  top: 0,
+  left: 0,
+  right: 0,
   backgroundColor: 'rgba(255, 255, 255, 0.98)',
   backdropFilter: 'blur(10px)',
   zIndex: 1000,
   padding: '16px',
   boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  gap: '16px',
-  width: 'calc(100% - 32px)',
-  maxWidth: '360px',
-  margin: '0 auto',
-  left: '50%',
-  transform: 'translateX(-50%)',
 }
 
 export const logoStyle: CSSProperties = {
@@ -72,9 +71,6 @@ export const logoStyle: CSSProperties = {
   padding: '0',
   textAlign: 'center',
   lineHeight: '1.2',
-  width: '100%',
-  paddingLeft: '25px',
-  paddingRight: '24px',
 }
 
 export const searchBarStyle: CSSProperties = {
@@ -107,9 +103,6 @@ export const searchIconStyle: CSSProperties = {
 }
 
 export const contentStyle: CSSProperties = {
-  padding: '180px 16px 80px',
-  maxWidth: '360px',
-  margin: '0 auto',
-  width: '100%',
-  boxSizing: 'border-box',
+  padding: '16px',
+  marginTop: '60px',
 } 

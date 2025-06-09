@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WebApp from '@twa-dev/sdk';
-import { HomeIcon, SearchIcon, ShortsIcon, CartIcon, ProfileIcon } from './icons/MenuIcons';
 import BottomMenu from './common/BottomMenu';
 
 interface User {
