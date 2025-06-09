@@ -55,8 +55,13 @@ const BottomMenu: React.FC = () => {
         <span style={{ fontSize: '13px', color: '#000000' }}>Главная</span>
       </button>
       <button style={bottomButtonStyle} onClick={() => navigate('/search')}>
-        <SearchIcon color="#000000" />
-        <span style={{ fontSize: '13px', color: '#000000' }}>Поиск</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="7" height="7" />
+          <rect x="14" y="3" width="7" height="7" />
+          <rect x="14" y="14" width="7" height="7" />
+          <rect x="3" y="14" width="7" height="7" />
+        </svg>
+        <span style={{ fontSize: '13px', color: '#000000' }}>Каталог</span>
       </button>
       <button style={shortsButtonStyle} onClick={() => navigate('/shorts')}>
         <ShortsIcon color="#ffffff" />
