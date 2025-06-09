@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { HomeIcon, SearchIcon, ShortsIcon, CartIcon, ProfileIcon } from '../icons/MenuIcons';
+import { HomeIcon, ShortsIcon, CartIcon, ProfileIcon } from '../icons/MenuIcons';
 
 const BottomMenu: React.FC = () => {
   const navigate = useNavigate();
