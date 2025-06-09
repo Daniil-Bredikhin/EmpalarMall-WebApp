@@ -55,7 +55,7 @@ export const headerStyle: CSSProperties = {
   top: 0,
   left: 0,
   right: 0,
-  height: '60px',
+  height: '120px',
   backgroundColor: '#ffffff',
   display: 'flex',
   alignItems: 'center',
@@ -68,23 +68,44 @@ export const logoStyle: CSSProperties = {
   fontSize: '20px',
   fontWeight: 'bold',
   color: '#000000',
-  marginTop: '20px',
+  marginTop: '80px',
+  marginLeft: '8px',
+  letterSpacing: '0.5px',
 }
 
 export const searchContainerStyle: CSSProperties = {
-  marginTop: '80px',
+  marginTop: '140px',
   padding: '0 16px',
+  position: 'relative',
+  width: 'calc(100% - 32px)',
+  boxSizing: 'border-box',
+  display: 'flex',
+  justifyContent: 'center',
 }
 
 export const searchInputStyle: CSSProperties = {
   width: '100%',
-  height: '40px',
-  padding: '0 16px',
-  borderRadius: '20px',
+  maxWidth: '400px',
+  height: '44px',
+  padding: '0 16px 0 48px',
+  borderRadius: '22px',
   border: '1px solid #e0e0e0',
   backgroundColor: '#ffffff',
-  fontSize: '16px',
+  fontSize: '15px',
   outline: 'none',
+  boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+  transition: 'all 0.2s ease',
+  boxSizing: 'border-box',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+}
+
+export const searchIconStyle: CSSProperties = {
+  position: 'absolute',
+  left: 'calc(50% - 180px)',
+  top: '50%',
+  transform: 'translateY(-50%)',
+  pointerEvents: 'none',
 }
 
 export const contentStyle: CSSProperties = {
