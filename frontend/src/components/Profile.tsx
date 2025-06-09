@@ -285,21 +285,6 @@ const Profile: React.FC = () => {
     fontWeight: 500,
   };
 
-  const menuIconStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '6px',
-    padding: 0,
-    background: 'none',
-    border: 'none',
-    cursor: 'pointer',
-    color: '#111',
-    transition: 'all 0.2s ease',
-    width: '100%',
-    opacity: 0.7,
-  };
-
   const bottomMenuStyle: React.CSSProperties = {
     position: 'fixed',
     bottom: 0,
