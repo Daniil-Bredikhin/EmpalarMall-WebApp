@@ -53,11 +53,12 @@ const App: React.FC = () => {
     <Router>
       <div className="app">
         <Routes>
-          <Route path="/" element={<Home onMenuClick={handleMenuClick} />} />
+          <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/search" element={<Search />} />
           <Route path="/shorts" element={<Shorts />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/admin/*" element={<Admin />} />
         </Routes>
       </div>
     </Router>
