@@ -68,7 +68,7 @@ export const logoStyle: CSSProperties = {
   fontSize: '20px',
   fontWeight: 'bold',
   color: '#000000',
-  marginTop: '60px',
+  marginTop: '58px',
   marginLeft: '24px',
   letterSpacing: '0.5px',
 }
@@ -113,7 +113,8 @@ export const searchIconStyle: CSSProperties = {
   top: '50%',
   transform: 'translateY(-50%)',
   pointerEvents: 'none',
-  opacity: 0.6,
+  opacity: 1,
+  color: '#000000',
 }
 
 export const contentStyle: CSSProperties = {

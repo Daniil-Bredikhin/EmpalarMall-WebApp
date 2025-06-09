@@ -45,7 +45,7 @@ const Home: React.FC = () => {
           </svg>
           <input
             type="text"
-            placeholder="Поиск"
+            placeholder="Поиск..."
             style={searchInputStyle}
           />
         </div>

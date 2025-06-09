@@ -1,26 +1,44 @@
-export const containerStyle: React.CSSProperties = {
+import type { CSSProperties } from 'react';
+
+export const containerStyle: CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   minHeight: '100vh',
-  backgroundColor: '#f5f5f5',
-}
+  backgroundColor: '#f8f8f8',
+};
 
-export const headerStyle: React.CSSProperties = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
+export const profileHeaderStyle: CSSProperties = {
   padding: '16px',
-  backgroundColor: '#fff',
+  backgroundColor: '#ffffff',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '12px',
   boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-}
+};
 
-export const contentStyle: React.CSSProperties = {
+export const avatarStyle: CSSProperties = {
+  width: '80px',
+  height: '80px',
+  borderRadius: '50%',
+  backgroundColor: '#e0e0e0',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: '32px',
+  color: '#666666',
+};
+
+export const usernameStyle: CSSProperties = {
+  fontSize: '18px',
+  fontWeight: 'bold',
+  color: '#000000',
+};
+
+export const contentStyle: CSSProperties = {
   flex: 1,
-  padding: '20px',
-  maxWidth: '600px',
-  margin: '0 auto',
-  width: '100%',
-}
+  padding: '16px',
+};
 
 export const sectionStyle: React.CSSProperties = {
   backgroundColor: '#fff',

@@ -1,15 +1,25 @@
 import React from 'react'
-import { Logo } from '../../components/common/Logo'
-import { containerStyle, headerStyle, contentStyle, sectionStyle, sectionTitleStyle, sectionContentStyle } from './Profile.styles'
+import BottomMenu from '../../components/common/BottomMenu'
+import {
+  containerStyle,
+  profileHeaderStyle,
+  avatarStyle,
+  usernameStyle,
+  contentStyle,
+  sectionStyle,
+  sectionTitleStyle,
+  sectionContentStyle
+} from './Profile.styles'
 
 const Profile: React.FC = () => {
   return (
     <div style={containerStyle}>
-      <header style={headerStyle}>
-        <Logo />
-      </header>
+      <div style={profileHeaderStyle}>
+        <div style={avatarStyle}>U</div>
+        <div style={usernameStyle}>Username</div>
+      </div>
 
-      <div style={{ ...contentStyle, paddingTop: '20px' }}>
+      <div style={contentStyle}>
         <section style={sectionStyle}>
           <h2 style={sectionTitleStyle}>Личные данные</h2>
           <div style={sectionContentStyle}>
@@ -35,6 +45,8 @@ const Profile: React.FC = () => {
           </div>
         </section>
       </div>
+
+      <BottomMenu />
     </div>
   )
 }
