@@ -55,7 +55,7 @@ export const headerStyle: CSSProperties = {
   top: 0,
   left: 0,
   right: 0,
-  height: '110px',
+  height: '100px',
   backgroundColor: '#ffffff',
   display: 'flex',
   alignItems: 'center',
@@ -68,13 +68,13 @@ export const logoStyle: CSSProperties = {
   fontSize: '20px',
   fontWeight: 'bold',
   color: '#000000',
-  marginTop: '70px',
-  marginLeft: '12px',
+  marginTop: '60px',
+  marginLeft: '24px',
   letterSpacing: '0.5px',
 }
 
 export const searchContainerStyle: CSSProperties = {
-  marginTop: '130px',
+  marginTop: '110px',
   padding: '0 16px',
   position: 'relative',
   width: '100%',

@@ -20,11 +20,6 @@ const Home: React.FC = () => {
 
       <div style={searchContainerStyle}>
         <div style={searchWrapperStyle}>
-          <input
-            type="text"
-            placeholder="Поиск"
-            style={searchInputStyle}
-          />
           <svg
             style={searchIconStyle}
             width="20"
@@ -48,6 +43,11 @@ const Home: React.FC = () => {
               strokeLinejoin="round"
             />
           </svg>
+          <input
+            type="text"
+            placeholder="Поиск"
+            style={searchInputStyle}
+          />
         </div>
       </div>
 
