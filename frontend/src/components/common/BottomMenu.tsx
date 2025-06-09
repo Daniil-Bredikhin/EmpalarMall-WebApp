@@ -32,6 +32,7 @@ const BottomMenu: React.FC = () => {
     color: '#000000',
     fontSize: '13px',
     fontWeight: 500,
+    width: '64px',
   };
 
   const shortsButtonStyle: React.CSSProperties = {
@@ -39,8 +40,12 @@ const BottomMenu: React.FC = () => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '28px',
-    height: '28px',
+    width: '64px',
+    height: '64px',
+    marginTop: '-20px',
+    backgroundColor: '#000000',
+    borderRadius: '50%',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
   };
 
   return (
@@ -54,7 +59,7 @@ const BottomMenu: React.FC = () => {
         <span style={{ fontSize: '13px', color: '#000000' }}>Поиск</span>
       </button>
       <button style={shortsButtonStyle} onClick={() => navigate('/shorts')}>
-        <ShortsIcon color="#000000" />
+        <ShortsIcon color="#ffffff" />
       </button>
       <button style={bottomButtonStyle} onClick={() => navigate('/cart')}>
         <CartIcon color="#000000" />

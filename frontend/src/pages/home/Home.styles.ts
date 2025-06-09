@@ -1,9 +1,11 @@
 import type { CSSProperties } from 'react'
+import styled from 'styled-components'
 
 export const containerStyle: CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
   minHeight: '100vh',
   backgroundColor: '#f8f8f8',
-  paddingBottom: '80px',
 }
 
 export const menuStyle: CSSProperties = {
@@ -54,55 +56,57 @@ export const headerStyle: CSSProperties = {
   top: 0,
   left: 0,
   right: 0,
-  backgroundColor: 'rgba(255, 255, 255, 0.98)',
-  backdropFilter: 'blur(10px)',
+  height: '60px',
+  backgroundColor: '#ffffff',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   zIndex: 1000,
-  padding: '16px',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
 }
 
 export const logoStyle: CSSProperties = {
-  fontFamily: 'Montserrat, Arial, sans-serif',
-  color: '#111',
-  fontWeight: 700,
   fontSize: '20px',
-  letterSpacing: '1.2px',
-  margin: '0',
-  padding: '0',
-  textAlign: 'center',
-  lineHeight: '1.2',
+  fontWeight: 'bold',
+  color: '#000000',
+  marginTop: '20px',
 }
 
-export const searchBarStyle: CSSProperties = {
-  width: '100%',
-  position: 'relative',
-  margin: '0 auto',
-  boxSizing: 'border-box',
+export const searchContainerStyle: CSSProperties = {
+  marginTop: '80px',
+  padding: '0 16px',
 }
 
 export const searchInputStyle: CSSProperties = {
   width: '100%',
-  padding: '14px 20px 14px 48px',
-  borderRadius: '24px',
+  height: '40px',
+  padding: '0 16px',
+  borderRadius: '20px',
   border: '1px solid #e0e0e0',
-  fontSize: '16px',
   backgroundColor: '#ffffff',
-  boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
+  fontSize: '16px',
   outline: 'none',
-  transition: 'all 0.2s ease',
-  fontFamily: 'Geraldton, Arial, sans-serif',
-  boxSizing: 'border-box',
-}
-
-export const searchIconStyle: CSSProperties = {
-  position: 'absolute',
-  left: '14px',
-  top: '50%',
-  transform: 'translateY(-50%)',
-  color: '#999',
 }
 
 export const contentStyle: CSSProperties = {
+  flex: 1,
   padding: '16px',
-  marginTop: '60px',
-} 
+  marginTop: '20px',
+}
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f8f8f8;
+`
+
+export const Logo = styled.img`
+  width: 200px;
+  height: auto;
+  margin: 20px auto;
+`
+
+export const BottomMenu = styled.div`
+  margin-top: auto;
+` 

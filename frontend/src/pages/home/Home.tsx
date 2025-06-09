@@ -4,7 +4,9 @@ import {
   containerStyle,
   headerStyle,
   logoStyle,
-  contentStyle
+  contentStyle,
+  searchContainerStyle,
+  searchInputStyle
 } from './Home.styles';
 
 const Home: React.FC = () => {
@@ -13,6 +15,14 @@ const Home: React.FC = () => {
       <header style={headerStyle}>
         <div style={logoStyle}>EMPALAR MALL</div>
       </header>
+
+      <div style={searchContainerStyle}>
+        <input
+          type="text"
+          placeholder="Поиск товаров..."
+          style={searchInputStyle}
+        />
+      </div>
 
       <div style={contentStyle}>
         {/* Контент страницы */}
