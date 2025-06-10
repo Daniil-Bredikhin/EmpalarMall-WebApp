@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import WebApp from '@twa-dev/sdk'
 import Home from './pages/home/Home'
@@ -48,9 +48,12 @@ interface WebApp {
   enableClosingConfirmation(): void;
   setHeaderColor(color: string): void;
   setBackgroundColor(color: string): void;
+  isExpanded: boolean;
 }
 
 const App: React.FC = () => {
+  const [isExpanded, setIsExpanded] = useState(true);
+
   useEffect(() => {
     const tg = window.Telegram.WebApp;
     tg.ready();
@@ -58,7 +61,36 @@ const App: React.FC = () => {
     tg.enableClosingConfirmation();
     tg.setHeaderColor('#ffffff');
     tg.setBackgroundColor('#f8f8f8');
+
+    // Проверка Fullscreen
+    setTimeout(() => {
+      if (!tg.isExpanded) {
+        tg.expand();
+        setIsExpanded(false);
+      } else {
+        setIsExpanded(true);
+      }
+    }, 500);
   }, []);
+
+  if (!isExpanded) {
+    return (
+      <div style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: '#fff',
+        color: '#000',
+        fontSize: 18,
+        textAlign: 'center',
+        padding: 32
+      }}>
+        <p>Пожалуйста, откройте приложение в Telegram в режиме Fullscreen (полноэкранный режим).</p>
+      </div>
+    );
+  }
 
   return (
     <Router>
