@@ -307,7 +307,7 @@ const Profile: React.FC = () => {
           </div>
           <span style={buttonTextStyle}>Покупки</span>
         </button>
-        <button style={actionButtonStyle} onClick={() => navigate('/support')}>
+        <button style={actionButtonStyle} onClick={() => window.open('https://t.me/empalarsupport', '_blank')}>
           <div style={iconWrapperStyle}>
             <SupportIcon style={actionIconStyle} />
           </div>
