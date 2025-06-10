@@ -90,7 +90,7 @@ export const searchWrapperStyle: CSSProperties = {
   maxWidth: '400px',
   display: 'flex',
   alignItems: 'center',
-  margin: 0,
+  margin: '0 12px',
 }
 
 export const searchInputStyle: CSSProperties = {
@@ -115,7 +115,7 @@ export const searchIconStyle: CSSProperties = {
   transform: 'translateY(-50%)',
   pointerEvents: 'none',
   opacity: 1,
-  color: '#000000',
+  color: '#333333',
 }
 
 export const contentStyle: CSSProperties = {
