@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import BottomMenu from '../../components/common/BottomMenu';
 import {
   containerStyle,
@@ -11,15 +11,29 @@ import {
   storyCircleStyle
 } from './Home.styles';
 
-const stories = [
-  { id: 1, name: 'Story 1', img: 'https://via.placeholder.com/64' },
-  { id: 2, name: 'Story 2', img: 'https://via.placeholder.com/64' },
-  { id: 3, name: 'Story 3', img: 'https://via.placeholder.com/64' },
-  { id: 4, name: 'Story 4', img: 'https://via.placeholder.com/64' },
-  { id: 5, name: 'Story 5', img: 'https://via.placeholder.com/64' },
+const defaultStories = [
+  { id: 1, name: 'Story 1', img: 'https://via.placeholder.com/80' },
+  { id: 2, name: 'Story 2', img: 'https://via.placeholder.com/80' },
+  { id: 3, name: 'Story 3', img: 'https://via.placeholder.com/80' },
+  { id: 4, name: 'Story 4', img: 'https://via.placeholder.com/80' },
+  { id: 5, name: 'Story 5', img: 'https://via.placeholder.com/80' },
 ];
 
 const Home: React.FC = () => {
+  const [stories, setStories] = useState(() => {
+    const saved = localStorage.getItem('stories');
+    return saved ? JSON.parse(saved) : defaultStories;
+  });
+
+  useEffect(() => {
+    const handler = () => {
+      const saved = localStorage.getItem('stories');
+      setStories(saved ? JSON.parse(saved) : defaultStories);
+    };
+    window.addEventListener('storiesUpdated', handler);
+    return () => window.removeEventListener('storiesUpdated', handler);
+  }, []);
+
   return (
     <div style={containerStyle}>
       <header style={headerStyle}>
@@ -55,7 +69,7 @@ const Home: React.FC = () => {
         </div>
       </header>
       <div style={storySectionStyle}>
-        {stories.map(story => (
+        {stories.map((story: {id: number, name: string, img: string}) => (
           <div key={story.id} style={storyCircleStyle}>
             <img src={story.img} alt={story.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
