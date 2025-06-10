@@ -97,7 +97,7 @@ const Profile: React.FC = () => {
   const containerStyle: React.CSSProperties = {
     minHeight: '100vh',
     backgroundColor: '#f8f8f8',
-    paddingBottom: '80px',
+    paddingBottom: '120px',
   };
 
   const headerStyle: React.CSSProperties = {
