@@ -1,5 +1,6 @@
 import React from 'react';
 import BottomMenu from '../../components/common/BottomMenu';
+import Logo from '../../components/common/Logo';
 import {
   containerStyle,
   headerStyle,
@@ -15,7 +16,7 @@ const Home: React.FC = () => {
   return (
     <div style={containerStyle}>
       <header style={headerStyle}>
-        <div style={logoStyle}>EMPALAR MALL</div>
+        <Logo />
       </header>
 
       <div style={searchContainerStyle}>
