@@ -11,16 +11,16 @@ import {
 } from './Home.styles';
 
 const stories = [
-  { id: 1, name: 'Story 1', img: 'https://via.placeholder.com/48' },
-  { id: 2, name: 'Story 2', img: 'https://via.placeholder.com/48' },
-  { id: 3, name: 'Story 3', img: 'https://via.placeholder.com/48' },
-  { id: 4, name: 'Story 4', img: 'https://via.placeholder.com/48' },
-  { id: 5, name: 'Story 5', img: 'https://via.placeholder.com/48' },
+  { id: 1, name: 'Story 1', img: 'https://via.placeholder.com/144' },
+  { id: 2, name: 'Story 2', img: 'https://via.placeholder.com/144' },
+  { id: 3, name: 'Story 3', img: 'https://via.placeholder.com/144' },
+  { id: 4, name: 'Story 4', img: 'https://via.placeholder.com/144' },
+  { id: 5, name: 'Story 5', img: 'https://via.placeholder.com/144' },
 ];
 
 const storyCircleStyle: React.CSSProperties = {
-  width: '48px',
-  height: '48px',
+  width: '144px',
+  height: '144px',
   borderRadius: '50%',
   border: '2px solid #000',
   overflow: 'hidden',
