@@ -51,6 +51,9 @@ const BottomMenu: React.FC = () => {
   const iconStyle: React.CSSProperties = {
     width: '24px',
     height: '24px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   };
 
   return (
@@ -73,16 +76,14 @@ const BottomMenu: React.FC = () => {
         <span style={{ fontSize: '13px', color: '#000000' }}>Каталог</span>
       </button>
       <button style={shortsButtonStyle} onClick={() => navigate('/shorts')}>
-        <div style={iconStyle}>
-          <ShortsIcon color="#ffffff" />
-        </div>
+        <ShortsIcon color="#ffffff" />
       </button>
       <button style={bottomButtonStyle} onClick={() => navigate('/cart')}>
         <div style={iconStyle}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-            <line x1="3" y1="6" x2="21" y2="6" />
-            <path d="M16 10a4 4 0 0 1-8 0" />
+            <circle cx="9" cy="21" r="1" />
+            <circle cx="20" cy="21" r="1" />
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
           </svg>
         </div>
         <span style={{ fontSize: '13px', color: '#000000' }}>Корзина</span>
