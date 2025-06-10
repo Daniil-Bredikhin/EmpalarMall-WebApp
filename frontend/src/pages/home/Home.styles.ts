@@ -58,6 +58,7 @@ export const storySectionStyle: CSSProperties = {
   padding: '12px 12px 0 12px',
   overflowX: 'auto',
   background: '#fff',
+  marginTop: '56px',
 }
 
 export const headerStyle: CSSProperties = {
