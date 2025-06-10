@@ -1,6 +1,5 @@
 import React from 'react';
 import BottomMenu from '../../components/common/BottomMenu';
-import Logo from '../../components/common/Logo';
 import {
   containerStyle,
   headerStyle,
