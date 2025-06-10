@@ -316,24 +316,32 @@ const Profile: React.FC = () => {
       </div>
 
       <div style={infoGridContainerStyle}>
-        <button style={infoButtonStyle} onClick={() => navigate('/saved')}>
-          <SavedIcon style={smallIconStyle} />
-          <span style={infoTextStyle}>Отложенные</span>
+        <button style={bottomButtonStyle} onClick={() => navigate('/saved')}>
+          <div style={iconWithTextStyle}>
+            <SavedIcon style={actionIconStyle} />
+            <span style={actionLabelStyle}>Отложенные</span>
+          </div>
         </button>
 
-        <button style={infoButtonStyle} onClick={() => navigate('/bonus')}>
-          <BonusIcon style={smallIconStyle} />
-          <span style={infoTextStyle}>Бонусы</span>
+        <button style={bottomButtonStyle} onClick={() => navigate('/bonus')}>
+          <div style={iconWithTextStyle}>
+            <BonusIcon style={actionIconStyle} />
+            <span style={actionLabelStyle}>Бонусы</span>
+          </div>
         </button>
 
-        <button style={infoButtonStyle} onClick={() => navigate('/viewed')}>
-          <ViewedIcon style={smallIconStyle} />
-          <span style={infoTextStyle}>Просмотренные</span>
+        <button style={bottomButtonStyle} onClick={() => navigate('/viewed')}>
+          <div style={iconWithTextStyle}>
+            <ViewedIcon style={actionIconStyle} />
+            <span style={actionLabelStyle}>Просмотренные</span>
+          </div>
         </button>
 
-        <button style={infoButtonStyle} onClick={() => navigate('/reviews')}>
-          <ReviewsIcon style={smallIconStyle} />
-          <span style={infoTextStyle}>Отзывы</span>
+        <button style={bottomButtonStyle} onClick={() => navigate('/reviews')}>
+          <div style={iconWithTextStyle}>
+            <ReviewsIcon style={actionIconStyle} />
+            <span style={actionLabelStyle}>Отзывы</span>
+          </div>
         </button>
       </div>
 
