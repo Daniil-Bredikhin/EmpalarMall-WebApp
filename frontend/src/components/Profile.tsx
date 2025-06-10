@@ -103,7 +103,7 @@ const Profile: React.FC = () => {
   const profileSectionStyle: React.CSSProperties = {
     backgroundColor: '#fff',
     padding: '24px 16px',
-    marginTop: '120px',
+    marginTop: 0,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
