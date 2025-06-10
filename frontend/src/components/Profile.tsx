@@ -244,29 +244,27 @@ const Profile: React.FC = () => {
   };
 
   const bottomButtonStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '4px',
-    background: 'none',
+    width: '100%',
+    padding: '16px',
+    backgroundColor: '#fff',
     border: 'none',
-    padding: '8px',
+    borderBottom: '1px solid #f0f0f0',
+    display: 'flex',
+    alignItems: 'center',
     cursor: 'pointer',
-    color: '#000000',
-    fontSize: '13px',
-    fontWeight: 500,
+    transition: 'background-color 0.2s',
   };
 
   const iconWithTextStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
     gap: '12px',
+    width: '100%',
   };
 
   const actionLabelStyle: React.CSSProperties = {
-    fontSize: '16px',
+    fontSize: '15px',
     color: '#000',
-    fontFamily: 'Geraldton, Arial, sans-serif',
     fontWeight: 500,
   };
 
