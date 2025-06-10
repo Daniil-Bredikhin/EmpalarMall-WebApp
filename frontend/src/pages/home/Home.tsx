@@ -4,7 +4,6 @@ import Logo from '../../components/common/Logo';
 import {
   containerStyle,
   headerStyle,
-  logoStyle,
   contentStyle,
   searchContainerStyle,
   searchWrapperStyle,

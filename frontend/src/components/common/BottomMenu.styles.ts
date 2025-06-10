@@ -24,7 +24,8 @@ export const MenuItem = styled.button<{ isActive: boolean }>`
   border: none;
   padding: 8px;
   cursor: pointer;
-  color: ${props => props.isActive ? '#000000' : '#666666'};
+  color: 
+    ${(props: { isActive: boolean }) => props.isActive ? '#000000' : '#666666'};
   font-size: 13px;
   font-weight: 500;
   transition: color 0.2s ease;
@@ -40,7 +41,8 @@ export const IconWrapper = styled.div<{ isActive: boolean }>`
   justify-content: center;
   width: 28px;
   height: 28px;
-  opacity: ${props => props.isActive ? 1 : 0.7};
+  opacity: 
+    ${(props: { isActive: boolean }) => props.isActive ? 1 : 0.7};
   transition: opacity 0.2s ease;
 
   &:hover {
