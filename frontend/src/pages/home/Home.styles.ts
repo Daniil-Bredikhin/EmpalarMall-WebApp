@@ -57,16 +57,15 @@ export const storySectionStyle: CSSProperties = {
   gap: '12px',
   padding: '12px 12px 0 12px',
   overflowX: 'auto',
-  background: '#fff',
   marginTop: '56px',
   WebkitOverflowScrolling: 'touch',
 }
 
 export const storyCircleStyle: CSSProperties = {
-  minWidth: '144px',
-  minHeight: '144px',
-  width: '144px',
-  height: '144px',
+  minWidth: '64px',
+  minHeight: '64px',
+  width: '64px',
+  height: '64px',
   aspectRatio: '1/1',
   borderRadius: '50%',
   border: '2px solid #000',
