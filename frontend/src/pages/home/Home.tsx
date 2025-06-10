@@ -33,13 +33,6 @@ const storyCircleStyle: React.CSSProperties = {
 const Home: React.FC = () => {
   return (
     <div style={containerStyle}>
-      <div style={storySectionStyle}>
-        {stories.map(story => (
-          <div key={story.id} style={storyCircleStyle}>
-            <img src={story.img} alt={story.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-          </div>
-        ))}
-      </div>
       <header style={headerStyle}>
         <div style={searchWrapperStyle}>
           <svg
@@ -72,11 +65,16 @@ const Home: React.FC = () => {
           />
         </div>
       </header>
-
+      <div style={storySectionStyle}>
+        {stories.map(story => (
+          <div key={story.id} style={storyCircleStyle}>
+            <img src={story.img} alt={story.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          </div>
+        ))}
+      </div>
       <div style={contentStyle}>
         {/* Контент страницы */}
       </div>
-
       <BottomMenu />
     </div>
   );
