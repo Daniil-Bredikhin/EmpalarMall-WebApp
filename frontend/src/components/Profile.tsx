@@ -191,12 +191,6 @@ const Profile: React.FC = () => {
     marginBottom: '8px',
   };
 
-  const actionIconStyle: React.CSSProperties = {
-    width: '20px',
-    height: '20px',
-    color: '#000',
-  };
-
   const buttonTextStyle: React.CSSProperties = {
     fontSize: '12px',
     color: '#000',
@@ -207,40 +201,14 @@ const Profile: React.FC = () => {
   const infoGridContainerStyle: React.CSSProperties = {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '8px',
-    padding: '8px',
-    margin: '0 16px 8px 16px',
-    borderRadius: '16px',
+    gap: '1px',
+    backgroundColor: '#f0f0f0',
+    marginBottom: '8px',
   };
 
-  const infoButtonStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    backgroundColor: '#fff',
-    border: 'none',
-    borderRadius: '12px',
-    padding: '16px 20px',
-    cursor: 'pointer',
-    transition: 'all 0.2s ease',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-    width: '100%',
-    boxSizing: 'border-box',
-    margin: 0,
-  };
-
-  const smallIconStyle: React.CSSProperties = {
-    width: '18px',
-    height: '18px',
-    marginRight: '10px',
-    color: '#000000',
-  };
-
-  const infoTextStyle: React.CSSProperties = {
-    fontSize: '14px',
-    color: '#333',
-    fontWeight: 500,
+  const actionIconStyle: React.CSSProperties = {
+    width: '24px',
+    height: '24px',
   };
 
   const bottomButtonStyle: React.CSSProperties = {
