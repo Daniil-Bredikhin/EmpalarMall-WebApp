@@ -7,6 +7,7 @@ const logoContainerStyle: React.CSSProperties = {
   justifyContent: 'center',
   alignItems: 'center',
   margin: '16px 0',
+  paddingTop: 'calc(env(safe-area-inset-top, 0px) + 60px)',
 };
 
 const logoImgStyle: React.CSSProperties = {
