@@ -199,8 +199,8 @@ const Profile: React.FC = () => {
   };
 
   const infoGridContainerStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
+    display: 'flex',
+    flexDirection: 'column',
     gap: '1px',
     backgroundColor: '#f0f0f0',
     marginBottom: '8px',
@@ -209,6 +209,7 @@ const Profile: React.FC = () => {
   const actionIconStyle: React.CSSProperties = {
     width: '24px',
     height: '24px',
+    color: '#000000',
   };
 
   const bottomButtonStyle: React.CSSProperties = {
