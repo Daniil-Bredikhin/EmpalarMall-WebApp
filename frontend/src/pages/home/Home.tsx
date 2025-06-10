@@ -5,7 +5,6 @@ import {
   containerStyle,
   headerStyle,
   contentStyle,
-  searchContainerStyle,
   searchWrapperStyle,
   searchInputStyle,
   searchIconStyle
@@ -15,10 +14,6 @@ const Home: React.FC = () => {
   return (
     <div style={containerStyle}>
       <header style={headerStyle}>
-        <Logo />
-      </header>
-
-      <div style={searchContainerStyle}>
         <div style={searchWrapperStyle}>
           <svg
             style={searchIconStyle}
@@ -49,7 +44,7 @@ const Home: React.FC = () => {
             style={searchInputStyle}
           />
         </div>
-      </div>
+      </header>
 
       <div style={contentStyle}>
         {/* Контент страницы */}

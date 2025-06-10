@@ -55,7 +55,7 @@ export const headerStyle: CSSProperties = {
   top: 0,
   left: 0,
   right: 0,
-  height: '100px',
+  height: '56px',
   backgroundColor: '#ffffff',
   display: 'flex',
   alignItems: 'center',
@@ -90,18 +90,19 @@ export const searchWrapperStyle: CSSProperties = {
   maxWidth: '400px',
   display: 'flex',
   alignItems: 'center',
+  margin: 0,
 }
 
 export const searchInputStyle: CSSProperties = {
   width: '100%',
-  height: '48px',
-  padding: '0 16px 0 48px',
-  borderRadius: '24px',
+  height: '36px',
+  padding: '0 16px 0 40px',
+  borderRadius: '18px',
   border: '1px solid rgba(0,0,0,0.08)',
   backgroundColor: '#ffffff',
   fontSize: '15px',
   outline: 'none',
-  boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
+  boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
   transition: 'all 0.2s ease',
   boxSizing: 'border-box',
   color: '#333333',
@@ -109,7 +110,7 @@ export const searchInputStyle: CSSProperties = {
 
 export const searchIconStyle: CSSProperties = {
   position: 'absolute',
-  left: '16px',
+  left: '12px',
   top: '50%',
   transform: 'translateY(-50%)',
   pointerEvents: 'none',
