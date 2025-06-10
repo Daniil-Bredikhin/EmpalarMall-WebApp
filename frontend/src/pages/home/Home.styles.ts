@@ -50,9 +50,24 @@ export const labelStyle: CSSProperties = {
   fontWeight: 500,
 }
 
-export const headerStyle: CSSProperties = {
+export const storySectionStyle: CSSProperties = {
   position: 'fixed',
   top: 0,
+  left: 0,
+  right: 0,
+  zIndex: 1100,
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: '12px',
+  padding: '12px 12px 0 12px',
+  overflowX: 'auto',
+  background: '#fff',
+};
+
+export const headerStyle: CSSProperties = {
+  position: 'fixed',
+  top: '72px',
   left: 0,
   right: 0,
   height: '56px',
@@ -62,7 +77,7 @@ export const headerStyle: CSSProperties = {
   justifyContent: 'center',
   boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   zIndex: 1000,
-}
+};
 
 export const logoStyle: CSSProperties = {
   fontSize: '20px',
@@ -121,5 +136,5 @@ export const searchIconStyle: CSSProperties = {
 export const contentStyle: CSSProperties = {
   flex: 1,
   padding: '16px',
-  marginTop: '20px',
+  marginTop: '128px',
 } 

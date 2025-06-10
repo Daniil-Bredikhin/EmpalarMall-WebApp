@@ -6,7 +6,8 @@ import {
   contentStyle,
   searchWrapperStyle,
   searchInputStyle,
-  searchIconStyle
+  searchIconStyle,
+  storySectionStyle
 } from './Home.styles';
 
 const stories = [
@@ -16,16 +17,6 @@ const stories = [
   { id: 4, name: 'Story 4', img: 'https://via.placeholder.com/48' },
   { id: 5, name: 'Story 5', img: 'https://via.placeholder.com/48' },
 ];
-
-const storySectionStyle: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  gap: '12px',
-  padding: '12px 12px 0 12px',
-  overflowX: 'auto',
-  background: '#fff',
-};
 
 const storyCircleStyle: React.CSSProperties = {
   width: '48px',
