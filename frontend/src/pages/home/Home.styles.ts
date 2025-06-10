@@ -59,6 +59,23 @@ export const storySectionStyle: CSSProperties = {
   overflowX: 'auto',
   background: '#fff',
   marginTop: '56px',
+  WebkitOverflowScrolling: 'touch',
+}
+
+export const storyCircleStyle: CSSProperties = {
+  minWidth: '144px',
+  minHeight: '144px',
+  width: '144px',
+  height: '144px',
+  aspectRatio: '1/1',
+  borderRadius: '50%',
+  border: '2px solid #000',
+  overflow: 'hidden',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  background: '#f7f7f7',
+  flex: '0 0 auto',
 }
 
 export const headerStyle: CSSProperties = {

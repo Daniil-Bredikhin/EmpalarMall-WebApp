@@ -7,7 +7,8 @@ import {
   searchWrapperStyle,
   searchInputStyle,
   searchIconStyle,
-  storySectionStyle
+  storySectionStyle,
+  storyCircleStyle
 } from './Home.styles';
 
 const stories = [
@@ -17,18 +18,6 @@ const stories = [
   { id: 4, name: 'Story 4', img: 'https://via.placeholder.com/144' },
   { id: 5, name: 'Story 5', img: 'https://via.placeholder.com/144' },
 ];
-
-const storyCircleStyle: React.CSSProperties = {
-  width: '144px',
-  height: '144px',
-  borderRadius: '50%',
-  border: '2px solid #000',
-  overflow: 'hidden',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  background: '#f7f7f7',
-};
 
 const Home: React.FC = () => {
   return (
