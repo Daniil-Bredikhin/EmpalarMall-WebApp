@@ -100,25 +100,6 @@ const Profile: React.FC = () => {
     paddingBottom: '120px',
   };
 
-  const headerStyle: React.CSSProperties = {
-    position: 'fixed',
-    top: '48px',
-    backgroundColor: 'rgba(255, 255, 255, 0.98)',
-    backdropFilter: 'blur(10px)',
-    zIndex: 1000,
-    padding: '16px',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '16px',
-    width: 'calc(100% - 32px)',
-    maxWidth: '360px',
-    margin: '0 auto',
-    left: '50%',
-    transform: 'translateX(-50%)',
-  };
-
   const profileSectionStyle: React.CSSProperties = {
     backgroundColor: '#fff',
     padding: '24px 16px',
@@ -239,10 +220,6 @@ const Profile: React.FC = () => {
 
   return (
     <div style={containerStyle}>
-      <div style={headerStyle}>
-        {/* Logo will be removed from the header */}
-      </div>
-
       <div style={profileSectionStyle}>
         <div style={avatarContainerStyle}>
           <img 
