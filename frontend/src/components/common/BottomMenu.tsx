@@ -48,30 +48,45 @@ const BottomMenu: React.FC = () => {
     boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
   };
 
+  const iconStyle: React.CSSProperties = {
+    width: '24px',
+    height: '24px',
+  };
+
   return (
     <div style={bottomMenuStyle}>
       <button style={bottomButtonStyle} onClick={() => navigate('/')}>
-        <HomeIcon color="#000000" />
+        <div style={iconStyle}>
+          <HomeIcon color="#000000" />
+        </div>
         <span style={{ fontSize: '13px', color: '#000000' }}>Главная</span>
       </button>
       <button style={bottomButtonStyle} onClick={() => navigate('/search')}>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="3" width="7" height="7" />
-          <rect x="14" y="3" width="7" height="7" />
-          <rect x="14" y="14" width="7" height="7" />
-          <rect x="3" y="14" width="7" height="7" />
-        </svg>
+        <div style={iconStyle}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
+          </svg>
+        </div>
         <span style={{ fontSize: '13px', color: '#000000' }}>Каталог</span>
       </button>
       <button style={shortsButtonStyle} onClick={() => navigate('/shorts')}>
-        <ShortsIcon color="#ffffff" />
+        <div style={iconStyle}>
+          <ShortsIcon color="#ffffff" />
+        </div>
       </button>
       <button style={bottomButtonStyle} onClick={() => navigate('/cart')}>
-        <CartIcon color="#000000" />
+        <div style={iconStyle}>
+          <CartIcon color="#000000" />
+        </div>
         <span style={{ fontSize: '13px', color: '#000000' }}>Корзина</span>
       </button>
       <button style={bottomButtonStyle} onClick={() => navigate('/profile')}>
-        <ProfileIcon color="#000000" />
+        <div style={iconStyle}>
+          <ProfileIcon color="#000000" />
+        </div>
         <span style={{ fontSize: '13px', color: '#000000' }}>Профиль</span>
       </button>
     </div>
