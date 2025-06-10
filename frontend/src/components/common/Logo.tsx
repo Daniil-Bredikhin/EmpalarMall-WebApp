@@ -11,7 +11,7 @@ const logoContainerStyle: React.CSSProperties = {
 };
 
 const logoImgStyle: React.CSSProperties = {
-  height: '40px',
+  height: '28px',
   maxWidth: '180px',
   objectFit: 'contain',
   display: 'block',
