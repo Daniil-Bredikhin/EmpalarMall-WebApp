@@ -62,10 +62,10 @@ export const storySectionStyle: CSSProperties = {
 }
 
 export const storyCircleStyle: CSSProperties = {
-  minWidth: '80px',
-  minHeight: '80px',
-  width: '80px',
-  height: '80px',
+  minWidth: '70px',
+  minHeight: '70px',
+  width: '70px',
+  height: '70px',
   aspectRatio: '1/1',
   borderRadius: '50%',
   border: '2px solid #000',

@@ -44,7 +44,7 @@ const AdminStories: React.FC = () => {
       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 24 }}>
         {stories.map((story: any) => (
           <div key={story.id} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <img src={story.img} alt={story.name} style={{ width: 64, height: 64, borderRadius: '50%', border: '2px solid #000', objectFit: 'cover' }} />
+            <img src={story.img} alt={story.name} style={{ width: 56, height: 56, borderRadius: '50%', border: '2px solid #000', objectFit: 'cover' }} />
             <div style={{ fontSize: 12, marginTop: 4 }}>{story.name}</div>
             <button style={{ marginTop: 4 }} onClick={() => removeStory(story.id)}>Удалить</button>
           </div>
