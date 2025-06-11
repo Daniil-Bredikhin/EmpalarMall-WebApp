@@ -14,13 +14,17 @@ WORKDIR /app
 # Копируем package.json файлы
 COPY package*.json ./
 COPY backend/package*.json ./backend/
+RUN mkdir -p frontend
+COPY frontend/package*.json ./frontend/
 
 # Устанавливаем только продакшн зависимости
 RUN npm install --only=production
 RUN cd backend && npm install --only=production
+RUN cd frontend && npm install --only=production
 
-# Копируем backend код
+# Копируем backend и frontend код
 COPY backend ./backend
+COPY frontend ./frontend
 
 # Создаем .env файл если его нет
 RUN touch backend/.env
