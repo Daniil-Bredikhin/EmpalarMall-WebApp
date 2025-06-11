@@ -33,6 +33,7 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ./ssl:/etc/nginx/ssl:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
       - ./logs/nginx:/var/log/nginx
     networks:
       - empalar-network
