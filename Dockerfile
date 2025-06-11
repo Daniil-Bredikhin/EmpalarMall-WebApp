@@ -1,27 +1,5 @@
-# Многоэтапная сборка для оптимизации размера образа
-FROM node:20-alpine AS builder
-
-# Устанавливаем рабочую директорию
-WORKDIR /app
-
-# Копируем package.json файлы
-COPY package*.json ./
-COPY frontend/package*.json ./frontend/
-COPY backend/package*.json ./backend/
-
-# Устанавливаем зависимости
-RUN npm install --only=production
-RUN cd frontend && npm install
-RUN cd backend && npm install
-
-# Копируем исходный код
-COPY . .
-
-# Собираем фронтенд
-RUN cd frontend && npm run build
-
-# Продакшн образ
-FROM node:20-alpine AS production
+# Базовый образ
+FROM node:20-alpine
 
 # Устанавливаем curl для health check
 RUN apk add --no-cache curl
@@ -41,8 +19,7 @@ COPY backend/package*.json ./backend/
 RUN npm install --only=production
 RUN cd backend && npm install --only=production
 
-# Копируем собранный фронтенд и backend код
-COPY --from=builder /app/frontend/dist ./backend/public
+# Копируем backend код
 COPY backend ./backend
 
 # Создаем .env файл если его нет
