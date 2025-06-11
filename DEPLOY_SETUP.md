@@ -32,11 +32,39 @@ pm2 save
 pm2 startup
 ```
 
-### 2. **Настроить SSH-ключи:**
+### 2. **Настроить HTTPS (обязательно для Telegram WebApp):**
+
+#### Автоматическая настройка:
+```bash
+# Скопируйте скрипт setup-https.sh на вашу ВМ
+chmod +x setup-https.sh
+./setup-https.sh your-domain.com
+```
+
+#### Ручная настройка:
+```bash
+# Установить Nginx и Certbot
+sudo apt update
+sudo apt install -y nginx certbot python3-certbot-nginx
+
+# Создать конфигурацию Nginx
+sudo nano /etc/nginx/sites-available/empalar-mall
+# Вставьте содержимое файла nginx-config.conf
+
+# Активировать сайт
+sudo ln -s /etc/nginx/sites-available/empalar-mall /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
+
+# Получить SSL сертификат
+sudo certbot --nginx -d your-domain.com -d www.your-domain.com
+```
+
+### 3. **Настроить SSH-ключи:**
 
 #### Создать SSH-ключ на вашем компьютере:
 ```bash
-ssh-keygen -t rsa -b 4096 -C "your-email@example.com"
+ssh-keygen -t ed25519 -C "github-actions-deploy"
 ```
 
 #### Скопировать публичный ключ на ВМ:
@@ -44,7 +72,7 @@ ssh-keygen -t rsa -b 4096 -C "your-email@example.com"
 ssh-copy-id username@your-vm-ip
 ```
 
-### 3. **В GitHub репозитории добавить Secrets:**
+### 4. **В GitHub репозитории добавить Secrets:**
 
 Перейдите в ваш репозиторий на GitHub:
 `Settings` → `Secrets and variables` → `Actions` → `New repository secret`
@@ -57,7 +85,7 @@ ssh-copy-id username@your-vm-ip
 - **`VM_PORT`** - порт SSH (обычно 22)
 - **`VM_PROJECT_PATH`** - путь к проекту на ВМ (например: `/home/username/EmpalarMall-WebApp`)
 
-### 4. **Протестировать деплой:**
+### 5. **Протестировать деплой:**
 
 После настройки всех секретов:
 1. Сделайте любой коммит и пуш
@@ -84,6 +112,17 @@ pm2 logs empalar-mall
 pm2 restart empalar-mall
 ```
 
+### Проверить статус Nginx:
+```bash
+sudo systemctl status nginx
+sudo nginx -t
+```
+
+### Обновить SSL сертификат вручную:
+```bash
+sudo certbot renew
+```
+
 ## 🎉 Готово!
 
-Теперь при каждом пуше в ветку `master` приложение будет автоматически обновляться и перезапускаться на вашей виртуальной машине! 
+Теперь при каждом пуше в ветку `master` приложение будет автоматически обновляться и перезапускаться на вашей виртуальной машине с HTTPS! 
