@@ -1,5 +1,5 @@
 # Многоэтапная сборка для оптимизации размера образа
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 
 # Устанавливаем рабочую директорию
 WORKDIR /app
@@ -10,9 +10,9 @@ COPY frontend/package*.json ./frontend/
 COPY backend/package*.json ./backend/
 
 # Устанавливаем зависимости
-RUN npm ci --only=production
-RUN cd frontend && npm ci
-RUN cd backend && npm ci
+RUN npm install --only=production
+RUN cd frontend && npm install
+RUN cd backend && npm install
 
 # Копируем исходный код
 COPY . .
@@ -21,7 +21,10 @@ COPY . .
 RUN cd frontend && npm run build
 
 # Продакшн образ
-FROM node:18-alpine AS production
+FROM node:20-alpine AS production
+
+# Устанавливаем curl для health check
+RUN apk add --no-cache curl
 
 # Создаем пользователя для безопасности
 RUN addgroup -g 1001 -S nodejs
@@ -35,8 +38,8 @@ COPY package*.json ./
 COPY backend/package*.json ./backend/
 
 # Устанавливаем только продакшн зависимости
-RUN npm ci --only=production
-RUN cd backend && npm ci --only=production
+RUN npm install --only=production
+RUN cd backend && npm install --only=production
 
 # Копируем собранный фронтенд и backend код
 COPY --from=builder /app/frontend/dist ./backend/public
@@ -54,7 +57,7 @@ EXPOSE 3000
 
 # Проверка здоровья
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:3000/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"
+  CMD curl -f http://localhost:3000/api/health || exit 1
 
 # Запускаем приложение
 CMD ["node", "backend/index.js"] 

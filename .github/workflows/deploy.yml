@@ -3,7 +3,7 @@ name: 🚀 Deploy to VM
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch: # Позволяет запускать вручную
 
 jobs:
@@ -26,32 +26,26 @@ jobs:
             echo "🚀 Начинаем деплой на виртуальной машине..."
             
             # Переходим в папку проекта
-            cd ${{ secrets.VM_PROJECT_PATH }}
+            cd /opt/empalar-mall
             
             # Получаем последние изменения
             echo "📥 Получаем изменения из репозитория..."
-            git pull origin master
+            git pull origin main
             
-            # Устанавливаем зависимости
-            echo "📦 Устанавливаем зависимости..."
-            npm install
-            
-            # Собираем фронтенд
-            echo "🔨 Собираем фронтенд..."
-            npm run build
-            
-            # Перезапускаем приложение
-            echo "🔄 Перезапускаем приложение..."
-            pm2 restart empalar-mall || pm2 start backend/index.js --name empalar-mall
-            
-            # Перезапускаем Nginx
-            echo "🌐 Перезапускаем Nginx..."
-            sudo systemctl reload nginx
+            # Перезапускаем контейнеры
+            echo "🔄 Перезапускаем Docker контейнеры..."
+            sudo docker-compose down
+            sudo docker-compose build --no-cache
+            sudo docker-compose up -d
             
             echo "✅ Деплой завершен успешно!"
             
       - name: 📢 Notification
-        if: success()
-        run: |
-          echo "🎉 Деплой на виртуальную машину завершен успешно!"
-          echo "🌐 Приложение доступно по адресу: https://${{ secrets.VM_HOST }}" 
+        if: always()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: deployments
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_TITLE: Deploy to VM
+          SLACK_MESSAGE: 'Deploy to VM ${{ job.status }}' 
