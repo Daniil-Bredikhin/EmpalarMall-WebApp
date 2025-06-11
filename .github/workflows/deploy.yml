@@ -25,6 +25,12 @@ jobs:
           script: |
             echo "🚀 Начинаем деплой на виртуальной машине..."
             
+            # Создаем резервную копию
+            echo "💾 Создаем резервную копию..."
+            BACKUP_DIR="/opt/empalar-mall/backups/$(date +%Y%m%d_%H%M%S)"
+            mkdir -p $BACKUP_DIR
+            cp -r /opt/empalar-mall/* $BACKUP_DIR/
+            
             # Переходим в папку проекта
             cd /opt/empalar-mall
             
@@ -38,7 +44,47 @@ jobs:
             sudo docker-compose build --no-cache
             sudo docker-compose up -d
             
-            echo "✅ Деплой завершен успешно!"
+            # Ждем, пока приложение запустится
+            echo "⏳ Ждем запуска приложения..."
+            sleep 30
+            
+            # Проверяем работоспособность
+            echo "🔍 Проверяем работоспособность..."
+            if curl -s -f https://mall.empalar.com > /dev/null; then
+              echo "✅ Сайт работает!"
+              DEPLOY_STATUS="успешно"
+            else
+              echo "❌ Сайт недоступен!"
+              DEPLOY_STATUS="с ошибкой"
+              
+              # Восстанавливаем из бэкапа
+              echo "🔄 Восстанавливаем из бэкапа..."
+              cp -r $BACKUP_DIR/* /opt/empalar-mall/
+              sudo docker-compose down
+              sudo docker-compose up -d
+            fi
+            
+            echo "✅ Деплой завершен $DEPLOY_STATUS!"
+            
+      - name: 📢 Telegram Notification
+        if: always()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          format: html
+          message: |
+            <b>🚀 Деплой Empalar Mall</b>
+            
+            <b>Статус:</b> ${{ job.status }}
+            <b>Коммит:</b> ${{ github.sha }}
+            <b>Автор:</b> ${{ github.actor }}
+            
+            <b>Изменения:</b>
+            ${{ github.event.head_commit.message }}
+            
+            <b>Ссылка:</b>
+            <a href="https://mall.empalar.com">mall.empalar.com</a>
             
       - name: 📢 Notification
         if: always()
@@ -48,4 +94,34 @@ jobs:
           SLACK_CHANNEL: deployments
           SLACK_COLOR: ${{ job.status }}
           SLACK_TITLE: Deploy to VM
-          SLACK_MESSAGE: 'Deploy to VM ${{ job.status }}' 
+          SLACK_MESSAGE: 'Deploy to VM ${{ job.status }}'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install Dependencies
+        run: |
+          npm install
+          cd client && npm install
+          
+      - name: Build Frontend
+        run: |
+          cd client && npm run build
+          
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /root/EmpalarMall-WebApp
+            git pull origin main
+            npm install
+            cd client && npm install && npm run build
+            pm2 restart all
+          ssh_options: |
+            -o PubkeyAcceptedKeyTypes=+ssh-rsa
+            -o HostKeyAlgorithms=+ssh-rsa 
