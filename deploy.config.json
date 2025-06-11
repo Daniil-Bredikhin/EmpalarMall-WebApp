@@ -6,7 +6,7 @@
     "projectPath": "/path/to/project/on/vm"
   },
   "autoRestart": true,
-  "branch": "main",
+  "branch": "master",
   "commitMessage": "🔄 Автоматическое обновление: {timestamp}",
   "notifications": {
     "enabled": true,
