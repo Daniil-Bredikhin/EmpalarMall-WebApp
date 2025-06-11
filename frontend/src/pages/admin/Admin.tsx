@@ -65,7 +65,7 @@ const Admin: React.FC = () => {
       <header style={{ padding: '16px', backgroundColor: '#fff' }}>
         <h1 style={{ margin: 0, fontSize: '20px', fontWeight: 600 }}>Админ-панель</h1>
         <nav style={{ marginTop: 12, display: 'flex', gap: 16 }}>
-          <Link to="/admin/">Главная</Link>
+          <Link to="/admin">Главная</Link>
           <Link to="/admin/products">Товары</Link>
           <Link to="/admin/categories">Категории</Link>
           <Link to="/admin/orders">Заказы</Link>
