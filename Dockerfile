@@ -20,7 +20,7 @@ COPY frontend/package*.json ./frontend/
 # Устанавливаем только продакшн зависимости
 RUN npm install --only=production
 RUN cd backend && npm install --only=production
-RUN cd frontend && npm install --only=production
+RUN cd frontend && npm install
 
 # Копируем backend и frontend код
 COPY backend ./backend
