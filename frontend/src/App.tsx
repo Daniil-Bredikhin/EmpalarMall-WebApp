@@ -101,7 +101,7 @@ const App: React.FC = () => {
           <Route path="/search" element={<Search />} />
           <Route path="/shorts" element={<Shorts />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/admin/*" element={<Admin />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </div>
     </Router>
