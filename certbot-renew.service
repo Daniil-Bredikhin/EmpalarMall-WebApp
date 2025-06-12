@@ -1,0 +1,11 @@
+[Unit]
+Description=Certbot Renewal Service
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/renew-cert.sh
+User=root
+
+[Install]
+WantedBy=multi-user.target 

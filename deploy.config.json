@@ -1,0 +1,15 @@
+{
+  "vm": {
+    "host": "your-vm-ip-address",
+    "user": "your-username",
+    "port": 22,
+    "projectPath": "/path/to/project/on/vm"
+  },
+  "autoRestart": true,
+  "branch": "master",
+  "commitMessage": "🔄 Автоматическое обновление: {timestamp}",
+  "notifications": {
+    "enabled": true,
+    "webhook": "https://your-webhook-url"
+  }
+} 
